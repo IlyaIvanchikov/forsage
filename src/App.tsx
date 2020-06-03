@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './App.module.scss';
 
-function App() {
+const App: React.FC = () => {
   return (
     <div>
       <header>
@@ -11,6 +11,6 @@ function App() {
       </header>
     </div>
   );
-}
+};
 
 export default App;
