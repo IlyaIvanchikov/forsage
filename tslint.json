@@ -8,6 +8,7 @@
     "arrow-return-shorthand": true,
     "callable-types": true,
     "class-name": true,
+    "linebreak-style": [true, "LF"],
     "comment-format": [true, "check-space"],
     "curly": true,
     "eofline": true,
@@ -91,7 +92,6 @@
         "singleline": "never"
       }
     ],
-    "linebreak-style": [true, "LF"],
     "typedef": [
       true,
       "call-signature",
