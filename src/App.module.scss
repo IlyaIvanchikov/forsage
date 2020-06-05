@@ -3,3 +3,11 @@
 .test {
     color: $colorp;
 }
+
+header,
+footer,
+main {
+    color: red;
+    padding-left: $paddingMain;
+    padding-right: $paddingMain;
+}
