@@ -1,6 +1,33 @@
 @import '../../styleGuide/variable.scss';
 
 .footer {
-    height: 140px;
+    height: 58px;
     background-color: $clrBackground;
+    padding: 0 $paddingMain;
+    color: $textColor;
+}
+
+.footer__copyrights {
+    padding-top: 21px;
+    text-align: right;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 17px;
+}
+
+.footer__icon {
+    fill: $orangeColor;
+    background-color: #fff;
+    width: 32px;
+    height: 32px;
+    padding: 5px;
+    margin-top: 14px;
+    border-radius: 11px;
+    transition: ease-in-out .1s;
+    margin-right: 15px;
+}
+
+.footer__icon:hover {
+    fill: #fff;
+    background-color: $orangeColor;
 }
