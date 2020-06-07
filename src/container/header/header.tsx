@@ -1,17 +1,30 @@
 import React from 'react';
 import classes from './header.module.scss';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Container } from 'react-bootstrap';
+import logo from '../../resources/images/header/logo.svg';
+import arrow from '../../resources/images/header/arrow.svg';
+import dumbbells from '../../resources/images/header/dumbbells.svg';
 
 const Header: React.FC = () => (
-  <div className={classes.header}>
-    <Row>
-      <Col></Col>
-      <Col>
+  <Container fluid={true} className={classes.container}>
+    <Row className={classes.row}>
+      <Col className="flex-row justify-content-start align-items-center d-none d-sm-flex">
+        <div className={classes.logo}>
+          <a href="/">
+            <img src={logo} alt="logo" />
+          </a>
+        </div>
+      </Col>
+      <Col className="flex-row justify-content-center align-items-center d-none d-md-flex">
+        <img src={arrow} alt="arrow" />
         <h1>Форсаж</h1>
       </Col>
-      <Col></Col>
+      <Col className="d-flex flex-row justify-content-sm-end align-items-center justify-content-center">
+        <img src={dumbbells} alt="brain" />
+        <a href="/">К тренажерам</a>
+      </Col>
     </Row>
-  </div>
+  </Container>
 );
 
 export default Header;
