@@ -1,4 +1,5 @@
 @import "./styleGuide/custom.scss";
+@import "./styleGuide/variable.scss";
 
 body {
 //   margin: 0;
@@ -9,7 +10,10 @@ body {
 //   -moz-osx-font-smoothing: grayscale;
     max-width: 1920px;
     max-height: 1080px;
+    width: 100vw;
+    height: 100vh;
     margin: auto;
+    font-family: $fontCyrillicHover;
 }
 
 // code {

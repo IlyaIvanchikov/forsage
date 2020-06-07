@@ -1,3 +1,12 @@
+
+@font-face {
+    font-family: 'CyrillicHover';
+    font-style: normal;
+    font-weight: 400;
+    src: local('CyrillicHover'), local('CyrillicHover'),
+         url('../resources/fonts/cyrillichover.ttf') format('truetype'), /* Safari, Android, iOS */
+  }
+  
 $clrBackground: #9DBD2C;
 
 $paddingMain: 3%;
@@ -5,3 +14,5 @@ $paddingMain: 3%;
 $textColor: #fff;
 
 $orangeColor: #e7a343;
+
+$fontCyrillicHover: 'CyrillicHover', arial;
