@@ -3,11 +3,12 @@ import React, { Fragment } from 'react';
 // import { Button, Container, Row, Col } from 'react-bootstrap';
 import Header from './container/header/header';
 import Footer from './container/footer/footer';
+import Main from './container/main/main';
 
 const App = () => (
   <Fragment>
     <Header />
-    <main>Main</main>
+    <Main />
     <Footer />
   </Fragment>
 );
