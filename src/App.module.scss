@@ -1,13 +1,7 @@
 @import './styleGuide/variable.scss';
 
-.test {
-    color: $colorp;
-}
-
-header,
-footer,
-main {
-    color: red;
-    padding-left: $paddingMain;
-    padding-right: $paddingMain;
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }

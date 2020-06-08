@@ -1,15 +1,16 @@
-import React, { Fragment } from 'react';
-// import classes from './App.module.scss';
+import React from 'react';
+import classes from './App.module.scss';
 // import { Button, Container, Row, Col } from 'react-bootstrap';
 import Header from './container/header/header';
 import Footer from './container/footer/footer';
+import Main from './container/main/main';
 
 const App = () => (
-  <Fragment>
+  <div className={classes.wrapper}>
     <Header />
-    <main>Main</main>
+    <Main />
     <Footer />
-  </Fragment>
+  </div>
 );
 
 export default App;
