@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './main.module.scss';
 // import ModalComponent from '../modal-component/modal-component';
+import BlockPlay from './blockPlay/blockPlay';
 // import { Row, Col, Button } from 'react-bootstrap';
 
 const Main: React.FC = () => {
@@ -8,7 +9,7 @@ const Main: React.FC = () => {
 
   return (
     <main className={classes.main}>
-      <p>Hello</p>
+      <BlockPlay />
       {/* <Row>
         <Col>
           <Button variant="primary" onClick={() => setShow(true)}>

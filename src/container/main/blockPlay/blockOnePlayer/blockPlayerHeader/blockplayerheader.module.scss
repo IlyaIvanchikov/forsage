@@ -1,0 +1,39 @@
+@import '../../../../../styleGuide/variable.scss';
+
+.playerHeader {
+    border: 2px solid $clrBackground;
+    height: 75px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    padding: 0 20px;
+    background-color: $orangeColor;
+    color: $textColor;
+    align-items: center;
+    justify-content: end;
+}
+
+.playerTitle {
+    text-align: center;
+    font-size: 20px;
+}
+
+.iconBlock {
+    text-align: right;
+}
+
+.resultsIcon {
+    width: 35px;
+}
+
+.resultsIcon:hover {
+    opacity: .7;
+}
+
+.threePoints a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.threePoints a:hover {
+    opacity: .7;
+}

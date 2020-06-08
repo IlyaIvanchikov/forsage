@@ -1,0 +1,35 @@
+@import '../../../../styleGuide/variable.scss';
+
+.onePlayerField {
+    // border-radius: 20px;
+    max-width: 561px;
+    padding: 0;
+    max-height: 735px;
+    margin: 0 25px;
+}
+
+.gamefieldDisplayNumbers {
+    padding: 20px;
+    border-left: 2px solid $clrBackground;
+    border-right: 2px solid $clrBackground;
+    justify-content: center;
+    color: #5BC2DC;
+    font-size: 130px;
+}
+
+.blockAnswer {
+    padding: 20px;
+    border-left: 2px solid $clrBackground;
+    border-right: 2px solid $clrBackground;
+    justify-content: center;
+}
+
+.coins {
+    padding: 20px;
+    border-left: 2px solid $clrBackground;
+    border-right: 2px solid $clrBackground;
+    border-bottom: 2px solid $clrBackground;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    justify-content: end;
+}

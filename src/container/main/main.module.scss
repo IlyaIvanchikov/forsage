@@ -1,7 +1,8 @@
 @import '../../styleGuide/variable.scss';
 
 .main {
-    background-color: rgb(139, 138, 138);
+    background-color: #fff;
     color: $orangeColor;
     flex: 1 0 auto;
+    padding: 15px $paddingMain;
 }
