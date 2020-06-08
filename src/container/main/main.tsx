@@ -1,22 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
 import classes from './main.module.scss';
-import ModalComponent from '../modal-component/modal-component';
-import { Row, Col, Button } from 'react-bootstrap';
+// import ModalComponent from '../modal-component/modal-component';
+// import { Row, Col, Button } from 'react-bootstrap';
 
 const Main: React.FC = () => {
-    const [show, setShow] = useState(true);
-    
-    return (
+  // const [show, setShow] = useState(false);
+
+  return (
     <main className={classes.main}>
-        <Row>
+      <p>Hello</p>
+      {/* <Row>
         <Col>
-        <Button variant="primary" onClick={() => setShow(true)}>
+          <Button variant="primary" onClick={() => setShow(true)}>
             Launch static backdrop modal
-        </Button>
-        <ModalComponent showModal={show} />
+          </Button>
+          <ModalComponent showModal={show} />
         </Col>
-        </Row>
+      </Row> */}
     </main>
-)};
+  );
+};
 
 export default Main;
