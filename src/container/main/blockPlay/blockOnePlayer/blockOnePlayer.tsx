@@ -2,6 +2,8 @@ import React from 'react';
 import classes from './blockoneplayer.module.scss';
 import BlockPlayerHeader from './blockPlayerHeader/blockPlayerHeader';
 import { Col, Row } from 'react-bootstrap';
+import CoinsIcon from '../../../../resources/images/Coins.png';
+import ArrowIcon from '../../../../resources/images/Arrow.png';
 
 const BlockOnePlayer: React.FC = () => {
   // const [show, setShow] = useState(false);
@@ -12,12 +14,16 @@ const BlockOnePlayer: React.FC = () => {
       <Row className={classes.gamefieldDisplayNumbers}>
         <p>7</p>
       </Row>
+      <Row className={classes.gameCounter}>2/10</Row>
       <Row className={classes.blockAnswer}>
-        <p>Счет игры</p>
-        <input type="text" />
+        <input placeholder="Ответ:" type="text" />
+        <button onClick={() => alert('Ваш ответ')}>
+          <img src={ArrowIcon} alt="" />
+        </button>
       </Row>
       <Row className={classes.coins}>
-        <p>Монетки</p>
+        <span>5</span>
+        <img src={CoinsIcon} alt="" />
       </Row>
     </Col>
   );

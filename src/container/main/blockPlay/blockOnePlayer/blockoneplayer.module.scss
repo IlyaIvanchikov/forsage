@@ -1,7 +1,13 @@
 @import '../../../../styleGuide/variable.scss';
 
+@mixin leftRightBorder {
+    padding: 20px;
+    border-left: $blockBorderSize solid $clrBackground;
+    border-right: $blockBorderSize solid $clrBackground;
+    justify-content: center;
+}
+
 .onePlayerField {
-    // border-radius: 20px;
     max-width: 561px;
     padding: 0;
     max-height: 735px;
@@ -9,27 +15,66 @@
 }
 
 .gamefieldDisplayNumbers {
-    padding: 20px;
-    border-left: 2px solid $clrBackground;
-    border-right: 2px solid $clrBackground;
+    padding: 0 20px;
+    border-left: $blockBorderSize solid $clrBackground;
+    border-right: $blockBorderSize solid $clrBackground;
     justify-content: center;
     color: #5BC2DC;
     font-size: 130px;
 }
 
+.gameCounter {
+    @include leftRightBorder;
+    font-size: 20px;
+    padding-bottom: 0;
+    padding-top: 0;
+}
+
 .blockAnswer {
     padding: 20px;
-    border-left: 2px solid $clrBackground;
-    border-right: 2px solid $clrBackground;
+    border-left: $blockBorderSize solid $clrBackground;
+    border-right: $blockBorderSize solid $clrBackground;
     justify-content: center;
+
+    input {
+        width: 315px;
+        height: 73px;
+        padding: 24px;
+        font-size: 32px;
+        color: #A6A2A3;
+        border: $blockBorderSize solid $orangeColor;
+        border-bottom-left-radius: 10px;
+        border-top-left-radius: 10px;
+    }
+
+    button {
+        width: 73px;
+        border: none;
+        background: none;
+        border: $blockBorderSize solid $clrBackground;
+        border-left: none;
+        border-bottom-right-radius: 10px;
+        border-top-right-radius: 10px;
+    }
 }
 
 .coins {
     padding: 20px;
-    border-left: 2px solid $clrBackground;
-    border-right: 2px solid $clrBackground;
-    border-bottom: 2px solid $clrBackground;
+    border-left: $blockBorderSize solid $clrBackground;
+    border-right: $blockBorderSize solid $clrBackground;
+    border-bottom: $blockBorderSize solid $clrBackground;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
     justify-content: end;
+    align-items: center;
+
+    img {
+        width: 54px;
+        margin-left: 11px;
+    }
+
+    span {
+        color: $clrBackground;
+        font-size: 32px;
+    }
 }
