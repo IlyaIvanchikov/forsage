@@ -29,11 +29,14 @@
     opacity: .7;
 }
 
-.threePoints a {
+.threePoints button,
+.iconBlock button {
+    border: none;
+    background: none;
     color: #fff;
-    text-decoration: none;
 }
 
-.threePoints a:hover {
+.threePoints button:hover,
+.iconBlock button:hover {
     opacity: .7;
 }

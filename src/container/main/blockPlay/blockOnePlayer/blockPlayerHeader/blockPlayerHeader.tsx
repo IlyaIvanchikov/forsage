@@ -9,17 +9,17 @@ const BlockPlayerHeader: React.FC = () => {
   return (
     <Row className={classes.playerHeader}>
       <Col className={classes.threePoints}>
-        <button>&bull; &bull; &bull;</button>
+        <button onClick={() => alert('hello')}>&bull; &bull; &bull;</button>
       </Col>
       <Col className={classes.playerTitle}>Игрок 1</Col>
       <Col className={classes.iconBlock}>
-        <a href="/">
+        <button onClick={() => alert('hello')}>
           <img
             className={classes.resultsIcon}
             alt="Results"
             src={ResultsIcon}
           />
-        </a>
+        </button>
       </Col>
     </Row>
   );
