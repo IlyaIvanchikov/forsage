@@ -20,8 +20,9 @@ const Header: React.FC = () => (
         <h1>Форсаж</h1>
       </Col>
       <Col className="d-flex flex-row justify-content-sm-end align-items-center justify-content-center">
-        <img src={dumbbells} alt="brain" />
-        <a href="/">К тренажерам</a>
+        <a href="/">
+          <img className={classes.dumbbells} src={dumbbells} alt="brain" />К тренажерам
+        </a>
       </Col>
     </Row>
   </Container>
