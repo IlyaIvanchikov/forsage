@@ -12,11 +12,11 @@ const BlockOnePlayer: React.FC = () => {
     <Col className={classes.onePlayerField}>
       <BlockPlayerHeader />
       <Row className={classes.gamefieldDisplayNumbers}>
-        <p>7</p>
+        <p>-70000</p>
       </Row>
       <Row className={classes.gameCounter}>2/10</Row>
       <Row className={classes.blockAnswer}>
-        <input placeholder="Ответ:" type="text" />
+        <input placeholder="Ответ:" type="number" />
         <button onClick={() => alert('Ваш ответ')}>
           <img src={ArrowIcon} alt="" />
         </button>

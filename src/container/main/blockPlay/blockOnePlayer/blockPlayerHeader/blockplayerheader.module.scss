@@ -1,8 +1,8 @@
 @import '../../../../../styleGuide/variable.scss';
 
 .playerHeader {
-    border: 2px solid $clrBackground;
-    height: 75px;
+    border: $blockBorderSize solid $clrBackground;
+    height: 70px;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     padding: 0 20px;
@@ -39,4 +39,30 @@
 .threePoints button:hover,
 .iconBlock button:hover {
     opacity: .7;
+}
+
+.iconBlock button:active,
+.iconBlock button:focus {
+    outline: none;
+}
+
+.threePoints button:active,
+.threePoints button:focus {
+    outline: none;
+}
+
+@media (max-width: 1919px) {
+    .playerHeader {
+        height: 55px;
+        padding: 0 10px;
+    }
+
+    .playerTitle,
+    .threePoints button {
+        font-size: 18px;
+    }
+
+    .resultsIcon {
+        width: 25px;
+    }
 }

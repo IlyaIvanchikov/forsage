@@ -8,10 +8,17 @@ const BlockPlay: React.FC = () => {
   // const [show, setShow] = useState(false);
 
   return (
-    <Row className={classes.gameField}>
+    <>
+      <Row className={classes.gameField}>
         <BlockOnePlayer />
         <BlockOnePlayer />
-    </Row>
+        <BlockOnePlayer />
+      </Row>
+      {/* <Row className={classes.gameField}>
+        <BlockOnePlayer />
+        <BlockOnePlayer />
+      </Row> */}
+    </>
   );
 };
 

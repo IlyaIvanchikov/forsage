@@ -8,19 +8,26 @@
 }
 
 .onePlayerField {
-    max-width: 561px;
-    padding: 0;
-    max-height: 735px;
-    margin: 0 25px;
+    max-width: 560px;
+    // padding: 0;
+    // max-height: 735px;
+    margin: 1vh;
 }
 
 .gamefieldDisplayNumbers {
-    padding: 0 20px;
+    padding: 0 10px;
+    margin: 0;
     border-left: $blockBorderSize solid $clrBackground;
     border-right: $blockBorderSize solid $clrBackground;
     justify-content: center;
     color: #5BC2DC;
-    font-size: 130px;
+
+    p {
+        font-size: 100px;
+        margin: 0;
+        padding: 0;
+        line-height: 130%;
+    }
 }
 
 .gameCounter {
@@ -31,16 +38,16 @@
 }
 
 .blockAnswer {
-    padding: 20px;
+    padding: 10px;
     border-left: $blockBorderSize solid $clrBackground;
     border-right: $blockBorderSize solid $clrBackground;
     justify-content: center;
 
     input {
-        width: 315px;
-        height: 73px;
-        padding: 24px;
-        font-size: 32px;
+        width: 300px;
+        height: 70px;
+        padding: 20px;
+        font-size: 30px;
         color: #A6A2A3;
         border: $blockBorderSize solid $orangeColor;
         border-bottom-left-radius: 10px;
@@ -56,16 +63,30 @@
         border-bottom-right-radius: 10px;
         border-top-right-radius: 10px;
     }
+
+    button:hover {
+        opacity: .7;
+    }
+
+    button:active,
+    button:focus {
+        outline: none;
+    }
+
+    input:active,
+    input:focus {
+        outline: none;
+    }
 }
 
 .coins {
-    padding: 20px;
+    padding: 5px 20px 15px 20px;
     border-left: $blockBorderSize solid $clrBackground;
     border-right: $blockBorderSize solid $clrBackground;
     border-bottom: $blockBorderSize solid $clrBackground;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
-    justify-content: end;
+    justify-content: flex-end;
     align-items: center;
 
     img {
