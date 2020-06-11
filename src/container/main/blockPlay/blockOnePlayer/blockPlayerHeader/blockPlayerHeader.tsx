@@ -9,11 +9,13 @@ const BlockPlayerHeader: React.FC = () => {
   return (
     <Row className={classes.playerHeader}>
       <Col className={classes.threePoints}>
-        <button onClick={() => alert('hello')}>&bull; &bull; &bull;</button>
+        <button title="Настройки" onClick={() => alert('hello')}>
+          &bull; &bull; &bull;
+        </button>
       </Col>
       <Col className={classes.playerTitle}>Игрок 1</Col>
       <Col className={classes.iconBlock}>
-        <button onClick={() => alert('hello')}>
+        <button title="Статистика" onClick={() => alert('hello')}>
           <img
             className={classes.resultsIcon}
             alt="Results"

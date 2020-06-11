@@ -8,8 +8,8 @@
 }
 
 .onePlayerField {
-    max-width: 560px;
-    width: 30vw;
+    max-width: 660px;
+    width: 60vw;
     min-width: 420px;
     // padding: 0;
     // max-height: 735px;
@@ -25,7 +25,7 @@
     color: #5BC2DC;
 
     p {
-        font-size: 10vh;
+        font-size: 150px;
         margin: 0;
         padding: 0;
         line-height: 130%;
@@ -105,7 +105,7 @@
 
 @media (max-width: 1441px) {
     .coins {
-        padding: 10px;
+        padding: 20px;
         padding-top: 0;
     }
 }
