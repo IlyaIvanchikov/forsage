@@ -21,7 +21,8 @@ const Header: React.FC = () => (
       </Col>
       <Col className="d-flex flex-row justify-content-sm-end align-items-center justify-content-center">
         <a href="/">
-          <img className={classes.dumbbells} src={dumbbells} alt="brain" />К тренажерам
+          <img className={classes.dumbbells} src={dumbbells} alt="brain" />
+          К&nbsp;тренажерам
         </a>
       </Col>
     </Row>

@@ -9,6 +9,8 @@
 
 .onePlayerField {
     max-width: 560px;
+    width: 30vw;
+    min-width: 420px;
     // padding: 0;
     // max-height: 735px;
     margin: 1vh;
@@ -23,7 +25,7 @@
     color: #5BC2DC;
 
     p {
-        font-size: 100px;
+        font-size: 10vh;
         margin: 0;
         padding: 0;
         line-height: 130%;
@@ -32,7 +34,7 @@
 
 .gameCounter {
     @include leftRightBorder;
-    font-size: 20px;
+    font-size: 3vh;
     padding-bottom: 0;
     padding-top: 0;
 }
@@ -42,12 +44,13 @@
     border-left: $blockBorderSize solid $clrBackground;
     border-right: $blockBorderSize solid $clrBackground;
     justify-content: center;
+    margin: 0;
 
     input {
-        width: 300px;
-        height: 70px;
+        width: 200px;
+        height: 5vh;
         padding: 20px;
-        font-size: 30px;
+        font-size: 3vh;
         color: #A6A2A3;
         border: $blockBorderSize solid $orangeColor;
         border-bottom-left-radius: 10px;
@@ -90,12 +93,19 @@
     align-items: center;
 
     img {
-        width: 54px;
+        width: 4vh;
         margin-left: 11px;
     }
 
     span {
         color: $clrBackground;
-        font-size: 32px;
+        font-size: 3vh;
+    }
+}
+
+@media (max-width: 1441px) {
+    .coins {
+        padding: 10px;
+        padding-top: 0;
     }
 }
