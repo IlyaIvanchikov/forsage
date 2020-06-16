@@ -4,11 +4,12 @@
   margin-top: 2%;
   margin-bottom: 2%;
   border: 3px solid $clrBackground;
-  width: 35%;
   min-width: 310px;
   // margin: 1%;
   font-size: 28px;
   // padding: 1% 4%;
+  position: relative;
+  z-index: 1;
   background-color: $orangeColor;
   border-radius: 25px;
 
@@ -16,7 +17,9 @@
     background-color: $textColor;
     border: 3px solid $clrBackground;
     border-radius: 5px;
+    color: $orangeColor;
   }
+  
   .colRange {
     display: flex;
     align-items: center;

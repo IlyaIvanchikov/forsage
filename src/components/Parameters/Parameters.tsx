@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import classes from './blockParameters.module.scss';
+import classes from './Parameters.module.scss';
 import { Form, Row, Col, Button } from 'react-bootstrap';
-// import Dropdown from './dropdown/dropdown';
+import Dropdown from './dropdown/dropdown';
 // import ModalComponent from '../modal-component/modal-component';
 // import { Row, Col, Container } from 'react-bootstrap';
-const BlockParameters: React.FC = () => {
+const Parameters: React.FC = () => {
   const [valueRange, setValueRange] = useState<string>('0.3');
   const handleRangeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValueRange(e.target.value);
@@ -118,10 +118,14 @@ const BlockParameters: React.FC = () => {
       </Form.Group>
       <Form.Group as={Row} controlId="formPlaintextButton">
         <Form.Label column={true} sm="7">
-          {/* <Dropdown /> */}
+          <Dropdown />
         </Form.Label>
         <Col sm="5" className="d-flex align-items-center">
-          <Button variant="primary" type="submit">
+          <Button
+            type="submit"
+            className={classes.formControlButton}
+            style={{ width: '80%', height: '50%' }}
+          >
             Начать
           </Button>
         </Col>
@@ -130,4 +134,4 @@ const BlockParameters: React.FC = () => {
   );
 };
 
-export default BlockParameters;
+export default Parameters;
