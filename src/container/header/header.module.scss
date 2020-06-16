@@ -1,7 +1,7 @@
 @import '../../styleGuide/variable.scss';
 
 .container {
-  height: 140px;
+  height: 110px;
   background-color: $clrBackground;
   padding: 0 $paddingMain;
   color: $textColor;
@@ -11,16 +11,16 @@
 
   .row {
     height: 100%;
-    // margin-right: 0;
-    // margin-left: 0;
 
     .logo {
       background-color: white;
-      width: 225px;
-      height: 110px;
-      padding: 15px 19px 15px 31px;
       border: $orangeColor solid 4px;
       border-radius: 25px;
+
+      img {
+        height: 75px;
+        padding: 10px;
+      }
     }
 
     a {
@@ -30,7 +30,7 @@
       padding-left: $paddingMain;
 
       &:hover {
-        color: orange;
+        opacity: .7;
       }
     }
 
@@ -38,4 +38,8 @@
       padding-left: $paddingMain;
     }
   }
+}
+
+.dumbbells {
+  margin-right: 20px;
 }

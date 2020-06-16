@@ -1,13 +1,16 @@
 import React from 'react';
 import classes from './main.module.scss';
-// import ModalComponent from '../modal-component/modal-component';
-import BlockParameters from './../../components/blockParameters/blockParameters';
+// import { Row, Col, Button } from 'react-bootstrap';
+
+// import BlockParameters from './../../components/blockParameters/blockParameters';
+import BlockPlay from './blockPlay/blockPlay';
 const Main: React.FC = () => {
   // const [show, setShow] = useState(false);
 
   return (
     <main className={classes.main}>
-      <BlockParameters />
+      {/* <BlockParameters /> */}
+      <BlockPlay />
       {/* <Container className={classes.container}>
         <h2 className="text-center">Выберите параметры:</h2>
         <Row>
