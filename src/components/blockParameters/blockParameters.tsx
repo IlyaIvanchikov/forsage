@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import classes from './blockParameters.module.scss';
 import { Form, Row, Col, Button } from 'react-bootstrap';
+// import Dropdown from './dropdown/dropdown';
 // import ModalComponent from '../modal-component/modal-component';
 // import { Row, Col, Container } from 'react-bootstrap';
 const BlockParameters: React.FC = () => {
@@ -117,10 +118,7 @@ const BlockParameters: React.FC = () => {
       </Form.Group>
       <Form.Group as={Row} controlId="formPlaintextButton">
         <Form.Label column={true} sm="7">
-          Дополнительные настройки:
-          <Button variant="primary" type="submit">
-            Начать
-          </Button>
+          {/* <Dropdown /> */}
         </Form.Label>
         <Col sm="5" className="d-flex align-items-center">
           <Button variant="primary" type="submit">
