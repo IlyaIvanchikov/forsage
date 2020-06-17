@@ -2,9 +2,14 @@
 //         "info": tomato,
 //         "danger": teal
 // );
+@import './variable.scss';
 
 @import "~bootstrap/scss/bootstrap";
 
 .row {
     margin: 0;
+}
+
+.progress-bar {
+    background-color: $clrBackground;
 }

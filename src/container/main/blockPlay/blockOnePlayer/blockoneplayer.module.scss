@@ -7,7 +7,8 @@
     justify-content: center;
 }
 
-.onePlayerField {
+.onePlayerField,
+.resultsField {
     max-width: 660px;
     width: 60vw;
     min-width: 420px;
@@ -108,4 +109,22 @@
         padding: 20px;
         padding-top: 0;
     }
+}
+
+// blockResults
+
+.resultsHeader {
+    justify-content: space-between;
+}
+
+.resultsField {
+    border: $blockBorderSize solid $clrBackground;
+    border-radius: 20px;
+    padding: 10px;
+    background-color: $orangeColor;
+    color: $textColor;
+}
+
+.resultsBar {
+    padding-top: 40px;
 }
