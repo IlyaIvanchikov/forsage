@@ -8,10 +8,11 @@ const BlockParameters: React.FC = () => {
   return (
     <Container>
       <Row className="flex-row justify-content-sm-center">
+        <Col sm={12} lg={2} className="d-none d-lg-block" />
         <Col sm={12} lg={7}>
           <Parameters />
         </Col>
-        <Col lg={5} className="d-none d-lg-block">
+        <Col lg={3} className="d-none d-lg-block">
           <img src={owl} alt="owl" className={classes.img} />
         </Col>
       </Row>

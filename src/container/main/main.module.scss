@@ -1,22 +1,11 @@
 @import '../../styleGuide/variable.scss';
 
 .main {
-    background-color: rgb(139, 138, 138);
+    background-color: $textColor;
     color: $textColor;
     flex: 1 0 auto;
     align-items: center;
     justify-content: center;
     display: flex;
     position: relative;
-
-    .form {
-        border: 3px solid $clrBackground;
-        width: 30%;
-        min-width: 310px;
-        // margin: 1%;
-        font-size: 28px;
-        // padding: 1% 4%;
-        background-color: $orangeColor;
-        border-radius: 25px;
-    }
 }

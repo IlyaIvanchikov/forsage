@@ -120,11 +120,19 @@ const Parameters: React.FC = () => {
         <Form.Label column={true} sm="7">
           <Dropdown />
         </Form.Label>
-        <Col sm="5" className="d-flex align-items-center">
+        <Col
+          sm="5"
+          className="d-flex align-items-center justify-content-center"
+        >
           <Button
             type="submit"
             className={classes.formControlButton}
-            style={{ width: '80%', height: '50%' }}
+            style={{
+              width: '80%',
+              height: '50%',
+              minHeight: '40px',
+              marginBottom: '2%',
+            }}
           >
             Начать
           </Button>
