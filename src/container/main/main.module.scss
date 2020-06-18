@@ -1,7 +1,11 @@
 @import '../../styleGuide/variable.scss';
 
 .main {
-    background-color: rgb(139, 138, 138);
-    color: $orangeColor;
+    background-color: $textColor;
+    color: $textColor;
     flex: 1 0 auto;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    position: relative;
 }
