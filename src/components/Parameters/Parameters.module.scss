@@ -5,13 +5,15 @@
   margin-bottom: 2%;
   border: 3px solid $clrBackground;
   min-width: 310px;
-  // margin: 1%;
-  font-size: 28px;
-  // padding: 1% 4%;
+  @include adaptive-font(30, 16);
   position: relative;
   z-index: 1;
   background-color: $orangeColor;
   border-radius: 25px;
+
+  h2 {
+    @include adaptive-font(38, 20);
+  }
 
   .formControlButton {
     background-color: $textColor;
@@ -19,7 +21,7 @@
     border-radius: 5px;
     color: $orangeColor;
   }
-  
+
   .colRange {
     display: flex;
     align-items: center;
@@ -27,7 +29,7 @@
 
     p {
       margin-bottom: 0;
-      font-size: 20px;
+      @include adaptive-font(30, 14);
     }
 
     .colRange__pLeft {

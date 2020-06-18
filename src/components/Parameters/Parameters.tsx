@@ -12,7 +12,7 @@ const Parameters: React.FC = () => {
   return (
     <Form className={classes.form}>
       <h2 className="text-center">Выберите параметры:</h2>
-      <Form.Group as={Row} controlId="formPlaintextButton">
+      <Form.Group as={Row} controlId="formPlaintextButton" className="mb-1">
         <Form.Label column={true} sm="7">
           Количество игроков:
         </Form.Label>
@@ -25,7 +25,7 @@ const Parameters: React.FC = () => {
         </Col>
       </Form.Group>
 
-      <Form.Group as={Row} controlId="formPlaintextRange">
+      <Form.Group as={Row} controlId="formPlaintextRange" className="mb-1">
         <Form.Label column={true} sm="6">
           Скорость:
         </Form.Label>
@@ -35,7 +35,6 @@ const Parameters: React.FC = () => {
           <Form.Control
             type="range"
             placeholder="range"
-            // custom={true}
             className={classes.colRange__formControl}
             min="0.3"
             max="5"
@@ -47,7 +46,7 @@ const Parameters: React.FC = () => {
         </Col>
       </Form.Group>
 
-      <Form.Group as={Row} controlId="formPlaintextButton">
+      <Form.Group as={Row} controlId="formPlaintextButton" className="mb-1">
         <Form.Label column={true} sm="7">
           Количество знаков:
         </Form.Label>
@@ -60,7 +59,7 @@ const Parameters: React.FC = () => {
         </Col>
       </Form.Group>
 
-      <Form.Group as={Row} controlId="formPlaintextRange">
+      <Form.Group as={Row} controlId="formPlaintextRange" className="mb-1">
         <Form.Label column={true} sm="6">
           Количество примеров:
         </Form.Label>
@@ -82,7 +81,7 @@ const Parameters: React.FC = () => {
         </Col>
       </Form.Group>
 
-      <Form.Group as={Row} controlId="formPlaintextRange">
+      <Form.Group as={Row} controlId="formPlaintextRange" className="mb-1">
         <Form.Label column={true} sm="6">
           Количество цифр в примере:
         </Form.Label>
@@ -104,7 +103,7 @@ const Parameters: React.FC = () => {
         </Col>
       </Form.Group>
 
-      <Form.Group as={Row} controlId="formPlaintextButton">
+      <Form.Group as={Row} controlId="formPlaintextButton" className="mb-1">
         <Form.Label column={true} sm="7">
           Законы:
         </Form.Label>
@@ -116,7 +115,7 @@ const Parameters: React.FC = () => {
           />
         </Col>
       </Form.Group>
-      <Form.Group as={Row} controlId="formPlaintextButton">
+      <Form.Group as={Row} controlId="formPlaintextButton" className="mb-1">
         <Form.Label column={true} sm="7">
           <Dropdown />
         </Form.Label>

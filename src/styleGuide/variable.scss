@@ -3,8 +3,7 @@
   font-style: normal;
   font-weight: 400;
   src: local('CyrillicHover'), local('CyrillicHover'),
-    url('../resources/fonts/cyrillichover.ttf') format('truetype'),
-    /* Safari, Android, iOS */
+    url('../resources/fonts/cyrillichover.ttf') format('truetype')
 }
 
 $clrBackground: #9DBD2C;
@@ -20,7 +19,7 @@ arial;
 
 $blockBorderSize: 4px;
 
-$maxWidth: 1920px;
+$maxWidth: 1920;
 
 @mixin adaptive-font($pcSize, $mobSize) {
   $addSize: $pcSize - $mobSize;

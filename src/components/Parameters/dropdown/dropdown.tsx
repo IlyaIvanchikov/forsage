@@ -12,9 +12,9 @@ const Dropdown: React.FC = () => {
     setShowDropdow(!showDropdown);
   };
   const transitions = useTransition(showDropdown, null, {
-    from: { opacity: 0, transform: 'translateX(-50%)' },
-    enter: { opacity: 1, transform: 'translateX(0%)' },
-    leave: { opacity: 0, transform: 'translateX(80%)' },
+    from: { opacity: 0, transform: 'translateX(-40%)' },
+    enter: { opacity: 1, transform: 'translateX(60%)' },
+    leave: { opacity: 0, transform: 'translateX(90%)' },
   });
 
   return (
