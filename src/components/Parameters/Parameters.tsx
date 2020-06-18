@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import classes from './blockParameters.module.scss';
+import classes from './Parameters.module.scss';
 import { Form, Row, Col, Button } from 'react-bootstrap';
+import Dropdown from './dropdown/dropdown';
 // import ModalComponent from '../modal-component/modal-component';
-// import { Row, Col, Container } from 'react-bootstrap';
-const BlockParameters: React.FC = () => {
+const Parameters: React.FC = () => {
   const [valueRange, setValueRange] = useState<string>('0.3');
   const handleRangeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValueRange(e.target.value);
@@ -11,7 +11,7 @@ const BlockParameters: React.FC = () => {
   return (
     <Form className={classes.form}>
       <h2 className="text-center">Выберите параметры:</h2>
-      <Form.Group as={Row} controlId="formPlaintextButton">
+      <Form.Group as={Row} controlId="formPlaintextButton" className="mb-1">
         <Form.Label column={true} sm="7">
           Количество игроков:
         </Form.Label>
@@ -24,7 +24,7 @@ const BlockParameters: React.FC = () => {
         </Col>
       </Form.Group>
 
-      <Form.Group as={Row} controlId="formPlaintextRange">
+      <Form.Group as={Row} controlId="formPlaintextRange" className="mb-1">
         <Form.Label column={true} sm="6">
           Скорость:
         </Form.Label>
@@ -34,7 +34,6 @@ const BlockParameters: React.FC = () => {
           <Form.Control
             type="range"
             placeholder="range"
-            // custom={true}
             className={classes.colRange__formControl}
             min="0.3"
             max="5"
@@ -46,7 +45,7 @@ const BlockParameters: React.FC = () => {
         </Col>
       </Form.Group>
 
-      <Form.Group as={Row} controlId="formPlaintextButton">
+      <Form.Group as={Row} controlId="formPlaintextButton" className="mb-1">
         <Form.Label column={true} sm="7">
           Количество знаков:
         </Form.Label>
@@ -59,7 +58,7 @@ const BlockParameters: React.FC = () => {
         </Col>
       </Form.Group>
 
-      <Form.Group as={Row} controlId="formPlaintextRange">
+      <Form.Group as={Row} controlId="formPlaintextRange" className="mb-1">
         <Form.Label column={true} sm="6">
           Количество примеров:
         </Form.Label>
@@ -69,7 +68,6 @@ const BlockParameters: React.FC = () => {
           <Form.Control
             type="range"
             placeholder="range"
-            // custom={true}
             className={classes.colRange__formControl}
             min="0.3"
             max="5"
@@ -81,7 +79,7 @@ const BlockParameters: React.FC = () => {
         </Col>
       </Form.Group>
 
-      <Form.Group as={Row} controlId="formPlaintextRange">
+      <Form.Group as={Row} controlId="formPlaintextRange" className="mb-1">
         <Form.Label column={true} sm="6">
           Количество цифр в примере:
         </Form.Label>
@@ -91,7 +89,6 @@ const BlockParameters: React.FC = () => {
           <Form.Control
             type="range"
             placeholder="range"
-            // custom={true}
             className={classes.colRange__formControl}
             min="0.3"
             max="5"
@@ -103,7 +100,7 @@ const BlockParameters: React.FC = () => {
         </Col>
       </Form.Group>
 
-      <Form.Group as={Row} controlId="formPlaintextButton">
+      <Form.Group as={Row} controlId="formPlaintextButton" className="mb-1">
         <Form.Label column={true} sm="7">
           Законы:
         </Form.Label>
@@ -115,15 +112,24 @@ const BlockParameters: React.FC = () => {
           />
         </Col>
       </Form.Group>
-      <Form.Group as={Row} controlId="formPlaintextButton">
+      <Form.Group as={Row} controlId="formPlaintextButton" className="mb-1">
         <Form.Label column={true} sm="7">
-          Дополнительные настройки:
-          <Button variant="primary" type="submit">
-            Начать
-          </Button>
+          <Dropdown />
         </Form.Label>
-        <Col sm="5" className="d-flex align-items-center">
-          <Button variant="primary" type="submit">
+        <Col
+          sm="5"
+          className="d-flex align-items-center justify-content-center"
+        >
+          <Button
+            type="submit"
+            className={classes.formControlButton}
+            style={{
+              width: '80%',
+              height: '50%',
+              minHeight: '40px',
+              marginBottom: '2%',
+            }}
+          >
             Начать
           </Button>
         </Col>
@@ -132,4 +138,4 @@ const BlockParameters: React.FC = () => {
   );
 };
 
-export default BlockParameters;
+export default Parameters;

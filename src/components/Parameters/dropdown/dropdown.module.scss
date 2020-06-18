@@ -1,0 +1,84 @@
+@import '../../../styleGuide/variable.scss';
+
+.wrapper {
+  .wrapper__a {
+    position: relative;
+    color: $textColor;
+    text-decoration: none;
+
+    div {
+      position: absolute;
+      top: 28%;
+      left: 101%;
+      width: 0;
+      height: 0;
+      border-style: solid;
+    }
+    .wrapper__divClose {
+      border-width: 0.4em 0.4em 0.4em 0.8em;
+      border-color: transparent transparent transparent $textColor;
+    }
+
+    .wrapper__divOpen {
+      border-width: 0.8em 0.4em 0.4em 0.4em;
+      border-color: $textColor transparent transparent transparent;
+    }
+  }
+}
+
+.additionalSettings {
+  background-color: $textColor;
+  border-radius: 25px;
+  color: $orangeColor;
+  @include adaptive-font(16, 12);
+  padding: 2%;
+  z-index: 2;
+  top: 75%;
+  left: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+
+  .additionalSettings__checkbox {
+    display: none;
+  }
+
+  .additionalSettings__label {
+    margin-bottom: 0;
+  }
+
+  .additionalSettings__span {
+    display: inline-block;
+    top: 2px;
+    height: 12px;
+    width: 12px;
+    border: 2px solid $orangeColor;
+    background-color: #ffff;
+    position: relative;
+    margin-right: 10px;
+    cursor: pointer;
+
+    &::before {
+      content: '✔';
+      position: absolute;
+      color: $clrBackground;
+      font-size: 16px;
+      height: 12px;
+      width: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      transition: 0.3s;
+    }
+  }
+
+  .additionalSettings__checkbox:checked + .additionalSettings__span::before {
+    opacity: 1;
+  }
+}
