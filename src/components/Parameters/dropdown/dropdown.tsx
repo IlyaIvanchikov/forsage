@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useTransition, animated } from 'react-spring';
 import classes from './dropdown.module.scss';
-// import { Form } from 'react-bootstrap';
 const menuItems = ['Озвучивать примеры', 'Турбо режим', 'Супер турбо режим'];
 
 const Dropdown: React.FC = () => {
@@ -36,12 +35,6 @@ const Dropdown: React.FC = () => {
               key={key}
             >
               {menuItems.map((menuItem) => (
-                // <Form.Check
-                //   type="checkbox"
-                //   label={menuItem}
-                //   key={menuItem}
-                //   className={classes.checkbox}
-                // />
                 <label
                   className={classes.additionalSettings__label}
                   key={menuItem}

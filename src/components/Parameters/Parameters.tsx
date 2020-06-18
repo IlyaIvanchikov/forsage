@@ -3,7 +3,6 @@ import classes from './Parameters.module.scss';
 import { Form, Row, Col, Button } from 'react-bootstrap';
 import Dropdown from './dropdown/dropdown';
 // import ModalComponent from '../modal-component/modal-component';
-// import { Row, Col, Container } from 'react-bootstrap';
 const Parameters: React.FC = () => {
   const [valueRange, setValueRange] = useState<string>('0.3');
   const handleRangeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -69,7 +68,6 @@ const Parameters: React.FC = () => {
           <Form.Control
             type="range"
             placeholder="range"
-            // custom={true}
             className={classes.colRange__formControl}
             min="0.3"
             max="5"
@@ -91,7 +89,6 @@ const Parameters: React.FC = () => {
           <Form.Control
             type="range"
             placeholder="range"
-            // custom={true}
             className={classes.colRange__formControl}
             min="0.3"
             max="5"
