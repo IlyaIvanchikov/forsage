@@ -1,2 +1,22 @@
 @import '../../../../styleGuide/variable.scss';
-@import '../blockOnePlayer/blockoneplayer.module.scss'; //стили прописываем в этом файле
+@import '../blockOnePlayer/blockoneplayer.module.scss'; //общие стили прописываем в этом файле
+
+.resultsHeader {
+    button {
+        font-family: monospace;
+        border: none;
+        background-color: $orangeColor;
+        font-size: 2rem;
+        color: #fff;
+
+        &:hover {
+            opacity: 0.7;
+        }
+
+        &:focus,
+        :hover,
+        :active {
+            outline: none;
+        }
+    }
+}

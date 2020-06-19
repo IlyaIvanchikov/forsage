@@ -14,7 +14,7 @@ const Blockresults: React.FC = () => {
       <Row className={classes.resultsHeader}>
         <h5>Результаты</h5>
         <h5>Игрок 1</h5>
-        <button onClick={() => alert('close')}>X</button>
+        <button onClick={() => alert('close')}>&times;</button>
       </Row>
       <Row className={classes.resultsBar}>
         <Col>

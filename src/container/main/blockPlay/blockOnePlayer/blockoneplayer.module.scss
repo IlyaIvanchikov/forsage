@@ -12,13 +12,11 @@
     max-width: 660px;
     width: 60vw;
     min-width: 420px;
-    // padding: 0;
-    // max-height: 735px;
     margin: 1vh;
 }
 
 .gamefieldDisplayNumbers {
-    padding: 0 10px;
+    padding: 10px 0;
     margin: 0;
     border-left: $blockBorderSize solid $clrBackground;
     border-right: $blockBorderSize solid $clrBackground;
@@ -26,7 +24,7 @@
     color: #5BC2DC;
 
     p {
-        font-size: 150px;
+        font-size: 10vh;
         margin: 0;
         padding: 0;
         line-height: 130%;
@@ -38,6 +36,7 @@
     font-size: 3vh;
     padding-bottom: 0;
     padding-top: 0;
+    color: $orangeColor;
 }
 
 .blockAnswer {
@@ -101,6 +100,16 @@
     span {
         color: $clrBackground;
         font-size: 3vh;
+    }
+}
+
+@media (max-width: 450px) {
+    .blockAnswer input {
+        width: 150px;
+    }
+    .onePlayerField,
+    .resultsField {
+        min-width: 320px;
     }
 }
 

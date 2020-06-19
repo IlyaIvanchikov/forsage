@@ -66,3 +66,9 @@
         width: 25px;
     }
 }
+
+@media (max-width: 450px) {
+    .playerTitle {
+        font-size: 14px;
+    }
+}
