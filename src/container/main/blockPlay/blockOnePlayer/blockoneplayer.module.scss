@@ -8,12 +8,12 @@
 }
 
 .onePlayerField {
-    max-width: 660px;
-    width: 60vw;
-    min-width: 420px;
-    // padding: 0;
-    // max-height: 735px;
-    margin: 1vh;
+    border: $blockBorderSize solid $clrBackground;
+    margin: 10px;
+    border-radius: 10px;
+    min-width: 450px;
+    min-height: 300px;
+    padding: 0;
 }
 
 .gamefieldDisplayNumbers {
@@ -103,7 +103,14 @@
     }
 }
 
-@media (max-width: 1441px) {
+@media (max-width: 1440px) {
+    .coins {
+        padding: 20px;
+        padding-top: 0;
+    }
+}
+
+@media (min-width: 1441px) {
     .coins {
         padding: 20px;
         padding-top: 0;

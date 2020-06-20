@@ -10,15 +10,11 @@ const BlockPlay: React.FC = () => {
   return (
     <>
       <Row className={classes.gameField}>
+        {/* <BlockOnePlayer /> */}
         <BlockOnePlayer />
         <BlockOnePlayer />
-        {/* <BlockOnePlayer /> */}
-        {/* <BlockOnePlayer /> */}
+        <BlockOnePlayer />
       </Row>
-      {/* <Row className={classes.gameField}>
-        <BlockOnePlayer />
-        <BlockOnePlayer />
-      </Row> */}
     </>
   );
 };
