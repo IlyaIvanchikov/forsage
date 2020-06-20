@@ -1,0 +1,8 @@
+@import '../../../styleGuide/variable.scss';
+
+.formControlButton {
+  background-color: $textColor;
+  border: 3px solid $clrBackground;
+  border-radius: 5px;
+  color: $orangeColor;
+}
