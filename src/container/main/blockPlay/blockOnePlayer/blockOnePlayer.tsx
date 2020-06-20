@@ -1,28 +1,15 @@
 import React from 'react';
 import classes from './blockoneplayer.module.scss';
-import BlockPlayerHeader from './blockPlayerHeader/blockPlayerHeader';
+import BlockResults from './blockResults/blockResults';
 import { Col } from 'react-bootstrap';
-// import CoinsIcon from '../../../../resources/images/Coins.png';
-// import ArrowIcon from '../../../../resources/images/Arrow.png';
+import BlockGame from './blockGame/blockGame';
+
+const block = 'rez';
 
 const BlockOnePlayer: React.FC = () => {
   return (
     <Col className={classes.onePlayerField}>
-      <BlockPlayerHeader />
-      {/* <Row className={classes.gamefieldDisplayNumbers}>
-        <p>-70000</p>
-      </Row>
-      <Row className={classes.gameCounter}>2/10</Row>
-      <Row className={classes.blockAnswer}>
-        <input placeholder="Ответ:" type="number" />
-        <button onClick={() => alert('Ваш ответ')}>
-          <img src={ArrowIcon} alt="" />
-        </button>
-      </Row>
-      <Row className={classes.coins}>
-        <span>5</span>
-        <img src={CoinsIcon} alt="" />
-      </Row> */}
+      {block === 'rez' ? <BlockResults /> : <BlockGame />}
     </Col>
   );
 };

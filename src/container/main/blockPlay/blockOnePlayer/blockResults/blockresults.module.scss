@@ -1,0 +1,32 @@
+@import '../../../../../styleGuide/variable.scss';
+
+.resultsBlock {
+    background-color: $orangeColor;
+    height: 100%;
+    border-radius: 6px;
+    padding-top: 20px;
+}
+
+.resultsHeader {
+    color: red;
+}
+
+.threePoints {
+    opacity: 0;
+
+    &:hover {
+        cursor: default;
+    }
+}
+
+.iconClose {
+    button {
+        background: none;
+        border: none;
+        transform: translateX(80px);
+    }
+
+    img {
+        width: 20px;
+    }
+}
