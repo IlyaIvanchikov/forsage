@@ -67,7 +67,7 @@ const BlockResults: React.FC = () => {
         </Col>
       </Row>
       <Row className={classes.resultsSubTitle}>
-        <h6>{gameData.playerName}</h6>
+        <h6>Игрок 1</h6>
       </Row>
       <Row className={classes.visualResults}>
         <span>Правильно:</span>
