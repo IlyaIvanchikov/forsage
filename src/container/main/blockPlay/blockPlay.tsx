@@ -1,20 +1,18 @@
 import React from 'react';
 import classes from './blockplay.module.scss';
-// import ModalComponent from '../modal-component/modal-component';
 import BlockOnePlayer from './blockOnePlayer/blockOnePlayer';
-// import { Row } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
 
 const BlockPlay: React.FC = () => {
-  // const [show, setShow] = useState(false);
 
   return (
     <>
-      <div className={classes.gameField}>
+      <Row className={classes.gameField}>
         <BlockOnePlayer />
         <BlockOnePlayer />
         <BlockOnePlayer />
         <BlockOnePlayer />
-      </div>
+      </Row>
     </>
   );
 };

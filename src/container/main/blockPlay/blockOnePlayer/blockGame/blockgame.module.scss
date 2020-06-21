@@ -1,13 +1,13 @@
 @import '../../../../../styleGuide/variable.scss';
 
 .gamefieldDisplayNumbers {
-    padding: 0 10px;
+    padding: 10px;
     margin: 0;
     justify-content: center;
     color: #5BC2DC;
 
     p {
-        font-size: 110px;
+        font-size: 4rem;
         margin: 0;
         padding: 0;
         line-height: 130%;
@@ -65,6 +65,7 @@
 }
 
 .coins {
+    margin-top: 20px;
     padding: 5px 20px 15px 20px;
     justify-content: flex-end;
     align-items: center;
