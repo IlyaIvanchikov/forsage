@@ -1,12 +1,34 @@
 import React from 'react';
 import classes from './tableofplayerresults.module.scss';
-import { Col, Row } from 'react-bootstrap';
+import { Table, Row } from 'react-bootstrap';
 
 const TableOfPlayerResults: React.FC = () => {
   return (
     <Row className={classes.table}>
-      <Col>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum id reiciendis voluptatem tenetur cumque. Asperiores ad, quia consequatur Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum id reiciendis voluptatem tenetur cumque. Asperiores ad, quia consequatu. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum id reiciendis voluptatem tenetur cumque. Asperiores ad, quia consequatur.
-      </Col>
+      <Table responsive striped bordered hover>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Пример</th>
+            <th>Ответ</th>
+            <th>V</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>7+200+56/85</td>
+            <td>40</td>
+            <td>55</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>70-32+14</td>
+            <td>40</td>
+            <td>43</td>
+          </tr>
+        </tbody>
+      </Table>
     </Row>
   );
 };
