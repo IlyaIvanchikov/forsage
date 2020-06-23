@@ -39,6 +39,7 @@ const gameData = {
 };
 
 const BlockResults: React.FC = () => {
+
   function getRandomIntInclusive(min: number, max: number): number {
     min = Math.ceil(min);
     max = Math.floor(max);
