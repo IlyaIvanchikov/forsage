@@ -7,14 +7,14 @@ const Main: React.FC = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [show, setShow] = useState<boolean>(true);
 
-  const handleShowClick = (event: any): void => {
+  const handleShowSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
     setShow(false);
   };
 
   return (
-    <DispatchParametersContext.Provider value={{ dispatch }}>
-      <ParametersContext.Provider value={{ state, handleShowClick }}>
+    <DispatchParametersContext.Provider value={{ dispatch, handleShowSubmit }}>
+      <ParametersContext.Provider value={{ state }}>
         <MainView show={show} />
       </ParametersContext.Provider>
     </DispatchParametersContext.Provider>

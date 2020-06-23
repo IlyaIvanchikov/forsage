@@ -1,0 +1,5 @@
+@import '../../../../../styleGuide/variable.scss';
+
+.btn {
+  @include btn__InModal;
+}
