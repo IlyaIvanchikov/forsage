@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './footer.module.scss';
 import { Row, Col } from 'react-bootstrap';
 
-const socialLinks: any = [
+const socialLinks: string[][] = [
   ['instagram', 'https://www.instagram.com/pifagoriya_tomsk/'],
   ['vkontakte', 'https://vk.com/pifagoriya'],
   ['youtube', 'https://www.youtube.com/channel/UCbK2Y-37z11NpkRHIDasHwA/'],

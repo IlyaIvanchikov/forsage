@@ -19,7 +19,7 @@ const Dropdown: React.FC = () => {
   return (
     <div className={classes.wrapper}>
       <a href="/" onClick={handleBtnClick} className={classes.wrapper__a}>
-        Дополнительные настройки:{' '}
+        Дополнительные настройки{' '}
         {showDropdown ? (
           <div className={classes.wrapper__divOpen} />
         ) : (
