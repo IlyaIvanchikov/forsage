@@ -1,68 +1,68 @@
 @import '../../../../../../styleGuide/variable.scss';
 
 .playerHeader {
-    height: 70px;
-    width: 100%;
-    background-color: $orangeColor;
-    color: $textColor;
-    align-items: center;
-    margin: 0;
-    border-top-left-radius: 10px - $blockBorderSize;
-    border-top-right-radius: 10px - $blockBorderSize;
-    border-bottom: $blockBorderSize solid $clrBackground;
+  height: 70px;
+  width: 100%;
+  background-color: $orangeColor;
+  color: $textColor;
+  align-items: center;
+  margin: 0;
+  border-top-left-radius: 10px - $blockBorderSize;
+  border-top-right-radius: 10px - $blockBorderSize;
+  border-bottom: $blockBorderSize solid $clrBackground;
 }
 
 .playerTitle {
-    text-align: center;
-    font-size: 20px;
+  text-align: center;
+  font-size: 20px;
 }
 
 .iconBlock {
-    text-align: right;
+  text-align: right;
 }
 
 .resultsIcon {
-    width: 35px;
+  width: 35px;
 }
 
 .resultsIcon:hover {
-    opacity: .7;
+  opacity: 0.7;
 }
 
 .threePoints button,
 .iconBlock button {
-    border: none;
-    background: none;
-    color: #fff;
+  border: none;
+  background: none;
+  color: #fff;
 }
 
 .threePoints button:hover,
 .iconBlock button:hover {
-    opacity: .7;
+  opacity: 0.7;
 }
 
 .iconBlock button:active,
 .iconBlock button:focus {
-    outline: none;
+  outline: none;
 }
 
 .threePoints button:active,
 .threePoints button:focus {
-    outline: none;
+  outline: none;
 }
 
 @media (max-width: 1441px) {
-    .playerHeader {
-        height: 55px;
-        padding: 0 10px;
-    }
+  .playerHeader {
+    height: 55px;
+    padding: 0 10px;
+  }
 
-    .playerTitle,
-    .threePoints button {
-        font-size: 18px;
-    }
+  .playerTitle,
+  .threePoints button {
+    font-size: 18px;
+  }
 
-    .resultsIcon {
-        width: 25px;
-    }
+  .resultsIcon {
+    width: 25px;
+  }
 }

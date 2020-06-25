@@ -1,6 +1,6 @@
 export interface TitleParameters {
   title: string;
-  handleModalClick?: (e: React.MouseEvent<HTMLInputElement>) => void;
+  handleModalClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 export interface StateType {

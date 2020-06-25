@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col, Form } from 'react-bootstrap';
+import { Row, Col, Form, Button } from 'react-bootstrap';
 import classes from './formButton.module.scss';
 import { TitleParameters } from './../../../ts/store';
 
@@ -10,12 +10,18 @@ const FormButton = ({ title, handleModalClick }: TitleParameters) => {
         {title}
       </Form.Label>
       <Col sm="5" className="d-flex align-items-center">
-        <Form.Control
+        <Button
+          onClick={handleModalClick}
+          className={classes.formButton}
+        >
+          1 игрок
+        </Button>
+        {/* <Form.Control
           onClick={handleModalClick}
           type="Button"
           className={classes.formControlButton}
           value="1игрок"
-        />
+        /> */}
       </Col>
     </Form.Group>
   );
