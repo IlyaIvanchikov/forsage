@@ -67,4 +67,8 @@ $borderModal: solid 3px $clrBackground;
     box-shadow: none;
   }
 
+  &:active {
+    background-color: $clrBackground !important;
+    border: 3px solid $orangeColor !important;
+  }
 }
