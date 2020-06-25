@@ -8,7 +8,7 @@ import ModalComponent from './modal/modal';
 import { Players } from './modal/components/players/players';
 import { Signs } from './modal/components/signs/signs';
 import { Laws } from './modal/components/laws/laws';
-import Loader from './../loader/loader';
+import Loader from '../loader/loader';
 
 interface EventHandlerProps {
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
