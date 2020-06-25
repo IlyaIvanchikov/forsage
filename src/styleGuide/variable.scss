@@ -22,6 +22,8 @@ $borderRadius: 15px;
 
 $maxWidth: 1920;
 
+$borderModal: solid 3px $clrBackground;
+
 @mixin adaptive-font($pcSize, $mobSize) {
   $addSize: $pcSize - $mobSize;
   $addMobSize: $addSize + $mobSize * 0.7;
