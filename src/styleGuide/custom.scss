@@ -4,11 +4,22 @@
 // );
 
 @import '~bootstrap/scss/bootstrap';
+@import './variable.scss';
 
 .row {
   margin: 0;
 }
+
 .modal-content {
   border: #9DBD2C 4px solid;
   border-radius: 15px;
+
+
+.progress-bar {
+  background-color: $clrBackground;
+}
+
+.progress {
+  height: 10px;
+  margin-bottom: 5px;
 }

@@ -1,6 +1,5 @@
 import React from 'react';
 import classes from './main.module.scss';
-// import { Row, Col, Button } from 'react-bootstrap';
 import BlockParameters from './blockParameters/blockParameters';
 import BlockPlay from './blockPlay/blockPlay';
 type show = {

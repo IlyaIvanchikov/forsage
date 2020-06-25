@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './blockplayerheader.module.scss';
-import ResultsIcon from '../../../../../resources/images/Results.png';
+import ResultsIcon from '../../../../../../resources/images/Results.png';
 import { Row, Col } from 'react-bootstrap';
 
 const BlockPlayerHeader: React.FC = () => {

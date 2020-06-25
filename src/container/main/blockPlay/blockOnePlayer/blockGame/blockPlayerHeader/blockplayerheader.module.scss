@@ -1,15 +1,15 @@
-@import '../../../../../styleGuide/variable.scss';
+@import '../../../../../../styleGuide/variable.scss';
 
 .playerHeader {
-    border: $blockBorderSize solid $clrBackground;
     height: 70px;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    padding: 0 20px;
+    width: 100%;
     background-color: $orangeColor;
     color: $textColor;
     align-items: center;
-    justify-content: end;
+    margin: 0;
+    border-top-left-radius: 10px - $blockBorderSize;
+    border-top-right-radius: 10px - $blockBorderSize;
+    border-bottom: $blockBorderSize solid $clrBackground;
 }
 
 .playerTitle {
