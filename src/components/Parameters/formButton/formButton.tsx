@@ -10,18 +10,9 @@ const FormButton = ({ title, handleModalClick }: TitleParameters) => {
         {title}
       </Form.Label>
       <Col sm="5" className="d-flex align-items-center">
-        <Button
-          onClick={handleModalClick}
-          className={classes.formButton}
-        >
+        <Button onClick={handleModalClick} className={classes.formButton}>
           1 игрок
         </Button>
-        {/* <Form.Control
-          onClick={handleModalClick}
-          type="Button"
-          className={classes.formControlButton}
-          value="1игрок"
-        /> */}
       </Col>
     </Form.Group>
   );

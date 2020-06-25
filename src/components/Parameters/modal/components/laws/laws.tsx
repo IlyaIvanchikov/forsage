@@ -50,31 +50,36 @@ const LawsSelectTen: LawsSelect = {
     { value: 'forest', label: '-1 (-10 + 9)', id: 18 },
   ],
 };
+
 const customStyles = {
-  option: (provided: any, { isFocused }: any) => ({
+  option: (provided: any, { isFocused, isSelected }: any) => ({
     ...provided,
     borderBottom: '3px solid white',
     padding: 10,
     backgroundColor: isFocused ? '#9dbd2c' : '#e7a343',
     color: 'white',
+    ':active': {
+      ...provided[':active'],
+      backgroundColor: isSelected ? 'red' : 'rgb(67, 241, 14)',
+    },
   }),
-  multiValue: (provided: any, state: any) => ({
+  multiValue: (provided: any) => ({
     ...provided,
     backgroundColor: '#e7a343',
     color: 'green',
     borderRadius: '10px',
   }),
-  control: (provided: any, state: any) => ({
+  control: (provided: any) => ({
     ...provided,
     padding: 10,
     border: 'solid #9dbd2c 2px',
     margin: 10,
   }),
-  multiValueLabel: (provided: any, state: any) => ({
+  multiValueLabel: (provided: any) => ({
     ...provided,
     color: 'white',
   }),
-  multiValueRemove: (provided: any, state: any) => ({
+  multiValueRemove: (provided: any) => ({
     ...provided,
     ':hover': {
       backgroundColor: 'red',
@@ -94,6 +99,7 @@ export const Laws = (): JSX.Element => {
         isMulti={true}
         options={LawsSelectFive.items}
         styles={customStyles}
+        placeholder={'Выберите законы'}
       />
       <h4>Законы на 10:</h4>
       <Select
@@ -103,6 +109,7 @@ export const Laws = (): JSX.Element => {
         isMulti={true}
         options={LawsSelectTen.items}
         styles={customStyles}
+        placeholder={'Выберите законы'}
       />
     </>
   );

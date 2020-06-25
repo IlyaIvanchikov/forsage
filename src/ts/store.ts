@@ -10,4 +10,3 @@ export interface StateType {
     digits: number;
   }[];
 }
-

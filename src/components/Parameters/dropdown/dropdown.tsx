@@ -1,8 +1,18 @@
 import React, { useState } from 'react';
 import { useTransition, animated } from 'react-spring';
 import classes from './dropdown.module.scss';
-const menuItems = ['Озвучивать примеры', 'Турбо режим', 'Супер турбо режим'];
 
+const menuItems: string[] = [
+  'Озвучивать примеры',
+  'Турбо режим',
+  'Супер турбо режим',
+];
+
+interface Animation {
+  item: boolean;
+  key: string;
+  props: any;
+}
 const Dropdown: React.FC = () => {
   const [showDropdown, setShowDropdow] = useState<boolean>(false);
 
@@ -26,7 +36,7 @@ const Dropdown: React.FC = () => {
           <div className={classes.wrapper__divClose} />
         )}
       </a>
-      {transitions.map(({ item, key, props }) => {
+      {transitions.map(({ item, key, props }: Animation) => {
         return (
           item && (
             <animated.div
@@ -34,7 +44,7 @@ const Dropdown: React.FC = () => {
               className={classes.additionalSettings}
               key={key}
             >
-              {menuItems.map((menuItem) => (
+              {menuItems.map((menuItem: string) => (
                 <label
                   className={classes.additionalSettings__label}
                   key={menuItem}
