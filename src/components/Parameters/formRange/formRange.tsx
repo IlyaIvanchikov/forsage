@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Row, Col, Form } from 'react-bootstrap';
 import classes from './formRange.module.scss';
-import { TitleParameters } from './../../../ts/store';
+import { RangeParameters } from './../../../ts/store';
 
-const FormRange = ({ title }: TitleParameters) => {
+const FormRange = ({ title, min, max }: RangeParameters) => {
   const [valueRange, setValueRange] = useState<string>('0.3');
   const handleRangeChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setValueRange(e.target.value);
@@ -20,8 +20,8 @@ const FormRange = ({ title }: TitleParameters) => {
           type="range"
           placeholder="range"
           className={classes.colRange__formControl}
-          min="0.3"
-          max="5"
+          min={min}
+          max={max}
           step="0.1"
           value={valueRange}
           onChange={handleRangeChange}

@@ -1,9 +1,11 @@
-interface StateType {
-  playerParameters: {
-    speed: number;
-    rounds: number;
-    digits: number;
-  }[];
+export interface StateType {
+  playerParameters: StateTypeItem[];
+}
+
+export interface StateTypeItem {
+  speed: number;
+  rounds: number;
+  digits: number;
 }
 
 type ActionType =

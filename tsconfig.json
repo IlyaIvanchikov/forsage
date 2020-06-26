@@ -3,7 +3,10 @@
     "outDir": "build/dist",
     "module": "esnext",
     "target": "es5",
-    "lib": ["es6", "dom"],
+    "lib": [
+      "es6",
+      "dom"
+    ],
     "plugins": [
       {
         "name": "typescript-tslint-plugin"
@@ -25,10 +28,10 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "strict": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true
+    "noEmit": true,
+    "strict": true
   },
   "exclude": [
     "node_modules",
@@ -39,5 +42,7 @@
     "jest",
     "src/setupTests.ts"
   ],
-  "include": ["src"]
+  "include": [
+    "src"
+  ]
 }

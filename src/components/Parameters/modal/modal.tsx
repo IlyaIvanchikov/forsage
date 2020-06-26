@@ -22,6 +22,7 @@ const ModalComponent = ({
         onHide={handleCloseModalClick}
         centered={true}
         className={classes.modal}
+        // animation={false}
       >
         <Modal.Header
           className="justify-content-center"

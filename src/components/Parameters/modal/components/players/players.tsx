@@ -38,7 +38,7 @@ export const Players = (): JSX.Element => {
                   <img
                     alt="player"
                     src={nameButton.items[indexReduce].url}
-                    key={item.id}
+                    key={item.id + indexReduce}
                     className={classes.btn__img}
                   />,
                 ],
