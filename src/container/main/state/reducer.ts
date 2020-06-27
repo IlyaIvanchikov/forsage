@@ -8,35 +8,31 @@ export interface StateTypeItem {
   digits: number;
 }
 
-type ActionType =
-  | {
-      type: 'CREATE_PARAMETERS';
-      payload: StateType;
-    }
-  | {
-      type: 'CHANGE_PARAMETERS';
-      payload: StateType;
-    };
+type ActionType = {
+  type: 'CHANGE_PARAMETERS' | 'decrement' | 'increment';
+};
 
 export const initialState: StateType = {
   playerParameters: [
     {
       speed: 2,
       rounds: 10,
-      digits: 1,
+      digits: 2,
     },
   ],
 };
 
 export const reducer = (state: StateType, action: ActionType) => {
   switch (action.type) {
-    // case 'CREATE_PARAMETERS':
-    //   return [
-    //     state,
-    //     {
-    //       speed: action.payload,
-    //     },
-    //   ];
+    case 'CHANGE_PARAMETERS':
+      return [
+        ...state.playerParameters,
+        {
+          speed: 1,
+          digits: 1,
+          rounds: 1,
+        },
+      ];
     default:
       return state;
   }

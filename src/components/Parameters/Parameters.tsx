@@ -34,9 +34,6 @@ const Parameters = ({ handleSubmit, playerParameters }: SubmitForm) => {
 
   return (
     <ParametersView
-      // speed={speed}
-      // rounds={rounds}
-      // digits={digits}
       playerParameters={playerParameters}
       handleSubmit={handleSubmit}
       showPlayers={showPlayers}

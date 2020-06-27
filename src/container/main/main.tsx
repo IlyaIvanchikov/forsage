@@ -13,7 +13,7 @@ const Main: React.FC = () => {
 
   return (
     <DispatchParametersContext.Provider value={{ dispatch, handleShowSubmit }}>
-      <ParametersContext.Provider value={{ state }}>
+      <ParametersContext.Provider value={state}>
         <MainView show={show} />
       </ParametersContext.Provider>
     </DispatchParametersContext.Provider>

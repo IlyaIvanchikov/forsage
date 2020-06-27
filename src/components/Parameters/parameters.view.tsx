@@ -41,7 +41,6 @@ const ParametersView = ({
   handleCloseModalLawsClick,
   playerParameters,
 }: EventHandlerProps) => {
-  console.log(playerParameters);
   return (
     <Form className={classes.form} onSubmit={handleSubmit}>
       <h2 className="text-center">Выберите параметры:</h2>
@@ -61,7 +60,8 @@ const ParametersView = ({
         title="Скорость:"
         min={0.3}
         max={5}
-        CurrentValue={playerParameters.speed}
+        step={0.1}
+        currentParametersRange={playerParameters.speed}
       />
       <FormButton
         title="Количество знаков:"
@@ -75,8 +75,20 @@ const ParametersView = ({
         {' '}
         <Signs />
       </ModalComponent>
-      {/* <FormRange title="Количество примеров:" />
-      <FormRange title="Количество цифр в примере:" /> */}
+      <FormRange
+        title="Количество примеров:"
+        min={1}
+        max={40}
+        step={1}
+        currentParametersRange={playerParameters.rounds}
+      />
+      <FormRange
+        title="Количество цифр в примере:"
+        min={2}
+        max={20}
+        step={1}
+        currentParametersRange={playerParameters.digits}
+      />
       <FormButton title="Законы:" handleModalClick={handleModalLawsClick} />
       <ModalComponent
         showModal={showLaws}

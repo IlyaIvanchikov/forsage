@@ -3,10 +3,16 @@ import { Row, Col, Form } from 'react-bootstrap';
 import classes from './formRange.module.scss';
 import { RangeParameters } from './../../../ts/store';
 
-const FormRange = ({ title, min, max }: RangeParameters) => {
-  const [valueRange, setValueRange] = useState<string>('0.3');
+const FormRange = ({
+  title,
+  min,
+  max,
+  step,
+  currentParametersRange,
+}: RangeParameters) => {
+  const [valueRange, setValueRange] = useState<number>(currentParametersRange);
   const handleRangeChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setValueRange(e.target.value);
+    setValueRange(Number(e.target.value));
   };
   return (
     <Form.Group as={Row} controlId="formPlaintextRange" className="mb-1">
@@ -14,7 +20,7 @@ const FormRange = ({ title, min, max }: RangeParameters) => {
         {title}
       </Form.Label>
       <Col sm="6" className={classes.colRange}>
-        <p className={classes.colRange__pLeft}>0.3</p>
+        <p className={classes.colRange__pLeft}>{min}</p>
         <p className={classes.colRange__pCenter}>{valueRange}</p>
         <Form.Control
           type="range"
@@ -22,11 +28,11 @@ const FormRange = ({ title, min, max }: RangeParameters) => {
           className={classes.colRange__formControl}
           min={min}
           max={max}
-          step="0.1"
+          step={step}
           value={valueRange}
           onChange={handleRangeChange}
         />
-        <p className={classes.colRange__pRight}>5</p>
+        <p className={classes.colRange__pRight}>{max}</p>
       </Col>
     </Form.Group>
   );
