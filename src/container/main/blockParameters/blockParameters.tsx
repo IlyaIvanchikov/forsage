@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import classes from './blockParameters.module.scss';
-import Parameters from '../../../components/parameters/parameters';
+import Parameters from '../../../components/Parameters/Parameters';
 import owl from '../../../resources/images/main/owl.png';
 import { DispatchParametersContext } from '../main-context';
 import { Row, Col, Container } from 'react-bootstrap';

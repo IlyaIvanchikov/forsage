@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import classes from './parameters.module.scss';
+import classes from './Parameters.module.scss';
 import { Form, Row, Col, Button } from 'react-bootstrap';
 import Dropdown from './dropdown/dropdown';
 import FormButton from './formButton/formButton';

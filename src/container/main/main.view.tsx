@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './main.module.scss';
-import BlockParameters from './blockParameters/blockParameters';
+// import BlockParameters from './blockParameters/blockParameters';
 import BlockPlay from './blockPlay/blockPlay';
 type show = {
   show: boolean;
@@ -8,8 +8,9 @@ type show = {
 const MainView = ({ show }: show) => {
   return (
     <main className={classes.main}>
-      {show && <BlockParameters />}
-      {!show && <BlockPlay />}
+      {/* {show && <BlockParameters />}
+      {!show && <BlockPlay />} */}
+      <BlockPlay />
     </main>
   );
 };

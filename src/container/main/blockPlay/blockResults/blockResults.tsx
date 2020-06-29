@@ -6,8 +6,8 @@ import ProgressBar from 'react-bootstrap/ProgressBar';
 const Blockresults: React.FC = () => {
   // const [show, setShow] = useState(false);
   const rounds = 7;
-  const rightAnsers = 5;
-  const percent = (rightAnsers / rounds) * 100;
+  const rightAnswers = 5;
+  const percent = (rightAnswers / rounds) * 100;
 
   return (
     <Col className={classes.resultsField}>

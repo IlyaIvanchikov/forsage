@@ -1,5 +1,18 @@
 @import '../../../../../../styleGuide/variable.scss';
 
-.table table {
-    color: $orangeColor;
+.table {
+
+    table {
+        color: $orangeColor;
+        font-size: smaller;
+        text-align: center;
+
+        span {
+            color: red;
+        }
+    }
+}
+
+.rightAnswer {
+    color: $clrBackground !important;
 }
