@@ -1,30 +1,23 @@
 import React from 'react';
 import classes from './blockoneplayer.module.scss';
-import BlockPlayerHeader from './blockPlayerHeader/blockPlayerHeader';
-import { Col, Row } from 'react-bootstrap';
-import CoinsIcon from '../../../../resources/images/Coins.png';
-import ArrowIcon from '../../../../resources/images/Arrow.png';
+import BlockResults from './blockResults/blockResults';
+import { Col } from 'react-bootstrap';
+import BlockGame from './blockGame/blockGame';
 
 const BlockOnePlayer: React.FC = () => {
-  // const [show, setShow] = useState(false);
+  // const [block, setBlock] = useState('');
+
+  function getRandomIntInclusive(min: number, max: number): number {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min; //Максимум и минимум включаются
+  }
+
+  const block = getRandomIntInclusive(0, 1);
 
   return (
     <Col className={classes.onePlayerField}>
-      <BlockPlayerHeader />
-      <Row className={classes.gamefieldDisplayNumbers}>
-        <p>-70000</p>
-      </Row>
-      <Row className={classes.gameCounter}>2/10</Row>
-      <Row className={classes.blockAnswer}>
-        <input placeholder="Ответ:" type="number" />
-        <button onClick={() => alert('Ваш ответ')}>
-          <img src={ArrowIcon} alt="" />
-        </button>
-      </Row>
-      <Row className={classes.coins}>
-        <span>5</span>
-        <img src={CoinsIcon} alt="" />
-      </Row>
+      {block < 1 ? <BlockResults /> : <BlockGame />}
     </Col>
   );
 };

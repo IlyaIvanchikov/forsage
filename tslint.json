@@ -16,7 +16,6 @@
     "prettier": true,
     "import-spacing": true,
     "interface-name": false,
-    "interface-over-type-literal": true,
     "label-position": true,
     "max-line-length": [true, 140],
     "member-access": false,

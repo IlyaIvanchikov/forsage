@@ -1,139 +1,18 @@
 @import '../../../../styleGuide/variable.scss';
 
-@mixin leftRightBorder {
-    padding: 20px;
-    border-left: $blockBorderSize solid $clrBackground;
-    border-right: $blockBorderSize solid $clrBackground;
-    justify-content: center;
+.onePlayerField {
+  border: $blockBorderSize solid $clrBackground;
+  margin: 10px;
+  border-radius: 10px;
+  min-width: 40vw;
+  min-height: 300px;
+  max-width: 600px;
+  padding: 0;
 }
 
-.onePlayerField,
-.resultsField {
-    max-width: 660px;
-    width: 60vw;
-    min-width: 420px;
-    margin: 1vh;
-}
-
-.gamefieldDisplayNumbers {
-    padding: 10px 0;
-    margin: 0;
-    border-left: $blockBorderSize solid $clrBackground;
-    border-right: $blockBorderSize solid $clrBackground;
-    justify-content: center;
-    color: #5BC2DC;
-
-    p {
-        font-size: 10vh;
-        margin: 0;
-        padding: 0;
-        line-height: 130%;
-    }
-}
-
-.gameCounter {
-    @include leftRightBorder;
-    font-size: 3vh;
-    padding-bottom: 0;
-    padding-top: 0;
-    color: $orangeColor;
-}
-
-.blockAnswer {
-    padding: 10px;
-    border-left: $blockBorderSize solid $clrBackground;
-    border-right: $blockBorderSize solid $clrBackground;
-    justify-content: center;
-    margin: 0;
-
-    input {
-        width: 200px;
-        height: 5vh;
-        padding: 20px;
-        font-size: 3vh;
-        color: #A6A2A3;
-        border: $blockBorderSize solid $orangeColor;
-        border-bottom-left-radius: 10px;
-        border-top-left-radius: 10px;
-    }
-
-    button {
-        width: 73px;
-        border: none;
-        background: none;
-        border: $blockBorderSize solid $clrBackground;
-        border-left: none;
-        border-bottom-right-radius: 10px;
-        border-top-right-radius: 10px;
-    }
-
-    button:hover {
-        opacity: .7;
-    }
-
-    button:active,
-    button:focus {
-        outline: none;
-    }
-
-    input:active,
-    input:focus {
-        outline: none;
-    }
-}
-
-.coins {
-    padding: 5px 20px 15px 20px;
-    border-left: $blockBorderSize solid $clrBackground;
-    border-right: $blockBorderSize solid $clrBackground;
-    border-bottom: $blockBorderSize solid $clrBackground;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    justify-content: flex-end;
-    align-items: center;
-
-    img {
-        width: 4vh;
-        margin-left: 11px;
-    }
-
-    span {
-        color: $clrBackground;
-        font-size: 3vh;
-    }
-}
-
-@media (max-width: 450px) {
-    .blockAnswer input {
-        width: 150px;
-    }
-    .onePlayerField,
-    .resultsField {
-        min-width: 320px;
-    }
-}
-
-@media (max-width: 1441px) {
-    .coins {
-        padding: 20px;
-        padding-top: 0;
-    }
-}
-
-// blockResults
-
-.resultsHeader {
-    justify-content: space-between;
-}
-
-.resultsField {
-    border: $blockBorderSize solid $clrBackground;
-    border-radius: 20px;
-    padding: 10px;
-    background-color: $orangeColor;
-    color: $textColor;
-}
-
-.resultsBar {
-    padding-top: 40px;
+@media (max-width: 960px) {
+  .onePlayerField {
+    min-width: 85vw;
+    min-height: 70vh;
+  }
 }
