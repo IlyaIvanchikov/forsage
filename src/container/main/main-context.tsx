@@ -1,8 +1,17 @@
 import React from 'react';
-// import { SubmitForm } from './../../ts/store';
-import { StateType } from './state/reducer';
+import { UsuallyProps } from './../../ts/store';
+import { StateType, ActionType, initialState } from './state/reducer';
 
-export const ParametersContext = React.createContext<Partial<StateType>>({});
-export const DispatchParametersContext = React.createContext<
-  React.Dispatch<any>
->(() => null);
+export const ParametersContext = React.createContext<{
+  state: StateType;
+}>({
+  state: initialState,
+});
+// export const DispatchParametersContext = React.createContext<Partial<Dispatch<ActionType>>>({});
+export const UsuallyContext = React.createContext<UsuallyProps>({});
+
+export const DispatchParametersContext = React.createContext<{
+  dispatch: (action: ActionType) => void;
+}>({
+  dispatch: () => {},
+});

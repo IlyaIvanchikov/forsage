@@ -1,6 +1,10 @@
 import React, { useReducer, useState } from 'react';
 import { reducer, initialState } from './state/reducer';
-import { ParametersContext, DispatchParametersContext } from './main-context';
+import {
+  ParametersContext,
+  DispatchParametersContext,
+  UsuallyContext,
+} from './main-context';
 import MainView from './main.view';
 
 const Main: React.FC = () => {
@@ -12,9 +16,11 @@ const Main: React.FC = () => {
   };
 
   return (
-    <DispatchParametersContext.Provider value={{ dispatch, handleShowSubmit }}>
-      <ParametersContext.Provider value={state}>
-        <MainView show={show} />
+    <DispatchParametersContext.Provider value={{ dispatch }}>
+      <ParametersContext.Provider value={{ state }}>
+        <UsuallyContext.Provider value={{ handleShowSubmit }}>
+          <MainView show={show} />
+        </UsuallyContext.Provider>
       </ParametersContext.Provider>
     </DispatchParametersContext.Provider>
   );

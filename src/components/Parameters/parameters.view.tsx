@@ -9,10 +9,10 @@ import { Players } from './modal/components/players/players';
 import { Signs } from './modal/components/signs/signs';
 import { Laws } from './modal/components/laws/laws';
 import Loader from '../loader/loader';
-import { SubmitForm } from '../../ts/store';
-// import { StateTypeItem } from '../../container/main/state/reducer';
+import { SubmitFormView } from '../../ts/store';
+// import { ActionType } from '../../container/main/state/reducer';
 
-interface EventHandlerProps extends SubmitForm {
+interface EventHandlerProps extends SubmitFormView {
   showPlayers: boolean;
   showLaws: boolean;
   showSigns: boolean;
@@ -39,7 +39,13 @@ const ParametersView = ({
   handleCloseModalSignsClick,
   handleModalLawsClick,
   handleCloseModalLawsClick,
-  playerParameters,
+  valueRangeSpeed,
+  valueRangeDigits,
+  valueRangeRounds,
+  setValueRangeDigits,
+  setValueRangeRounds,
+  setValueRangeSpeed,
+  dispatch,
 }: EventHandlerProps) => {
   return (
     <Form className={classes.form} onSubmit={handleSubmit}>
@@ -61,7 +67,8 @@ const ParametersView = ({
         min={0.3}
         max={5}
         step={0.1}
-        currentParametersRange={playerParameters.speed}
+        currentParametersRange={valueRangeSpeed}
+        setValueRange={setValueRangeSpeed}
       />
       <FormButton
         title="Количество знаков:"
@@ -80,14 +87,16 @@ const ParametersView = ({
         min={1}
         max={40}
         step={1}
-        currentParametersRange={playerParameters.rounds}
+        currentParametersRange={valueRangeRounds}
+        setValueRange={setValueRangeRounds}
       />
       <FormRange
         title="Количество цифр в примере:"
         min={2}
         max={20}
         step={1}
-        currentParametersRange={playerParameters.digits}
+        currentParametersRange={valueRangeDigits}
+        setValueRange={setValueRangeDigits}
       />
       <FormButton title="Законы:" handleModalClick={handleModalLawsClick} />
       <ModalComponent
@@ -118,6 +127,7 @@ const ParametersView = ({
           >
             Начать
           </Button>
+          <Button onClick={() => dispatch!({ type: 'CHANGE_PARAMETERS' })}>Tesn</Button>
         </Col>
       </Form.Group>
     </Form>

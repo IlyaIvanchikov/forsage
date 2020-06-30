@@ -8,8 +8,8 @@ export interface StateTypeItem {
   digits: number;
 }
 
-type ActionType = {
-  type: 'CHANGE_PARAMETERS' | 'decrement' | 'increment';
+export type ActionType = {
+  type: 'CHANGE_PARAMETERS' | 'TEST';
 };
 
 export const initialState: StateType = {
@@ -22,18 +22,33 @@ export const initialState: StateType = {
   ],
 };
 
-export const reducer = (state: StateType, action: ActionType) => {
+// function display(action: ActionType) {
+//   if (action.type === 'CHANGE_PARAMETERS') {
+//     console.log('Hello');
+//   }
+// }
+
+export const reducer = (state: StateType, action: ActionType): StateType => {
   switch (action.type) {
-    case 'CHANGE_PARAMETERS':
-      return [
-        ...state.playerParameters,
-        {
-          speed: 1,
-          digits: 1,
-          rounds: 1,
-        },
-      ];
+    case 'CHANGE_PARAMETERS': {
+      const speed = 2;
+      const playerParameters = state.playerParameters.map(
+        (playerParameters) => {
+          if (playerParameters.speed === speed) {
+            console.log(2);
+            console.log(state);
+            return { ...playerParameters, speed: 4 };
+          }
+          console.log(5);
+          console.log(state);
+          return { ...playerParameters, speed: 4 };
+        }
+      );
+      return { playerParameters };
+    }
+    // case 'TEST':
+    //   return ...state;
     default:
-      return state;
+      throw new Error();
   }
 };

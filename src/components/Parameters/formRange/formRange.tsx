@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Row, Col, Form } from 'react-bootstrap';
 import classes from './formRange.module.scss';
 import { RangeParameters } from './../../../ts/store';
@@ -9,11 +9,12 @@ const FormRange = ({
   max,
   step,
   currentParametersRange,
+  setValueRange,
 }: RangeParameters) => {
-  const [valueRange, setValueRange] = useState<number>(currentParametersRange);
   const handleRangeChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setValueRange(Number(e.target.value));
   };
+
   return (
     <Form.Group as={Row} controlId="formPlaintextRange" className="mb-1">
       <Form.Label column={true} sm="6">
@@ -21,7 +22,7 @@ const FormRange = ({
       </Form.Label>
       <Col sm="6" className={classes.colRange}>
         <p className={classes.colRange__pLeft}>{min}</p>
-        <p className={classes.colRange__pCenter}>{valueRange}</p>
+        <p className={classes.colRange__pCenter}>{currentParametersRange}</p>
         <Form.Control
           type="range"
           placeholder="range"
@@ -29,7 +30,7 @@ const FormRange = ({
           min={min}
           max={max}
           step={step}
-          value={valueRange}
+          value={currentParametersRange}
           onChange={handleRangeChange}
         />
         <p className={classes.colRange__pRight}>{max}</p>

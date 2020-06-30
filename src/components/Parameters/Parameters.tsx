@@ -1,12 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import ParametersView from './parameters.view';
 import { SubmitForm } from '../../ts/store';
+import { StateTypeItem } from '../../container/main/state/reducer';
+import { DispatchParametersContext } from '../../container/main/main-context';
 
 const Parameters = ({ handleSubmit, playerParameters }: SubmitForm) => {
+  const { speed, digits, rounds }: StateTypeItem = playerParameters;
   const [isLoading, setLoading] = useState<boolean>(false);
   const [showPlayers, setShowPlayers] = useState<boolean>(false);
   const [showSigns, setShowSigns] = useState<boolean>(false);
   const [showLaws, setShowLaws] = useState<boolean>(false);
+
+  const { dispatch } = useContext(DispatchParametersContext);
+
+  const [valueRangeSpeed, setValueRangeSpeed] = useState<number>(speed);
+  const [valueRangeDigits, setValueRangeDigits] = useState<number>(digits);
+  const [valueRangeRounds, setValueRangeRounds] = useState<number>(rounds);
+
+  useEffect(() => {
+    setValueRangeRounds(rounds);
+    setValueRangeDigits(digits);
+    setValueRangeSpeed(speed);
+  }, [rounds, speed, digits]);
 
   const handleModalPlayersClick = () => {
     setShowPlayers(true);
@@ -34,7 +49,13 @@ const Parameters = ({ handleSubmit, playerParameters }: SubmitForm) => {
 
   return (
     <ParametersView
-      playerParameters={playerParameters}
+      valueRangeSpeed={valueRangeSpeed}
+      valueRangeDigits={valueRangeDigits}
+      valueRangeRounds={valueRangeRounds}
+      setValueRangeRounds={setValueRangeRounds}
+      setValueRangeDigits={setValueRangeDigits}
+      setValueRangeSpeed={setValueRangeSpeed}
+      dispatch={dispatch}
       handleSubmit={handleSubmit}
       showPlayers={showPlayers}
       showSigns={showSigns}
