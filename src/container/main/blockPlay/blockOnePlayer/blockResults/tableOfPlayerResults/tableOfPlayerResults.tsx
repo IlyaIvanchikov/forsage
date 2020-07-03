@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './tableofplayerresults.module.scss';
 import { Table, Row } from 'react-bootstrap';
+import OneRowOfTable from '../oneRowOfResultsTable/oneRowOfResultsTable';
 
 const exercises = [
   {
@@ -28,38 +29,6 @@ const exercises = [
     isRight: true,
   },
 ];
-
-const exerciseString: any = (arrOfNumbers: any) => {
-  let string = arrOfNumbers[0];
-  for (let i = 1; i < arrOfNumbers.length; i++) {
-    arrOfNumbers[i] >= 0
-      ? (string += ' ✚ ' + arrOfNumbers[i])
-      : (string += ' - ' + arrOfNumbers[i] * -1);
-  }
-
-  return string;
-};
-
-const OneRowOfTable = (props: any) => {
-  const { exercises, number } = props;
-  const { exercise, answer, rightAnswer } = exercises;
-  const isRightAnswer = () => (answer === rightAnswer ? true : false);
-
-  return (
-    <tr>
-      <td>{number}</td>
-      <td>{exerciseString(exercise)}</td>
-      <td>
-        {isRightAnswer() ? (
-          <span className={classes.rightAnswer}>&#10004; {answer}</span>
-        ) : (
-          <span>&#10008; {answer}</span>
-        )}
-      </td>
-      <td>{rightAnswer}</td>
-    </tr>
-  );
-};
 
 const TableOfPlayerResults: React.FC = () => {
   return (
