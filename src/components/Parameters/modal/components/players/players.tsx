@@ -5,6 +5,8 @@ import smile from '../../../../../resources/images/modal/smile.svg';
 import girl from '../../../../../resources/images/modal/girl.svg';
 import cute from '../../../../../resources/images/modal/cute.svg';
 import freckles from '../../../../../resources/images/modal/freckles.svg';
+// import { UsuallyContext } from './../../../../../container/main/main-context';
+import { ButtonID } from './../../../../../ts/store';
 
 interface NameButton {
   items: NameButtonItem[];
@@ -24,18 +26,9 @@ const nameButton: NameButton = {
     { id: 4, name: '4 игрока', url: freckles },
   ],
 };
-// const [idButton, setIdButton] = useState<any>(undefined);
 
-const handleClickButton = (
-  // event: React.MouseEvent<HTMLButtonElement>,
-  id: number
-) => {
-  // event.preventDefault();
-
-  console.log(id);
-};
-// console.log(idButton);
-export const Players = (): JSX.Element => {
+export const Players = ({handleButtonClick}: ButtonID): JSX.Element => {
+  // const { handleCountPlayersClick }: UsuallyProps = useContext(UsuallyContext);
   return (
     <Container>
       <Row>
@@ -44,7 +37,7 @@ export const Players = (): JSX.Element => {
             <Button
               key={item.id}
               className={classes.btn}
-              onClick={() => handleClickButton(item.id)}
+              onClick={() => handleButtonClick(item.id, item.name)}
             >
               {[...Array(item.id)].reduce(
                 (prev: string[], current: number, indexReduce: number) => [

@@ -2,6 +2,7 @@ import { StateTypeItem, ActionType } from './../container/main/state/reducer';
 export interface TitleParameters {
   title: string;
   handleModalClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  nameButton?: string;
 }
 
 export interface RangeParameters extends TitleParameters {
@@ -17,11 +18,19 @@ export interface SubmitForm {
   playerParameters: StateTypeItem;
 }
 
-export interface SubmitFormView {
+export interface SubmitFormView extends ModalSelect {
   handleSubmit?: (e: React.FormEvent<HTMLFormElement>) => void;
   valueRangeSpeed: number;
   valueRangeDigits: number;
   valueRangeRounds: number;
+  valueModalSigns: {
+    signs: number;
+    nameButton: string;
+  };
+  countPlayers: {
+    countPlayers: number;
+    nameButton: string;
+  };
   setValueRangeDigits: React.Dispatch<React.SetStateAction<number>>;
   setValueRangeRounds: React.Dispatch<React.SetStateAction<number>>;
   setValueRangeSpeed: React.Dispatch<React.SetStateAction<number>>;
@@ -29,5 +38,19 @@ export interface SubmitFormView {
 }
 
 export interface UsuallyProps {
-  handleShowSubmit?: (event: React.FormEvent<HTMLFormElement>) => void;
+  handleShowSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
+  handleCountPlayersClick: (id: number, item: string) => void;
+  countPlayers: {
+    countPlayers: number;
+    nameButton: string;
+  };
+}
+
+export interface ButtonID {
+  handleButtonClick: (id: number, item: string) => void;
+}
+
+export interface ModalSelect {
+  setValueModalSelect: React.Dispatch<React.SetStateAction<any>>;
+  valueModalSelect: any;
 }

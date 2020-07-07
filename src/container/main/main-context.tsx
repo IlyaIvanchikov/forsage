@@ -8,7 +8,14 @@ export const ParametersContext = React.createContext<{
   state: initialState,
 });
 // export const DispatchParametersContext = React.createContext<Partial<Dispatch<ActionType>>>({});
-export const UsuallyContext = React.createContext<UsuallyProps>({});
+export const UsuallyContext = React.createContext<UsuallyProps>({
+  handleShowSubmit: () => {},
+  handleCountPlayersClick: () => {},
+  countPlayers: {
+    countPlayers: 1,
+    nameButton: '1 игрок',
+  },
+});
 
 export const DispatchParametersContext = React.createContext<{
   dispatch: (action: ActionType) => void;

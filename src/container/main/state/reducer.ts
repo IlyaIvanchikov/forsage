@@ -6,6 +6,7 @@ export interface StateTypeItem {
   speed: number;
   rounds: number;
   digits: number;
+  signs: number;
 }
 
 export type ActionType = {
@@ -18,6 +19,7 @@ export const initialState: StateType = {
       speed: 2,
       rounds: 10,
       digits: 2,
+      signs: 1,
     },
   ],
 };

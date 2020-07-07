@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useTransition, animated } from 'react-spring';
 import classes from './dropdown.module.scss';
+import { UsuallyContext } from './../../../container/main/main-context';
 
 const menuItems: string[] = [
   'Озвучивать примеры',
@@ -13,7 +14,9 @@ interface Animation {
   key: string;
   props: any;
 }
+
 const Dropdown: React.FC = () => {
+  const { countPlayers } = useContext(UsuallyContext);
   const [showDropdown, setShowDropdow] = useState<boolean>(false);
 
   const handleBtnClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
@@ -28,40 +31,51 @@ const Dropdown: React.FC = () => {
 
   return (
     <div className={classes.wrapper}>
-      <a href="/" onClick={handleBtnClick} className={classes.wrapper__a}>
-        Дополнительные настройки{' '}
-        {showDropdown ? (
-          <div className={classes.wrapper__divOpen} />
-        ) : (
-          <div className={classes.wrapper__divClose} />
-        )}
-      </a>
-      {transitions.map(({ item, key, props }: Animation) => {
-        return (
-          item && (
-            <animated.div
-              style={{ ...props, position: 'absolute' }}
-              className={classes.additionalSettings}
-              key={key}
-            >
-              {menuItems.map((menuItem: string) => (
-                <label
-                  className={classes.additionalSettings__label}
-                  key={menuItem}
+      {countPlayers.countPlayers !== 1 ? (
+        <del>
+          {' '}
+          <span className={classes.wrapper__span}>
+            Дополнительные настройки
+          </span>
+        </del>
+      ) : (
+        <>
+          <a href="/" onClick={handleBtnClick} className={classes.wrapper__a}>
+            Дополнительные настройки{' '}
+            {showDropdown ? (
+              <div className={classes.wrapper__divOpen} />
+            ) : (
+              <div className={classes.wrapper__divClose} />
+            )}
+          </a>
+          {transitions.map(({ item, key, props }: Animation) => {
+            return (
+              item && (
+                <animated.div
+                  style={{ ...props, position: 'absolute' }}
+                  className={classes.additionalSettings}
+                  key={key}
                 >
-                  <input
-                    type="checkbox"
-                    className={classes.additionalSettings__checkbox}
-                    key={menuItem}
-                  />
-                  <span className={classes.additionalSettings__span} />
-                  <span>{menuItem}</span>
-                </label>
-              ))}
-            </animated.div>
-          )
-        );
-      })}
+                  {menuItems.map((menuItem: string) => (
+                    <label
+                      className={classes.additionalSettings__label}
+                      key={menuItem}
+                    >
+                      <input
+                        type="checkbox"
+                        className={classes.additionalSettings__checkbox}
+                        key={menuItem}
+                      />
+                      <span className={classes.additionalSettings__span} />
+                      <span>{menuItem}</span>
+                    </label>
+                  ))}
+                </animated.div>
+              )
+            );
+          })}
+        </>
+      )}
     </div>
   );
 };

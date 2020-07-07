@@ -16,7 +16,11 @@ const FormRange = ({
   };
 
   return (
-    <Form.Group as={Row} controlId="formPlaintextRange" className="mb-1">
+    <Form.Group
+      as={Row}
+      controlId={`formPlaintextRange${min}`}
+      className="mb-1"
+    >
       <Form.Label column={true} sm="6">
         {title}
       </Form.Label>

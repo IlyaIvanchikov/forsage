@@ -9,10 +9,11 @@ import { Players } from './modal/components/players/players';
 import { Signs } from './modal/components/signs/signs';
 import { Laws } from './modal/components/laws/laws';
 import Loader from '../loader/loader';
+import { ButtonID } from '../../ts/store';
 import { SubmitFormView } from '../../ts/store';
 // import { ActionType } from '../../container/main/state/reducer';
 
-interface EventHandlerProps extends SubmitFormView {
+interface EventHandlerProps extends SubmitFormView, ButtonID {
   showPlayers: boolean;
   showLaws: boolean;
   showSigns: boolean;
@@ -22,12 +23,20 @@ interface EventHandlerProps extends SubmitFormView {
     e: React.MouseEvent<HTMLButtonElement>
   ) => void;
   handleModalSignsClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  handleChooseModalSignsClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  handleChooseModalPlayersClick: (
+    e: React.MouseEvent<HTMLButtonElement>
+  ) => void;
   handleCloseModalSignsClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
   handleCloseModalLawsClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
   handleModalLawsClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 const ParametersView = ({
+  valueModalSelect,
+  setValueModalSelect,
+  valueModalSigns,
+  handleButtonClick,
   handleSubmit,
   isLoading,
   showPlayers,
@@ -46,6 +55,9 @@ const ParametersView = ({
   setValueRangeRounds,
   setValueRangeSpeed,
   dispatch,
+  handleChooseModalSignsClick,
+  handleChooseModalPlayersClick,
+  countPlayers,
 }: EventHandlerProps) => {
   return (
     <Form className={classes.form} onSubmit={handleSubmit}>
@@ -53,14 +65,20 @@ const ParametersView = ({
       <FormButton
         title="Количество игроков:"
         handleModalClick={handleModalPlayersClick}
+        nameButton={countPlayers.nameButton}
       />
       <ModalComponent
         showModal={showPlayers}
         handleCloseModalClick={handleCloseModalPlayersClick}
+        handleChooseModalClick={handleChooseModalPlayersClick}
         title="Количество игроков"
       >
         {' '}
-        {isLoading ? <Loader /> : <Players />}
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <Players handleButtonClick={handleButtonClick} />
+        )}
       </ModalComponent>
       <FormRange
         title="Скорость:"
@@ -73,14 +91,16 @@ const ParametersView = ({
       <FormButton
         title="Количество знаков:"
         handleModalClick={handleModalSignsClick}
+        nameButton={valueModalSigns.nameButton}
       />
       <ModalComponent
         showModal={showSigns}
         handleCloseModalClick={handleCloseModalSignsClick}
+        handleChooseModalClick={handleChooseModalSignsClick}
         title="Количество знаков"
       >
         {' '}
-        <Signs />
+        <Signs handleButtonClick={handleButtonClick} />
       </ModalComponent>
       <FormRange
         title="Количество примеров:"
@@ -98,14 +118,22 @@ const ParametersView = ({
         currentParametersRange={valueRangeDigits}
         setValueRange={setValueRangeDigits}
       />
-      <FormButton title="Законы:" handleModalClick={handleModalLawsClick} />
+      <FormButton
+        title="Законы:"
+        handleModalClick={handleModalLawsClick}
+        nameButton={'Выбрать'}
+      />
       <ModalComponent
         showModal={showLaws}
         handleCloseModalClick={handleCloseModalLawsClick}
+        handleChooseModalClick={handleChooseModalSignsClick}
         title="Законы"
       >
         {' '}
-        <Laws />
+        <Laws
+          valueModalSelect={valueModalSelect}
+          setValueModalSelect={setValueModalSelect}
+        />
       </ModalComponent>
       <Form.Group as={Row} controlId="formPlaintextButton" className="mb-1">
         <Form.Label column={true} sm="7">
@@ -127,7 +155,9 @@ const ParametersView = ({
           >
             Начать
           </Button>
-          <Button onClick={() => dispatch!({ type: 'CHANGE_PARAMETERS' })}>Tesn</Button>
+          <Button onClick={() => dispatch!({ type: 'CHANGE_PARAMETERS' })}>
+            Tesn
+          </Button>
         </Col>
       </Form.Group>
     </Form>
