@@ -1,6 +1,15 @@
 @import '../../../styleGuide/variable.scss';
 
 .wrapper {
+  del {
+    color: black;
+    text-decoration: line-through;
+  }
+
+  del span {
+    color: $textColor;
+  }
+
   .wrapper__a {
     position: relative;
     color: $textColor;

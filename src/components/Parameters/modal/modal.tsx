@@ -5,13 +5,16 @@ import classes from './modal.module.scss';
 interface EventHandlerProps {
   showModal: boolean;
   handleCloseModalClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  handleChooseModalClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
   title: string;
+  // handleCloseModalClick: any;
   children: React.ReactNode;
 }
 
 const ModalComponent = ({
   showModal,
   handleCloseModalClick,
+  handleChooseModalClick,
   title,
   children,
 }: EventHandlerProps) => {
@@ -22,6 +25,7 @@ const ModalComponent = ({
         onHide={handleCloseModalClick}
         centered={true}
         className={classes.modal}
+        // animation={false}
       >
         <Modal.Header
           className="justify-content-center"
@@ -33,16 +37,18 @@ const ModalComponent = ({
         <Modal.Footer className={classes.footer}>
           <Button
             className={classes.footer__btn}
-            onClick={handleCloseModalClick}
+            onClick={handleChooseModalClick}
           >
             Выбрать
           </Button>
-          <Button
-            className={classes.footer__btn}
-            onClick={handleCloseModalClick}
-          >
-            Отмена
-          </Button>
+          {title === 'Законы' ? null : (
+            <Button
+              className={classes.footer__btn}
+              onClick={handleCloseModalClick}
+            >
+              Отмена
+            </Button>
+          )}
         </Modal.Footer>
       </Modal>
     </>
