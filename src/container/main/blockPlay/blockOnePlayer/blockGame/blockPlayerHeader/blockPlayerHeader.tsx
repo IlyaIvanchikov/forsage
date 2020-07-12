@@ -3,9 +3,11 @@ import classes from './blockplayerheader.module.scss';
 import ResultsIcon from '../../../../../../resources/images/Results.png';
 import { Row, Col } from 'react-bootstrap';
 
-const BlockPlayerHeader: React.FC = () => {
-  // const [show, setShow] = useState(false);
+type blockGameHeaderOpt = {
+  numOfPlayer: number;
+};
 
+const BlockPlayerHeader = ({ numOfPlayer }: blockGameHeaderOpt) => {
   return (
     <Row className={classes.playerHeader}>
       <Col className={classes.threePoints}>
@@ -13,7 +15,7 @@ const BlockPlayerHeader: React.FC = () => {
           &bull; &bull; &bull;
         </button>
       </Col>
-      <Col className={classes.playerTitle}>Игрок 1</Col>
+      <Col className={classes.playerTitle}>Игрок {numOfPlayer}</Col>
       <Col className={classes.iconBlock}>
         <button title="Статистика" onClick={() => alert('hello')}>
           <img

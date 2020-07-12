@@ -9,8 +9,8 @@ type blockPlayOpt = {
 
 const BlockPlay = ({ countPlayers }: blockPlayOpt) => {
   const players = [];
-  for (let i = 0; i < countPlayers; i++) {
-    players.push(i + 1);
+  for (let i = 1; i <= countPlayers; i++) {
+    players.push(i);
   }
   return (
     <>

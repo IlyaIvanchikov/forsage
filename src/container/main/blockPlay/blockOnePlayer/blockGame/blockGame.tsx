@@ -5,10 +5,14 @@ import { Row } from 'react-bootstrap';
 import CoinsIcon from '../../../../../resources/images/Coins.png';
 import ArrowIcon from '../../../../../resources/images/Arrow.png';
 
-const BlockGame: React.FC = () => {
+type blockGameOpt = {
+  numOfPlayer: number;
+};
+
+const BlockGame = ({ numOfPlayer }: blockGameOpt) => {
   return (
     <>
-      <BlockPlayerHeader />
+      <BlockPlayerHeader numOfPlayer={numOfPlayer} />
       <Row className={classes.gamefieldDisplayNumbers}>
         <p>-70000</p>
       </Row>
