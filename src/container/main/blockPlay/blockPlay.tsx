@@ -16,7 +16,7 @@ const BlockPlay = ({ countPlayers }: blockPlayOpt) => {
     <>
       <Row className={classes.gameField}>
         {players.map((el) => (
-          <BlockOnePlayer numOfPlayer={el} />
+          <BlockOnePlayer key={el} numOfRounds={6} numOfPlayer={el} />
         ))}
       </Row>
     </>
