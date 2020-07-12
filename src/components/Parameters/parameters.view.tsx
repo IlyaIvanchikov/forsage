@@ -53,7 +53,7 @@ const ParametersView = ({
   handleCloseModalSignsClick,
   handleModalLawsClick,
   handleCloseModalLawsClick,
-  valueRangeSpeed,
+  speed,
   valueRangeDigits,
   valueRangeRounds,
   setValueRangeDigits,
@@ -64,8 +64,14 @@ const ParametersView = ({
   handleChooseModalPlayersClick,
   countPlayers,
 }: EventHandlerProps) => {
+  // const speed = 2;
   return (
-    <Form className={classes.form} onSubmit={handleSubmit}>
+    <Form
+      className={classes.form}
+      onSubmit={(event: React.FormEvent<HTMLFormElement>) =>
+        handleSubmit({ event, speed })
+      }
+    >
       <h2 className="text-center">Выберите параметры:</h2>
       <FormButton
         title="Количество игроков:"
@@ -91,7 +97,7 @@ const ParametersView = ({
         min={0.3}
         max={5}
         step={0.1}
-        currentParametersRange={valueRangeSpeed}
+        currentParametersRange={speed}
         setValueRange={setValueRangeSpeed}
       />
       <FormButton

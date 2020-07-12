@@ -116,7 +116,7 @@ const Parameters = ({ handleSubmit, playerParameters }: SubmitForm) => {
       setValueModalSelect={setValueModalSelect}
       countPlayers={countPlayers}
       valueModalSigns={valueModalSigns}
-      valueRangeSpeed={valueRangeSpeed}
+      speed={valueRangeSpeed}
       valueRangeDigits={valueRangeDigits}
       valueRangeRounds={valueRangeRounds}
       setValueRangeRounds={setValueRangeRounds}
