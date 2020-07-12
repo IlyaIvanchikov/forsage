@@ -54,3 +54,16 @@ export interface ModalSelect {
   setValueModalSelect: React.Dispatch<React.SetStateAction<any>>;
   valueModalSelect: any;
 }
+
+export interface AdditionalParameters {
+  soundPlay: boolean;
+  turboPlay: boolean;
+  superTurboPlay: boolean;
+}
+
+export interface AdditionalParametersProps {
+  additionalParameters: AdditionalParameters;
+  setAdditionalParameters: React.Dispatch<
+    React.SetStateAction<AdditionalParameters>
+  >;
+}

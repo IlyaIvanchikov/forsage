@@ -5,9 +5,11 @@ import BlockPlay from './blockPlay/blockPlay';
 
 type showBlockPlay = {
   show: boolean;
+  countPlayers: number;
 };
 
-const MainView = ({ show }: showBlockPlay) => {
+const MainView = ({ show, countPlayers }: showBlockPlay) => {
+  console.log(countPlayers);
   return (
     <main className={classes.main}>
       {show && <BlockParameters />}

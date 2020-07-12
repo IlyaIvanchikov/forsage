@@ -33,7 +33,7 @@ const Main: React.FC = () => {
         <UsuallyContext.Provider
           value={{ handleShowSubmit, handleCountPlayersClick, countPlayers }}
         >
-          <MainView show={show} />
+          <MainView show={show} countPlayers={countPlayers.countPlayers} />
         </UsuallyContext.Provider>
       </ParametersContext.Provider>
     </DispatchParametersContext.Provider>

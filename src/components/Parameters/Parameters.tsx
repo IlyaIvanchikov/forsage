@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import ParametersView from './parameters.view';
-import { SubmitForm, UsuallyProps } from '../../ts/store';
+import { SubmitForm, UsuallyProps, AdditionalParameters } from '../../ts/store';
 import { StateTypeItem } from '../../container/main/state/reducer';
 import {
   DispatchParametersContext,
@@ -8,8 +8,15 @@ import {
 } from '../../container/main/main-context';
 
 const Parameters = ({ handleSubmit, playerParameters }: SubmitForm) => {
-  const { speed, digits, rounds, signs }: StateTypeItem = playerParameters;
-  const [isLoading, setLoading] = useState<boolean>(false);
+  const {
+    speed,
+    digits,
+    rounds,
+    signs,
+    laws,
+    additional,
+  }: StateTypeItem = playerParameters;
+  // const [isLoading, setLoading] = useState<boolean>(false);
   const [showPlayers, setShowPlayers] = useState<boolean>(false);
   const [showSigns, setShowSigns] = useState<boolean>(false);
   const [showLaws, setShowLaws] = useState<boolean>(false);
@@ -29,10 +36,19 @@ const Parameters = ({ handleSubmit, playerParameters }: SubmitForm) => {
     signs,
     nameButton: '1 (от 1 до 9)',
   });
-
-  const [valueModalSelect, setValueModalSelect] = useState({
-    five: [],
-    ten: [],
+  const [valueModalSelect, setValueModalSelect] = useState<{
+    five: string[];
+    ten: string[];
+  }>({
+    five: laws.five,
+    ten: laws.ten,
+  });
+  const [additionalParameters, setAdditionalParameters] = useState<
+    AdditionalParameters
+  >({
+    soundPlay: additional.soundPlay,
+    turboPlay: additional.turboPlay,
+    superTurboPlay: additional.superTurboPlay,
   });
 
   /////ЧЕКАТЬ ЭФФЕКТ НА ОСТАЛЬНЫЕ ПАРАМЕТРЫ
@@ -44,7 +60,7 @@ const Parameters = ({ handleSubmit, playerParameters }: SubmitForm) => {
 
   const handleModalPlayersClick = () => {
     setShowPlayers(true);
-    setLoading(true);
+    // setLoading(true);
   };
   const handleCloseModalPlayersClick = () => setShowPlayers(false);
 
@@ -58,7 +74,7 @@ const Parameters = ({ handleSubmit, playerParameters }: SubmitForm) => {
     nameButton: string;
   } = {
     id: 1,
-    nameButton: 'undefined',
+    nameButton: 'Не выбрано',
   };
 
   const handleButtonClick = (id: number, item: string): void => {
@@ -80,20 +96,22 @@ const Parameters = ({ handleSubmit, playerParameters }: SubmitForm) => {
   const handleModalLawsClick = () => setShowLaws(true);
   const handleCloseModalLawsClick = () => setShowLaws(false);
 
-  const loaderTime = () => {
-    return new Promise<string>((resolve: any) => setTimeout(resolve, 2000));
-  };
+  // const loaderTime = () => {
+  //   return new Promise<string>((resolve: any) => setTimeout(resolve, 2000));
+  // };
 
-  useEffect(() => {
-    if (isLoading) {
-      loaderTime().then(() => {
-        setLoading(false);
-      });
-    }
-  }, [isLoading]);
+  // useEffect(() => {
+  //   if (isLoading) {
+  //     loaderTime().then(() => {
+  //       setLoading(false);
+  //     });
+  //   }
+  // }, [isLoading]);
 
   return (
     <ParametersView
+      additionalParameters={additionalParameters}
+      setAdditionalParameters={setAdditionalParameters}
       valueModalSelect={valueModalSelect}
       setValueModalSelect={setValueModalSelect}
       countPlayers={countPlayers}
@@ -109,7 +127,7 @@ const Parameters = ({ handleSubmit, playerParameters }: SubmitForm) => {
       showPlayers={showPlayers}
       showSigns={showSigns}
       showLaws={showLaws}
-      isLoading={isLoading}
+      // isLoading={isLoading}
       handleModalPlayersClick={handleModalPlayersClick}
       handleCloseModalPlayersClick={handleCloseModalPlayersClick}
       handleChooseModalPlayersClick={handleChooseModalPlayersClick}

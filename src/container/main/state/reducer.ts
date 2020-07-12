@@ -7,6 +7,15 @@ export interface StateTypeItem {
   rounds: number;
   digits: number;
   signs: number;
+  laws: {
+    five: string[];
+    ten: string[];
+  };
+  additional: {
+    soundPlay: boolean;
+    turboPlay: boolean;
+    superTurboPlay: boolean;
+  };
 }
 
 export type ActionType = {
@@ -20,6 +29,15 @@ export const initialState: StateType = {
       rounds: 10,
       digits: 2,
       signs: 1,
+      laws: {
+        five: ['Любой'],
+        ten: ['Любой'],
+      },
+      additional: {
+        soundPlay: false,
+        turboPlay: false,
+        superTurboPlay: false,
+      },
     },
   ],
 };
@@ -37,12 +55,8 @@ export const reducer = (state: StateType, action: ActionType): StateType => {
       const playerParameters = state.playerParameters.map(
         (playerParameters) => {
           if (playerParameters.speed === speed) {
-            console.log(2);
-            console.log(state);
             return { ...playerParameters, speed: 4 };
           }
-          console.log(5);
-          console.log(state);
           return { ...playerParameters, speed: 4 };
         }
       );

@@ -95,15 +95,33 @@ export const Laws = ({
   setValueModalSelect,
   valueModalSelect,
 }: ModalSelect): JSX.Element => {
-  const handleChange = (
+  const handleChangeFive = (
     value: ValueType<OptionTypeBase>,
     actionMeta: ActionMeta<OptionTypeBase>
   ): void => {
     if (actionMeta.action === 'select-option') {
-      setValueModalSelect({
-        ...valueModalSelect,
-        five: [...valueModalSelect.five, actionMeta.option?.value],
-      });
+      if (valueModalSelect.five[0] === 'Любой') {
+        setValueModalSelect({
+          ...valueModalSelect,
+          five: [actionMeta.option?.value],
+        });
+      } else if (
+        valueModalSelect.five[0] !== 'Любой' &&
+        actionMeta.option?.value === 'Любой'
+      ) {
+        setValueModalSelect({
+          ...valueModalSelect,
+          five: [actionMeta.option?.value],
+        });
+      } else if (
+        valueModalSelect.five[0] !== 'Любой' &&
+        actionMeta.option?.value !== 'Любой'
+      ) {
+        setValueModalSelect({
+          ...valueModalSelect,
+          five: [...valueModalSelect.five, actionMeta.option?.value],
+        });
+      }
     } else if (actionMeta.action === 'remove-value') {
       setValueModalSelect({
         ...valueModalSelect,
@@ -117,24 +135,65 @@ export const Laws = ({
         five: [],
       });
     }
-
-    // if ( event.l)
-    // const currentArrWithValue = event.map((item: any) => {
-    //   return item.value;
-    // });
-    // setValueModalSelect(currentArrWithValue);
-    // console.log(`Option selected:`, event);
   };
-  console.log(valueModalSelect);
+  const handleChangeTen = (
+    value: ValueType<OptionTypeBase>,
+    actionMeta: ActionMeta<OptionTypeBase>
+  ): void => {
+    if (actionMeta.action === 'select-option') {
+      if (valueModalSelect.ten[0] === 'Любой') {
+        setValueModalSelect({
+          ...valueModalSelect,
+          ten: [actionMeta.option?.value],
+        });
+      } else if (
+        valueModalSelect.ten[0] !== 'Любой' &&
+        actionMeta.option?.value === 'Любой'
+      ) {
+        setValueModalSelect({
+          ...valueModalSelect,
+          ten: [actionMeta.option?.value],
+        });
+      } else if (
+        valueModalSelect.ten[0] !== 'Любой' &&
+        actionMeta.option?.value !== 'Любой'
+      ) {
+        setValueModalSelect({
+          ...valueModalSelect,
+          ten: [...valueModalSelect.ten, actionMeta.option?.value],
+        });
+      }
+    } else if (actionMeta.action === 'remove-value') {
+      setValueModalSelect({
+        ...valueModalSelect,
+        ten: valueModalSelect.ten.filter((item: string) => {
+          return item !== actionMeta.removedValue?.value;
+        }),
+      });
+    } else if (actionMeta.action === 'clear') {
+      setValueModalSelect({
+        ...valueModalSelect,
+        ten: [],
+      });
+    }
+  };
+  const currentValue = (arr: string[]) =>
+    arr.map((item: string, id: number) => {
+      return {
+        value: item,
+        label: item,
+        id,
+      };
+    });
+
   return (
     <>
       <h4>Законы на 5:</h4>
       <Select
         closeMenuOnSelect={false}
         components={animatedComponents}
-        defaultValue={LawsSelectFive.items[0]}
-        onChange={handleChange}
-        // value={valueModalSelect}
+        value={currentValue(valueModalSelect.five)}
+        onChange={handleChangeFive}
         isMulti={true}
         options={LawsSelectFive.items}
         styles={customStyles}
@@ -145,8 +204,9 @@ export const Laws = ({
       <Select
         closeMenuOnSelect={false}
         components={animatedComponents}
-        defaultValue={LawsSelectTen.items[0]}
+        value={currentValue(valueModalSelect.ten)}
         isMulti={true}
+        onChange={handleChangeTen}
         options={LawsSelectTen.items}
         styles={customStyles}
         placeholder={'Выберите законы'}

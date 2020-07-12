@@ -27,7 +27,7 @@ const nameButton: NameButton = {
   ],
 };
 
-export const Players = ({handleButtonClick}: ButtonID): JSX.Element => {
+export const Players = ({ handleButtonClick }: ButtonID): JSX.Element => {
   // const { handleCountPlayersClick }: UsuallyProps = useContext(UsuallyContext);
   return (
     <Container>

@@ -7,6 +7,7 @@ interface EventHandlerProps {
   handleCloseModalClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
   handleChooseModalClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
   title: string;
+  // handleCloseModalClick: any;
   children: React.ReactNode;
 }
 
@@ -40,12 +41,14 @@ const ModalComponent = ({
           >
             Выбрать
           </Button>
-          <Button
-            className={classes.footer__btn}
-            onClick={handleCloseModalClick}
-          >
-            Отмена
-          </Button>
+          {title === 'Законы' ? null : (
+            <Button
+              className={classes.footer__btn}
+              onClick={handleCloseModalClick}
+            >
+              Отмена
+            </Button>
+          )}
         </Modal.Footer>
       </Modal>
     </>

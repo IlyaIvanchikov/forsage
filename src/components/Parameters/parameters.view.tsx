@@ -8,16 +8,19 @@ import ModalComponent from './modal/modal';
 import { Players } from './modal/components/players/players';
 import { Signs } from './modal/components/signs/signs';
 import { Laws } from './modal/components/laws/laws';
-import Loader from '../loader/loader';
+// import Loader from '../loader/loader';
 import { ButtonID } from '../../ts/store';
-import { SubmitFormView } from '../../ts/store';
+import { SubmitFormView, AdditionalParametersProps } from '../../ts/store';
 // import { ActionType } from '../../container/main/state/reducer';
 
-interface EventHandlerProps extends SubmitFormView, ButtonID {
+interface EventHandlerProps
+  extends SubmitFormView,
+    ButtonID,
+    AdditionalParametersProps {
   showPlayers: boolean;
   showLaws: boolean;
   showSigns: boolean;
-  isLoading: boolean;
+  // isLoading: boolean;
   handleModalPlayersClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
   handleCloseModalPlayersClick: (
     e: React.MouseEvent<HTMLButtonElement>
@@ -33,12 +36,14 @@ interface EventHandlerProps extends SubmitFormView, ButtonID {
 }
 
 const ParametersView = ({
+  additionalParameters,
+  setAdditionalParameters,
   valueModalSelect,
   setValueModalSelect,
   valueModalSigns,
   handleButtonClick,
   handleSubmit,
-  isLoading,
+  // isLoading,
   showPlayers,
   showLaws,
   showSigns,
@@ -74,11 +79,12 @@ const ParametersView = ({
         title="Количество игроков"
       >
         {' '}
-        {isLoading ? (
+        <Players handleButtonClick={handleButtonClick} />
+        {/* {isLoading ? (
           <Loader />
         ) : (
           <Players handleButtonClick={handleButtonClick} />
-        )}
+        )} */}
       </ModalComponent>
       <FormRange
         title="Скорость:"
@@ -126,7 +132,7 @@ const ParametersView = ({
       <ModalComponent
         showModal={showLaws}
         handleCloseModalClick={handleCloseModalLawsClick}
-        handleChooseModalClick={handleChooseModalSignsClick}
+        handleChooseModalClick={handleCloseModalLawsClick}
         title="Законы"
       >
         {' '}
@@ -137,7 +143,10 @@ const ParametersView = ({
       </ModalComponent>
       <Form.Group as={Row} controlId="formPlaintextButton" className="mb-1">
         <Form.Label column={true} sm="7">
-          <Dropdown />
+          <Dropdown
+            additionalParameters={additionalParameters}
+            setAdditionalParameters={setAdditionalParameters}
+          />
         </Form.Label>
         <Col
           sm="5"

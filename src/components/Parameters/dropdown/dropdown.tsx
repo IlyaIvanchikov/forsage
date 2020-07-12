@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { useTransition, animated } from 'react-spring';
 import classes from './dropdown.module.scss';
 import { UsuallyContext } from './../../../container/main/main-context';
+import { AdditionalParametersProps } from '../../../ts/store';
 
 const menuItems: string[] = [
   'Озвучивать примеры',
@@ -15,14 +16,46 @@ interface Animation {
   props: any;
 }
 
-const Dropdown: React.FC = () => {
+const Dropdown = ({
+  additionalParameters,
+  setAdditionalParameters,
+}: AdditionalParametersProps): JSX.Element => {
   const { countPlayers } = useContext(UsuallyContext);
-  const [showDropdown, setShowDropdow] = useState<boolean>(false);
-
+  const [showDropdown, setShowDropdown] = useState<boolean>(false);
+  const valueObj: boolean[] = Object.values(additionalParameters);
   const handleBtnClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
-    setShowDropdow(!showDropdown);
+    setShowDropdown(!showDropdown);
   };
+
+  const handleChangeClick = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    id: number
+  ): void => {
+    switch (id) {
+      case 0:
+        setAdditionalParameters({
+          ...additionalParameters,
+          soundPlay: !additionalParameters.soundPlay,
+        });
+        break;
+      case 1:
+        setAdditionalParameters({
+          ...additionalParameters,
+          turboPlay: !additionalParameters.turboPlay,
+        });
+        break;
+      case 2:
+        setAdditionalParameters({
+          ...additionalParameters,
+          superTurboPlay: !additionalParameters.superTurboPlay,
+        });
+        break;
+      default:
+        alert('Ошибочка');
+    }
+  };
+
   const transitions = useTransition(showDropdown, null, {
     from: { opacity: 0, transform: 'translateX(-40%)' },
     enter: { opacity: 1, transform: 'translateX(60%)' },
@@ -56,7 +89,7 @@ const Dropdown: React.FC = () => {
                   className={classes.additionalSettings}
                   key={key}
                 >
-                  {menuItems.map((menuItem: string) => (
+                  {menuItems.map((menuItem: string, id: number) => (
                     <label
                       className={classes.additionalSettings__label}
                       key={menuItem}
@@ -65,6 +98,10 @@ const Dropdown: React.FC = () => {
                         type="checkbox"
                         className={classes.additionalSettings__checkbox}
                         key={menuItem}
+                        onChange={(
+                          event: React.ChangeEvent<HTMLInputElement>
+                        ) => handleChangeClick(event, id)}
+                        checked={valueObj[id]}
                       />
                       <span className={classes.additionalSettings__span} />
                       <span>{menuItem}</span>
