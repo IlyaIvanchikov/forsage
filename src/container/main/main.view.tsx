@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import classes from './main.module.scss';
 import BlockParameters from './blockParameters/blockParameters';
 import BlockPlay from './blockPlay/blockPlay';
+import { ParametersContext } from './main-context';
 
 type showBlockPlay = {
   show: boolean;
@@ -9,7 +10,8 @@ type showBlockPlay = {
 };
 
 const MainView = ({ show, countPlayers }: showBlockPlay) => {
-  console.log(countPlayers);
+  const { state } = useContext(ParametersContext);
+  console.log(countPlayers, state);
   return (
     <main className={classes.main}>
       {show && <BlockParameters />}

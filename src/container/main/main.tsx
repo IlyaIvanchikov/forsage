@@ -20,11 +20,26 @@ const Main: React.FC = () => {
     nameButton: '1 игрок',
   });
 
-  const handleShowSubmit = ({ event, speed }: HandleParamsForm) => {
-    console.log(speed, setShow);
+  const handleShowSubmit = ({
+    event,
+    speed,
+    digits,
+    rounds,
+    signs,
+    laws,
+    additionalParameters,
+  }: HandleParamsForm) => {
+    console.log(
+      speed,
+      digits,
+      rounds,
+      signs,
+      laws,
+      additionalParameters
+    );
     event.preventDefault();
 
-    // setShow(false);
+    setShow(false);
   };
 
   const handleCountPlayersClick = (id: number, item: string): void => {
