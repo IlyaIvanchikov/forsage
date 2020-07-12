@@ -4,8 +4,12 @@ import BlockResults from './blockResults/blockResults';
 import { Col } from 'react-bootstrap';
 import BlockGame from './blockGame/blockGame';
 
-const BlockOnePlayer: React.FC = () => {
-  // const [block, setBlock] = useState('');
+type blockPlayOpt = {
+  numOfPlayer: number;
+};
+
+const BlockOnePlayer = ({ numOfPlayer }: blockPlayOpt) => {
+  console.log('from blockPlayerOne', numOfPlayer);
 
   function getRandomIntInclusive(min: number, max: number): number {
     min = Math.ceil(min);
