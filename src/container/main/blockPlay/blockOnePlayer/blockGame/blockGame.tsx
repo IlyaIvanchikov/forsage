@@ -4,17 +4,22 @@ import classes from './blockgame.module.scss';
 import { Row } from 'react-bootstrap';
 import CoinsIcon from '../../../../../resources/images/Coins.png';
 import ArrowIcon from '../../../../../resources/images/Arrow.png';
+import { makeExercises } from '../../../../../ts/exerciseLogic/makeExercises';
 
 type blockGameOpt = {
   numOfPlayer: number;
 };
 
 const BlockGame = ({ numOfPlayer }: blockGameOpt) => {
+  const exercises: any = makeExercises(3, 3, {
+    five: ['Любой'],
+    ten: ['Любой'],
+  });
   return (
     <>
       <BlockPlayerHeader numOfPlayer={numOfPlayer} />
       <Row className={classes.gamefieldDisplayNumbers}>
-        <p>-70000</p>
+        <p>{exercises.map((el: any) => el)}</p>
       </Row>
       <Row className={classes.gameCounter}>2/10</Row>
       <Row className={classes.blockAnswer}>

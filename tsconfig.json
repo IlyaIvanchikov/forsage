@@ -7,11 +7,9 @@
       "es6",
       "dom"
     ],
-    "plugins": [
-      {
-        "name": "typescript-tslint-plugin"
-      }
-    ],
+    "plugins": [{
+      "name": "typescript-tslint-plugin"
+    }],
     "sourceMap": true,
     "allowJs": true,
     "jsx": "preserve",
