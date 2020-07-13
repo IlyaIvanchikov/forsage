@@ -11,14 +11,18 @@ type blockGameOpt = {
   numOfPlayer: number;
   exercises: any;
   round: number;
+  timing: number;
   setRound: any;
+  numOfRounds: number;
 };
 
 const BlockGame = ({
   numOfPlayer,
   exercises,
   round,
+  timing,
   setRound,
+  numOfRounds,
 }: blockGameOpt) => {
   const [term, setTerm] = useState(exercises[0]);
 
@@ -28,13 +32,13 @@ const BlockGame = ({
     if (index < exercises.length - 1 && index !== -1) {
       setTimeout(() => {
         setTerm(exercises[index + 1]);
-      }, 2000);
+      }, timing);
     } else {
       setTimeout(() => {
         setTerm('Ваш ответ');
-      }, 2000);
+      }, timing);
     }
-  }, [exercises, term]);
+  }, [exercises, term, timing]);
 
   return (
     <>
@@ -42,9 +46,7 @@ const BlockGame = ({
       <Row className={classes.gamefieldDisplayNumbers}>
         <BlockTerm term={term} />
       </Row>
-      <Row
-        className={classes.gameCounter}
-      >{`${round}/${exercises.length}`}</Row>
+      <Row className={classes.gameCounter}>{`${round}/${numOfRounds}`}</Row>
       <Row className={classes.blockAnswer}>
         <input placeholder="Ответ:" type="number" />
         <button onClick={() => setRound(round + 1)}>

@@ -5,9 +5,21 @@ import { Row } from 'react-bootstrap';
 
 type blockPlayOpt = {
   countPlayers: number;
+  rounds: number;
+  terms: number;
+  speed: number;
+  digits: number;
+  orders: any;
 };
 
-const BlockPlay = ({ countPlayers }: blockPlayOpt) => {
+const BlockPlay = ({
+  countPlayers,
+  rounds,
+  terms,
+  speed,
+  digits,
+  orders,
+}: blockPlayOpt) => {
   const players = [];
   for (let i = 1; i <= countPlayers; i++) {
     players.push(i);
@@ -16,7 +28,15 @@ const BlockPlay = ({ countPlayers }: blockPlayOpt) => {
     <>
       <Row className={classes.gameField}>
         {players.map((el) => (
-          <BlockOnePlayer key={el} numOfRounds={6} numOfPlayer={el} />
+          <BlockOnePlayer
+            key={el}
+            digits={digits}
+            speed={speed}
+            terms={terms}
+            numOfRounds={rounds}
+            numOfPlayer={el}
+            orders={orders}
+          />
         ))}
       </Row>
     </>
