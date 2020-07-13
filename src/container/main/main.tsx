@@ -7,6 +7,8 @@ import {
 } from './main-context';
 import MainView from './main.view';
 
+import { HandleParamsForm } from '../../ts/store';
+
 const Main: React.FC = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [show, setShow] = useState<boolean>(true);
@@ -18,8 +20,25 @@ const Main: React.FC = () => {
     nameButton: '1 игрок',
   });
 
-  const handleShowSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
+  const handleShowSubmit = ({
+    event,
+    speed,
+    digits,
+    rounds,
+    signs,
+    laws,
+    additionalParameters,
+  }: HandleParamsForm) => {
+    console.log(
+      speed,
+      digits,
+      rounds,
+      signs,
+      laws,
+      additionalParameters
+    );
     event.preventDefault();
+
     setShow(false);
   };
 

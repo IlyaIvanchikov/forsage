@@ -38,8 +38,11 @@ interface EventHandlerProps
 const ParametersView = ({
   additionalParameters,
   setAdditionalParameters,
-  valueModalSelect,
+  laws,
   setValueModalSelect,
+  speed,
+  digits,
+  rounds,
   valueModalSigns,
   handleButtonClick,
   handleSubmit,
@@ -53,9 +56,6 @@ const ParametersView = ({
   handleCloseModalSignsClick,
   handleModalLawsClick,
   handleCloseModalLawsClick,
-  valueRangeSpeed,
-  valueRangeDigits,
-  valueRangeRounds,
   setValueRangeDigits,
   setValueRangeRounds,
   setValueRangeSpeed,
@@ -64,8 +64,14 @@ const ParametersView = ({
   handleChooseModalPlayersClick,
   countPlayers,
 }: EventHandlerProps) => {
+  const signs = valueModalSigns.signs;
   return (
-    <Form className={classes.form} onSubmit={handleSubmit}>
+    <Form
+      className={classes.form}
+      onSubmit={(event: React.FormEvent<HTMLFormElement>) =>
+        handleSubmit({ event, speed, digits, rounds, signs, laws, additionalParameters })
+      }
+    >
       <h2 className="text-center">Выберите параметры:</h2>
       <FormButton
         title="Количество игроков:"
@@ -91,7 +97,7 @@ const ParametersView = ({
         min={0.3}
         max={5}
         step={0.1}
-        currentParametersRange={valueRangeSpeed}
+        currentParametersRange={speed}
         setValueRange={setValueRangeSpeed}
       />
       <FormButton
@@ -113,7 +119,7 @@ const ParametersView = ({
         min={1}
         max={40}
         step={1}
-        currentParametersRange={valueRangeRounds}
+        currentParametersRange={rounds}
         setValueRange={setValueRangeRounds}
       />
       <FormRange
@@ -121,7 +127,7 @@ const ParametersView = ({
         min={2}
         max={20}
         step={1}
-        currentParametersRange={valueRangeDigits}
+        currentParametersRange={digits}
         setValueRange={setValueRangeDigits}
       />
       <FormButton
@@ -136,10 +142,7 @@ const ParametersView = ({
         title="Законы"
       >
         {' '}
-        <Laws
-          valueModalSelect={valueModalSelect}
-          setValueModalSelect={setValueModalSelect}
-        />
+        <Laws laws={laws} setValueModalSelect={setValueModalSelect} />
       </ModalComponent>
       <Form.Group as={Row} controlId="formPlaintextButton" className="mb-1">
         <Form.Label column={true} sm="7">

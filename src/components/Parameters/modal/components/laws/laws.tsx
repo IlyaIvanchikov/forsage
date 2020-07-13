@@ -93,45 +93,45 @@ const customStyles = {
 
 export const Laws = ({
   setValueModalSelect,
-  valueModalSelect,
+  laws,
 }: ModalSelect): JSX.Element => {
   const handleChangeFive = (
     value: ValueType<OptionTypeBase>,
     actionMeta: ActionMeta<OptionTypeBase>
   ): void => {
     if (actionMeta.action === 'select-option') {
-      if (valueModalSelect.five[0] === 'Любой') {
+      if (laws.five[0] === 'Любой') {
         setValueModalSelect({
-          ...valueModalSelect,
+          ...laws,
           five: [actionMeta.option?.value],
         });
       } else if (
-        valueModalSelect.five[0] !== 'Любой' &&
+        laws.five[0] !== 'Любой' &&
         actionMeta.option?.value === 'Любой'
       ) {
         setValueModalSelect({
-          ...valueModalSelect,
+          ...laws,
           five: [actionMeta.option?.value],
         });
       } else if (
-        valueModalSelect.five[0] !== 'Любой' &&
+        laws.five[0] !== 'Любой' &&
         actionMeta.option?.value !== 'Любой'
       ) {
         setValueModalSelect({
-          ...valueModalSelect,
-          five: [...valueModalSelect.five, actionMeta.option?.value],
+          ...laws,
+          five: [...laws.five, actionMeta.option?.value],
         });
       }
     } else if (actionMeta.action === 'remove-value') {
       setValueModalSelect({
-        ...valueModalSelect,
-        five: valueModalSelect.five.filter((item: string) => {
+        ...laws,
+        five: laws.five.filter((item: string) => {
           return item !== actionMeta.removedValue?.value;
         }),
       });
     } else if (actionMeta.action === 'clear') {
       setValueModalSelect({
-        ...valueModalSelect,
+        ...laws,
         five: [],
       });
     }
@@ -141,38 +141,38 @@ export const Laws = ({
     actionMeta: ActionMeta<OptionTypeBase>
   ): void => {
     if (actionMeta.action === 'select-option') {
-      if (valueModalSelect.ten[0] === 'Любой') {
+      if (laws.ten[0] === 'Любой') {
         setValueModalSelect({
-          ...valueModalSelect,
+          ...laws,
           ten: [actionMeta.option?.value],
         });
       } else if (
-        valueModalSelect.ten[0] !== 'Любой' &&
+        laws.ten[0] !== 'Любой' &&
         actionMeta.option?.value === 'Любой'
       ) {
         setValueModalSelect({
-          ...valueModalSelect,
+          ...laws,
           ten: [actionMeta.option?.value],
         });
       } else if (
-        valueModalSelect.ten[0] !== 'Любой' &&
+        laws.ten[0] !== 'Любой' &&
         actionMeta.option?.value !== 'Любой'
       ) {
         setValueModalSelect({
-          ...valueModalSelect,
-          ten: [...valueModalSelect.ten, actionMeta.option?.value],
+          ...laws,
+          ten: [...laws.ten, actionMeta.option?.value],
         });
       }
     } else if (actionMeta.action === 'remove-value') {
       setValueModalSelect({
-        ...valueModalSelect,
-        ten: valueModalSelect.ten.filter((item: string) => {
+        ...laws,
+        ten: laws.ten.filter((item: string) => {
           return item !== actionMeta.removedValue?.value;
         }),
       });
     } else if (actionMeta.action === 'clear') {
       setValueModalSelect({
-        ...valueModalSelect,
+        ...laws,
         ten: [],
       });
     }
@@ -192,7 +192,7 @@ export const Laws = ({
       <Select
         closeMenuOnSelect={false}
         components={animatedComponents}
-        value={currentValue(valueModalSelect.five)}
+        value={currentValue(laws.five)}
         onChange={handleChangeFive}
         isMulti={true}
         options={LawsSelectFive.items}
@@ -204,7 +204,7 @@ export const Laws = ({
       <Select
         closeMenuOnSelect={false}
         components={animatedComponents}
-        value={currentValue(valueModalSelect.ten)}
+        value={currentValue(laws.ten)}
         isMulti={true}
         onChange={handleChangeTen}
         options={LawsSelectTen.items}

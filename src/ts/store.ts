@@ -13,16 +13,37 @@ export interface RangeParameters extends TitleParameters {
   setValueRange: React.Dispatch<React.SetStateAction<number>>;
 }
 
-export interface SubmitForm {
-  handleSubmit?: (e: React.FormEvent<HTMLFormElement>) => void;
+export interface SubmitForm extends HandleSubmitForm {
   playerParameters: StateTypeItem;
 }
+export interface HandleParamsForm {
+  event: React.FormEvent<HTMLFormElement>;
+  speed: number;
+  digits: number;
+  rounds: number;
+  signs: number;
+  laws: {
+    five: string[];
+    ten: string[];
+  };
+  additionalParameters: AdditionalParameters;
+}
+export interface HandleSubmitForm {
+  handleSubmit: ({
+    event,
+    speed,
+    digits,
+    rounds,
+    signs,
+    laws,
+    additionalParameters,
+  }: HandleParamsForm) => void;
+}
 
-export interface SubmitFormView extends ModalSelect {
-  handleSubmit?: (e: React.FormEvent<HTMLFormElement>) => void;
-  valueRangeSpeed: number;
-  valueRangeDigits: number;
-  valueRangeRounds: number;
+export interface SubmitFormView extends ModalSelect, HandleSubmitForm {
+  speed: number;
+  digits: number;
+  rounds: number;
   valueModalSigns: {
     signs: number;
     nameButton: string;
@@ -38,7 +59,19 @@ export interface SubmitFormView extends ModalSelect {
 }
 
 export interface UsuallyProps {
-  handleShowSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
+  // handleShowSubmit: (
+  //   event: React.FormEvent<HTMLFormElement>,
+  //   speed: number
+  // ) => void;
+  handleShowSubmit: ({
+    event,
+    speed,
+    digits,
+    rounds,
+    signs,
+    laws,
+    additionalParameters,
+  }: HandleParamsForm) => void;
   handleCountPlayersClick: (id: number, item: string) => void;
   countPlayers: {
     countPlayers: number;
@@ -52,7 +85,10 @@ export interface ButtonID {
 
 export interface ModalSelect {
   setValueModalSelect: React.Dispatch<React.SetStateAction<any>>;
-  valueModalSelect: any;
+  laws: {
+    five: string[];
+    ten: string[];
+  };
 }
 
 export interface AdditionalParameters {
