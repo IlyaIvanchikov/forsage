@@ -26,6 +26,7 @@
 .blockAnswer {
   padding: 10px;
   justify-content: center;
+  align-items: center;
   margin: 0;
 
   input {
@@ -41,7 +42,7 @@
 
   button {
     width: 73px;
-    border: none;
+    padding: 2px;
     background: none;
     border: $blockBorderSize solid $clrBackground;
     border-left: none;
@@ -62,6 +63,10 @@
   input:focus {
     outline: none;
   }
+}
+form {
+  display: flex;
+  align-items: center;
 }
 
 .coins {

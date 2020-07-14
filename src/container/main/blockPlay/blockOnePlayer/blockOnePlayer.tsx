@@ -1,5 +1,4 @@
 import React from 'react';
-import { useState } from 'react';
 import classes from './blockoneplayer.module.scss';
 import { Col } from 'react-bootstrap';
 import BlockGame from './blockGame/blockGame';
@@ -23,29 +22,24 @@ const BlockOnePlayer = ({
   terms,
   orders,
 }: blockPlayOpt) => {
-  const exercises: any[] = [];
-
-  const [round, setRound] = useState(1);
-
   //options ==================================================================
   numOfRounds = 7;
-  digits = 3;
+  digits = 1;
   terms = 5;
   speed = 1000;
-  orders = testOrders.without10;
+  orders = testOrders.any;
   //options ==================================================================
+  const exercises: any[] = [];
 
   for (let i = 0; i < numOfRounds; i++) {
     exercises.push(makeExercises(digits, terms, orders));
   }
-  console.log(exercises[0]);
 
+  console.log(exercises);
   return (
     <Col className={classes.onePlayerField}>
       <BlockGame
-        exercises={exercises[round]}
-        setRound={setRound}
-        round={round}
+        exercises={exercises}
         numOfPlayer={numOfPlayer}
         numOfRounds={numOfRounds}
         timing={speed}

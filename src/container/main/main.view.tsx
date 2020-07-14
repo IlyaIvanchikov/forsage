@@ -11,7 +11,7 @@ type showBlockPlay = {
 
 const MainView = ({ show, countPlayers }: showBlockPlay) => {
   const { state } = useContext(ParametersContext);
-  console.log(countPlayers, state.playerParameters[0]);
+  // console.log(countPlayers, state.playerParameters[0]);
   const { signs, speed, rounds, digits, laws } = state.playerParameters[0];
   return (
     <main className={classes.main}>

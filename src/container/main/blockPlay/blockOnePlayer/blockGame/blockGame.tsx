@@ -10,48 +10,67 @@ import ArrowIcon from '../../../../../resources/images/Arrow.png';
 type blockGameOpt = {
   numOfPlayer: number;
   exercises: any;
-  round: number;
   timing: number;
-  setRound: any;
   numOfRounds: number;
 };
 
-const BlockGame = ({
-  numOfPlayer,
-  exercises,
-  round,
-  timing,
-  setRound,
-  numOfRounds,
-}: blockGameOpt) => {
-  const [term, setTerm] = useState(exercises[0]);
+const BlockGame = ({ numOfPlayer, exercises, timing }: blockGameOpt) => {
+  const [round, setRound] = useState(1);
+  const [answerText, setAnswerText] = useState('');
+  const [term, setTerm] = useState([0, exercises[0][0]]);
+  const numOfRounds = exercises.length;
+  const numOfTerms = exercises[0].length;
+
+  const handleTextField = (event: any) => {
+    setAnswerText(event.target.value);
+  };
 
   useEffect(() => {
-    const index = exercises.indexOf(term);
-    console.log(index);
-    if (index < exercises.length - 1 && index !== -1) {
+    if (term[0] < numOfTerms - 1) {
       setTimeout(() => {
-        setTerm(exercises[index + 1]);
+        setTerm([term[0] + 1, exercises[round - 1][term[0] + 1]]);
       }, timing);
-    } else {
-      setTimeout(() => {
-        setTerm('Ваш ответ');
-      }, timing);
+    } else if (term[0] !== 100) {
+      setTerm([100, 'Ваш ответ']);
     }
-  }, [exercises, term, timing]);
+  }, [exercises, round, term, timing, numOfTerms]);
+
+  const handleSendAnswer = (event: any) => {
+    event.preventDefault();
+    let resultText = '';
+    +answerText === +exercises[round - 1][numOfTerms - 1]
+    ? (resultText = 'Верно!')
+    : (resultText = 'Ошибка!');
+    if (round < numOfRounds) {
+      alert(resultText + ' Начинаем следующий раунд');
+      setRound(round + 1);
+      setTerm([0, exercises[round][0]]);
+    } else {
+      alert(resultText + ' Ваши результаты');
+    }
+    setAnswerText('');
+  };
 
   return (
     <>
       <BlockPlayerHeader numOfPlayer={numOfPlayer} />
       <Row className={classes.gamefieldDisplayNumbers}>
-        <BlockTerm term={term} />
+        <BlockTerm term={term[1]} />
       </Row>
       <Row className={classes.gameCounter}>{`${round}/${numOfRounds}`}</Row>
       <Row className={classes.blockAnswer}>
-        <input placeholder="Ответ:" type="number" />
-        <button onClick={() => setRound(round + 1)}>
-          <img src={ArrowIcon} alt="arrow" />
-        </button>
+        <form id="answerForm" onSubmit={handleSendAnswer}>
+          <input
+            onChange={handleTextField}
+            required={true}
+            value={answerText}
+            placeholder="Ответ:"
+            type="number"
+          />
+          <button type="submit">
+            <img src={ArrowIcon} alt="arrow" />
+          </button>
+        </form>
       </Row>
       <Row className={classes.coins}>
         <span>5</span>
