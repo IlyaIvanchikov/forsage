@@ -46,7 +46,7 @@ const BlockGame = ({ numOfPlayer, exercises, timing }: blockGameOpt) => {
       setRound(round + 1);
       setTerm([0, exercises[round][0]]);
     } else {
-      alert(resultText + ' Ваши результаты');
+      alert(resultText + ' Игра окончена. Ваши результаты');
     }
     setAnswerText('');
   };
