@@ -29,16 +29,19 @@ const Main: React.FC = () => {
     laws,
     additionalParameters,
   }: HandleParamsForm) => {
-    console.log(
-      speed,
-      digits,
-      rounds,
-      signs,
-      laws,
-      additionalParameters
-    );
     event.preventDefault();
-
+    dispatch({
+      type: 'CREATE_PARAMETERS',
+      playerParameters: {
+        speed,
+        digits,
+        rounds,
+        signs,
+        laws,
+        additional: additionalParameters,
+      },
+      players: countPlayers.countPlayers,
+    });
     setShow(false);
   };
 

@@ -3,7 +3,7 @@ import ParametersView from './parameters.view';
 import { SubmitForm, UsuallyProps, AdditionalParameters } from '../../ts/store';
 import { StateTypeItem } from '../../container/main/state/reducer';
 import {
-  DispatchParametersContext,
+  // DispatchParametersContext,
   UsuallyContext,
 } from '../../container/main/main-context';
 
@@ -21,7 +21,7 @@ const Parameters = ({ handleSubmit, playerParameters }: SubmitForm) => {
   const [showSigns, setShowSigns] = useState<boolean>(false);
   const [showLaws, setShowLaws] = useState<boolean>(false);
 
-  const { dispatch } = useContext(DispatchParametersContext);
+  // const { dispatch } = useContext(DispatchParametersContext);
   const { countPlayers, handleCountPlayersClick }: UsuallyProps = useContext(
     UsuallyContext
   );
@@ -122,7 +122,7 @@ const Parameters = ({ handleSubmit, playerParameters }: SubmitForm) => {
       setValueRangeRounds={setValueRangeRounds}
       setValueRangeDigits={setValueRangeDigits}
       setValueRangeSpeed={setValueRangeSpeed}
-      dispatch={dispatch}
+      // dispatch={dispatch}
       handleSubmit={handleSubmit}
       showPlayers={showPlayers}
       showSigns={showSigns}

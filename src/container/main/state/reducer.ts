@@ -19,7 +19,9 @@ export interface StateTypeItem {
 }
 
 export type ActionType = {
-  type: 'CHANGE_PARAMETERS' | 'TEST';
+  type: 'CREATE_PARAMETERS';
+  playerParameters: StateTypeItem;
+  players: number;
 };
 
 export const initialState: StateType = {
@@ -42,28 +44,15 @@ export const initialState: StateType = {
   ],
 };
 
-// function display(action: ActionType) {
-//   if (action.type === 'CHANGE_PARAMETERS') {
-//     console.log('Hello');
-//   }
-// }
-
 export const reducer = (state: StateType, action: ActionType): StateType => {
   switch (action.type) {
-    case 'CHANGE_PARAMETERS': {
-      const speed = 2;
-      const playerParameters = state.playerParameters.map(
-        (playerParameters) => {
-          if (playerParameters.speed === speed) {
-            return { ...playerParameters, speed: 4 };
-          }
-          return { ...playerParameters, speed: 4 };
-        }
-      );
-      return { playerParameters };
+    case 'CREATE_PARAMETERS': {
+      const newPlayers: StateTypeItem[] = Array(action.players - 1);
+      newPlayers.fill(state.playerParameters[0]);
+      state.playerParameters[0] = action.playerParameters;
+      state.playerParameters = state.playerParameters.concat(newPlayers);
+      return state;
     }
-    // case 'TEST':
-    //   return ...state;
     default:
       throw new Error();
   }

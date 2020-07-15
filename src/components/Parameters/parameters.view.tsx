@@ -59,7 +59,6 @@ const ParametersView = ({
   setValueRangeDigits,
   setValueRangeRounds,
   setValueRangeSpeed,
-  dispatch,
   handleChooseModalSignsClick,
   handleChooseModalPlayersClick,
   countPlayers,
@@ -166,9 +165,6 @@ const ParametersView = ({
             }}
           >
             Начать
-          </Button>
-          <Button onClick={() => dispatch!({ type: 'CHANGE_PARAMETERS' })}>
-            Tesn
           </Button>
         </Col>
       </Form.Group>
