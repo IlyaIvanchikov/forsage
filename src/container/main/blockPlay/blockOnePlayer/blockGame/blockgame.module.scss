@@ -6,11 +6,6 @@
   justify-content: center;
   color: #5bc2dc;
 
-  form {
-    display: flex;
-    align-items: center;
-  }
-
   p {
     font-size: 4rem;
     margin: 0;
@@ -34,6 +29,11 @@
   align-items: center;
   margin: 0;
 
+  form {
+    display: flex;
+    align-items: center;
+  }
+  
   input {
     width: 200px;
     height: 5vh;
