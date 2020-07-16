@@ -7,7 +7,6 @@ interface EventHandlerProps {
   handleCloseModalClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
   handleChooseModalClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
   title: string;
-  // handleCloseModalClick: any;
   children: React.ReactNode;
 }
 
@@ -25,7 +24,6 @@ const ModalComponent = ({
         onHide={handleCloseModalClick}
         centered={true}
         className={classes.modal}
-        // animation={false}
       >
         <Modal.Header
           className="justify-content-center"

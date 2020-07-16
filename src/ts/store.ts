@@ -1,4 +1,4 @@
-import { StateTypeItem, ActionType } from './../container/main/state/reducer';
+import { StateTypeItem } from './../container/main/state/reducer';
 export interface TitleParameters {
   title: string;
   handleModalClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
@@ -55,7 +55,6 @@ export interface SubmitFormView extends ModalSelect, HandleSubmitForm {
   setValueRangeDigits: React.Dispatch<React.SetStateAction<number>>;
   setValueRangeRounds: React.Dispatch<React.SetStateAction<number>>;
   setValueRangeSpeed: React.Dispatch<React.SetStateAction<number>>;
-  dispatch: React.Dispatch<ActionType>;
 }
 
 export interface UsuallyProps {

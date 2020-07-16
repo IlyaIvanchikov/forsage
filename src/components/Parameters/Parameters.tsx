@@ -2,10 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import ParametersView from './parameters.view';
 import { SubmitForm, UsuallyProps, AdditionalParameters } from '../../ts/store';
 import { StateTypeItem } from '../../container/main/state/reducer';
-import {
-  DispatchParametersContext,
-  UsuallyContext,
-} from '../../container/main/main-context';
+import { UsuallyContext } from '../../container/main/main-context';
 
 const Parameters = ({ handleSubmit, playerParameters }: SubmitForm) => {
   const {
@@ -16,12 +13,10 @@ const Parameters = ({ handleSubmit, playerParameters }: SubmitForm) => {
     laws,
     additional,
   }: StateTypeItem = playerParameters;
-  // const [isLoading, setLoading] = useState<boolean>(false);
   const [showPlayers, setShowPlayers] = useState<boolean>(false);
   const [showSigns, setShowSigns] = useState<boolean>(false);
   const [showLaws, setShowLaws] = useState<boolean>(false);
 
-  const { dispatch } = useContext(DispatchParametersContext);
   const { countPlayers, handleCountPlayersClick }: UsuallyProps = useContext(
     UsuallyContext
   );
@@ -96,18 +91,6 @@ const Parameters = ({ handleSubmit, playerParameters }: SubmitForm) => {
   const handleModalLawsClick = () => setShowLaws(true);
   const handleCloseModalLawsClick = () => setShowLaws(false);
 
-  // const loaderTime = () => {
-  //   return new Promise<string>((resolve: any) => setTimeout(resolve, 2000));
-  // };
-
-  // useEffect(() => {
-  //   if (isLoading) {
-  //     loaderTime().then(() => {
-  //       setLoading(false);
-  //     });
-  //   }
-  // }, [isLoading]);
-
   return (
     <ParametersView
       additionalParameters={additionalParameters}
@@ -122,7 +105,6 @@ const Parameters = ({ handleSubmit, playerParameters }: SubmitForm) => {
       setValueRangeRounds={setValueRangeRounds}
       setValueRangeDigits={setValueRangeDigits}
       setValueRangeSpeed={setValueRangeSpeed}
-      dispatch={dispatch}
       handleSubmit={handleSubmit}
       showPlayers={showPlayers}
       showSigns={showSigns}
