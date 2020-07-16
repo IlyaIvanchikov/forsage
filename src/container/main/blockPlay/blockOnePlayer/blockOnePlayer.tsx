@@ -24,10 +24,10 @@ const BlockOnePlayer = ({
 }: blockPlayOpt) => {
   //options ==================================================================
   numOfRounds = 7;
-  digits = 1;
+  digits = 2;
   terms = 5;
-  speed = 1000;
-  orders = testOrders.any;
+  speed = 2000;
+  orders = testOrders.without10;
   //options ==================================================================
   const exercises: any[] = [];
 
@@ -41,7 +41,6 @@ const BlockOnePlayer = ({
       <BlockGame
         exercises={exercises}
         numOfPlayer={numOfPlayer}
-        numOfRounds={numOfRounds}
         timing={speed}
       />
     </Col>

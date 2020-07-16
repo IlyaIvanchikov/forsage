@@ -11,10 +11,10 @@ type blockGameOpt = {
   numOfPlayer: number;
   exercises: any;
   timing: number;
-  numOfRounds: number;
 };
 
 const BlockGame = ({ numOfPlayer, exercises, timing }: blockGameOpt) => {
+  timing += 200;
   const [round, setRound] = useState(1);
   const [answerText, setAnswerText] = useState('');
   const [term, setTerm] = useState([0, exercises[0][0]]);
@@ -39,8 +39,8 @@ const BlockGame = ({ numOfPlayer, exercises, timing }: blockGameOpt) => {
     event.preventDefault();
     let resultText = '';
     +answerText === +exercises[round - 1][numOfTerms - 1]
-    ? (resultText = 'Верно!')
-    : (resultText = 'Ошибка!');
+      ? (resultText = 'Верно!')
+      : (resultText = 'Ошибка!');
     if (round < numOfRounds) {
       alert(resultText + ' Начинаем следующий раунд');
       setRound(round + 1);
@@ -55,7 +55,7 @@ const BlockGame = ({ numOfPlayer, exercises, timing }: blockGameOpt) => {
     <>
       <BlockPlayerHeader numOfPlayer={numOfPlayer} />
       <Row className={classes.gamefieldDisplayNumbers}>
-        <BlockTerm term={term[1]} />
+        <BlockTerm timing={timing} numOfTerms={numOfTerms - 1} term={term} />
       </Row>
       <Row className={classes.gameCounter}>{`${round}/${numOfRounds}`}</Row>
       <Row className={classes.blockAnswer}>
