@@ -26,8 +26,8 @@ const BlockOnePlayer = ({
   numOfRounds = 7;
   digits = 2;
   terms = 5;
-  speed = 2000;
-  orders = testOrders.without10;
+  speed = 3000;
+  orders = testOrders.any;
   //options ==================================================================
   const exercises: any[] = [];
 

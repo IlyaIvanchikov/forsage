@@ -31,7 +31,7 @@ const BlockGame = ({ numOfPlayer, exercises, timing }: blockGameOpt) => {
         setTerm([term[0] + 1, exercises[round - 1][term[0] + 1]]);
       }, timing);
     } else if (term[0] !== 100) {
-      setTerm([100, 'Ваш ответ']);
+      setTerm([100, '???']);
     }
   }, [exercises, round, term, timing, numOfTerms]);
 

@@ -23,7 +23,7 @@ const BlockTerm = ({ term, numOfTerms, timing }: blockTermOpt) => {
         setStyle({
           opacity: '1',
         });
-      }, timing + 100);
+      }, timing + 50);
     }
   }, [term, numOfTerms, timing]);
 
