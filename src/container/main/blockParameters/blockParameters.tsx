@@ -17,8 +17,6 @@ const BlockParameters: React.FC = () => {
           <Parameters
             handleSubmit={handleShowSubmit}
             playerParameters={state.playerParameters[0]}
-            // state={state}
-            // params={playerParameters}
           />
         </Col>
         <Col lg={3} className="d-none d-lg-block">
