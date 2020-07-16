@@ -1,47 +1,19 @@
-// .loader {
-//   transform: translateZ(1px);
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-// }
-// .loader > div {
-//   display: inline-block;
-//   width: 64px;
-//   height: 64px;
-//   margin: 8px;
-//   border-radius: 50%;
-//   background: #dfc;
-//   animation: lds-circle 2.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
-// }
-// @keyframes lds-circle {
-//   0%,
-//   100% {
-//     animation-timing-function: cubic-bezier(0.5, 0, 1, 0.5);
-//   }
-//   0% {
-//     transform: rotateY(0deg);
-//   }
-//   50% {
-//     transform: rotateY(1800deg);
-//     animation-timing-function: cubic-bezier(0, 0.5, 0.5, 1);
-//   }
-//   100% {
-//     transform: rotateY(3600deg);
-//   }
-// }
 @import '../../styleGuide/variable.scss';
 
 .loader {
   position: relative;
   justify-content: center;
   align-items: center;
+  color: black;
+  font-size: 20px;
+  // margin-right: 15%;
   // transform: translate(-10%, -10%);
   display: flex;
 
   div {
     margin: 0 15px;
-    width: 35px;
-    height: 15px;
+    width: 45px;
+    height: 25px;
     border-radius: 8px;
     background: $clrBackground;
     box-shadow: 0 0 10px 0 #fecdff;
