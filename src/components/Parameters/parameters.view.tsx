@@ -8,7 +8,6 @@ import ModalComponent from './modal/modal';
 import { Players } from './modal/components/players/players';
 import { Signs } from './modal/components/signs/signs';
 import { Laws } from './modal/components/laws/laws';
-// import Loader from '../loader/loader';
 import { ButtonID } from '../../ts/store';
 import { SubmitFormView, AdditionalParametersProps } from '../../ts/store';
 // import { ActionType } from '../../container/main/state/reducer';
@@ -20,7 +19,6 @@ interface EventHandlerProps
   showPlayers: boolean;
   showLaws: boolean;
   showSigns: boolean;
-  // isLoading: boolean;
   handleModalPlayersClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
   handleCloseModalPlayersClick: (
     e: React.MouseEvent<HTMLButtonElement>
@@ -46,7 +44,6 @@ const ParametersView = ({
   valueModalSigns,
   handleButtonClick,
   handleSubmit,
-  // isLoading,
   showPlayers,
   showLaws,
   showSigns,
@@ -68,7 +65,15 @@ const ParametersView = ({
     <Form
       className={classes.form}
       onSubmit={(event: React.FormEvent<HTMLFormElement>) =>
-        handleSubmit({ event, speed, digits, rounds, signs, laws, additionalParameters })
+        handleSubmit({
+          event,
+          speed,
+          digits,
+          rounds,
+          signs,
+          laws,
+          additionalParameters,
+        })
       }
     >
       <h2 className="text-center">Выберите параметры:</h2>
@@ -85,11 +90,6 @@ const ParametersView = ({
       >
         {' '}
         <Players handleButtonClick={handleButtonClick} />
-        {/* {isLoading ? (
-          <Loader />
-        ) : (
-          <Players handleButtonClick={handleButtonClick} />
-        )} */}
       </ModalComponent>
       <FormRange
         title="Скорость:"

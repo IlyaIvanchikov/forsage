@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from 'react';
+import React, { useReducer, useState, useEffect } from 'react';
 import { reducer, initialState } from './state/reducer';
 import {
   ParametersContext,
@@ -12,6 +12,7 @@ import { HandleParamsForm } from '../../ts/store';
 const Main: React.FC = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [show, setShow] = useState<boolean>(true);
+  const [isLoading, setLoading] = useState<boolean>(false);
   const [countPlayers, SetCountPlayers] = useState<{
     countPlayers: number;
     nameButton: string;
@@ -30,6 +31,7 @@ const Main: React.FC = () => {
     additionalParameters,
   }: HandleParamsForm) => {
     event.preventDefault();
+    setLoading(true);
     dispatch({
       type: 'CREATE_PARAMETERS',
       playerParameters: {
@@ -49,13 +51,29 @@ const Main: React.FC = () => {
     SetCountPlayers({ countPlayers: id, nameButton: item });
   };
 
+  const loaderTime = () => {
+    return new Promise<string>((resolve: any) => setTimeout(resolve, 3000));
+  };
+
+  useEffect(() => {
+    if (isLoading) {
+      loaderTime().then(() => {
+        setLoading(false);
+      });
+    }
+  }, [isLoading]);
+
   return (
     <DispatchParametersContext.Provider value={{ dispatch }}>
       <ParametersContext.Provider value={{ state }}>
         <UsuallyContext.Provider
           value={{ handleShowSubmit, handleCountPlayersClick, countPlayers }}
         >
-          <MainView show={show} countPlayers={countPlayers.countPlayers} />
+          <MainView
+            show={show}
+            countPlayers={countPlayers.countPlayers}
+            loading={isLoading}
+          />
         </UsuallyContext.Provider>
       </ParametersContext.Provider>
     </DispatchParametersContext.Provider>
