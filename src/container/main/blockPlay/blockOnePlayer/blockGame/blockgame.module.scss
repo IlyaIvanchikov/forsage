@@ -6,6 +6,11 @@
   justify-content: center;
   color: #5bc2dc;
 
+  form {
+    display: flex;
+    align-items: center;
+  }
+
   p {
     font-size: 4rem;
     margin: 0;
@@ -63,10 +68,6 @@
   input:focus {
     outline: none;
   }
-}
-form {
-  display: flex;
-  align-items: center;
 }
 
 .coins {
