@@ -48,8 +48,8 @@ export const reducer = (state: StateType, action: ActionType): StateType => {
   switch (action.type) {
     case 'CREATE_PARAMETERS': {
       const newPlayers: StateTypeItem[] = Array(action.players - 1);
-      newPlayers.fill(state.playerParameters[0]);
       state.playerParameters[0] = action.playerParameters;
+      newPlayers.fill(state.playerParameters[0]);
       state.playerParameters = state.playerParameters.concat(newPlayers);
       return state;
     }
