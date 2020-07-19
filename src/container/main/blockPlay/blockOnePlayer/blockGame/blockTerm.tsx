@@ -11,6 +11,7 @@ const BlockTerm = ({ term, numOfTerms, timing }: blockTermOpt) => {
   const [style, setStyle] = useState({
     opacity: '1',
   });
+  const delayTermApear = 200;
 
   useEffect(() => {
     if (term[0] < numOfTerms - 1) {
@@ -18,14 +19,14 @@ const BlockTerm = ({ term, numOfTerms, timing }: blockTermOpt) => {
         setStyle({
           opacity: '0',
         });
-      }, timing - 200);
+      }, timing);
       setTimeout(() => {
         setStyle({
           opacity: '1',
         });
-      }, timing + 50);
+      }, timing + delayTermApear);
     }
-  }, [term, numOfTerms, timing]);
+  }, [term, numOfTerms, timing, delayTermApear]);
 
   return <p style={style}>{term[1]}</p>;
 };

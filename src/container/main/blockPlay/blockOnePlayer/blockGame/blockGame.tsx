@@ -16,7 +16,7 @@ type blockGameOpt = {
 
 const BlockGame = ({ numOfPlayer, exercises, timing }: blockGameOpt) => {
   const { state } = useContext(ParametersContext);
-  timing += 200;
+  const delayTermApear = 200;
   const [round, setRound] = useState(1);
   const [disableInput, setDisableInput] = useState(true);
   const [answerText, setAnswerText] = useState('');
@@ -32,7 +32,7 @@ const BlockGame = ({ numOfPlayer, exercises, timing }: blockGameOpt) => {
     if (term[0] < numOfTerms - 1) {
       setTimeout(() => {
         setTerm([term[0] + 1, exercises[round - 1][term[0] + 1]]);
-      }, timing);
+      }, timing + delayTermApear);
     } else if (term[0] !== 100) {
       setTerm([100, '???']);
       setDisableInput(false);
