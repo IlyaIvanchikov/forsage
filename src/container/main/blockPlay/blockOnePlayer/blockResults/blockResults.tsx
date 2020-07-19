@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './blockresults.module.scss';
 import { Col, Row } from 'react-bootstrap';
 import ProgressBar from 'react-bootstrap/ProgressBar';
-import TableOfPlayerResults from './tableOfPlayerResults/tableOfPlayerResults'
+import TableOfPlayerResults from './tableOfPlayerResults/tableOfPlayerResults';
 import CloseIcon from '../../../../../resources/images/Close.png';
 
 const gameData = {
@@ -37,8 +37,11 @@ const gameData = {
   ],
 };
 
-const BlockResults: React.FC = () => {
+type BlockResProps = {
+  showScore: any;
+};
 
+const BlockResults = ({ showScore }: BlockResProps) => {
   function getRandomIntInclusive(min: number, max: number): number {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -57,7 +60,7 @@ const BlockResults: React.FC = () => {
           <h5>Результаты</h5>
         </Col>
         <Col className={classes.right}>
-          <button title="Закрыть" onClick={() => alert('Close')}>
+          <button title="Закрыть" onClick={() => showScore(false)}>
             <img
               className={classes.resultsIcon}
               alt="Закрыть"

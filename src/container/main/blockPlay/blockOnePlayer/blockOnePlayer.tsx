@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import classes from './blockoneplayer.module.scss';
 import { Col } from 'react-bootstrap';
 import BlockGame from './blockGame/blockGame';
+import BlockResults from './blockResults/blockResults';
 import { makeExercises } from '../../../../ts/exerciseLogic/makeExercises';
 // import { testOrders } from '../../../../ts/exerciseLogic/testOptions';
 
@@ -22,6 +23,7 @@ const BlockOnePlayer = ({
   terms,
   orders,
 }: blockPlayOpt) => {
+  const [viewScore, setViewScore] = useState(false);
 
   const exercises: any[] = [];
 
@@ -32,11 +34,16 @@ const BlockOnePlayer = ({
   console.log(exercises);
   return (
     <Col className={classes.onePlayerField}>
-      <BlockGame
-        exercises={exercises}
-        numOfPlayer={numOfPlayer}
-        timing={speed * 1000}
-      />
+      {viewScore ? (
+        <BlockResults showScore={setViewScore} />
+      ) : (
+        <BlockGame
+          exercises={exercises}
+          numOfPlayer={numOfPlayer}
+          timing={speed * 1000}
+          showScore={setViewScore}
+        />
+      )}
     </Col>
   );
 };

@@ -12,9 +12,10 @@ type blockGameOpt = {
   numOfPlayer: number;
   exercises: any;
   timing: number;
+  showScore: any;
 };
 
-const BlockGame = ({ numOfPlayer, exercises, timing }: blockGameOpt) => {
+const BlockGame = ({ numOfPlayer, exercises, timing, showScore }: blockGameOpt) => {
   const { state } = useContext(ParametersContext);
   const delayTermApear = 200;
   const [round, setRound] = useState(1);
@@ -59,7 +60,7 @@ const BlockGame = ({ numOfPlayer, exercises, timing }: blockGameOpt) => {
 
   return (
     <>
-      <BlockPlayerHeader numOfPlayer={numOfPlayer} />
+      <BlockPlayerHeader showScore={showScore} numOfPlayer={numOfPlayer} />
       <Row className={classes.gamefieldDisplayNumbers}>
         <BlockTerm timing={timing} numOfTerms={numOfTerms - 1} term={term} />
       </Row>

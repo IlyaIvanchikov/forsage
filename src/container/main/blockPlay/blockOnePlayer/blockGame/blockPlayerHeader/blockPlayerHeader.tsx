@@ -12,9 +12,10 @@ import { HandleParamsForm } from '../../../../../../ts/store';
 
 type blockGameHeaderOpt = {
   numOfPlayer: number;
+  showScore: any;
 };
 
-const BlockPlayerHeader = ({ numOfPlayer }: blockGameHeaderOpt) => {
+const BlockPlayerHeader = ({ numOfPlayer, showScore }: blockGameHeaderOpt) => {
   const [showMainModal, setShowMainModal] = useState<boolean>(false);
   const { state } = useContext(ParametersContext);
   const { dispatch } = useContext(DispatchParametersContext);
@@ -82,7 +83,7 @@ const BlockPlayerHeader = ({ numOfPlayer }: blockGameHeaderOpt) => {
       </Col>
       <Col className={classes.playerTitle}>Игрок {numOfPlayer}</Col>
       <Col className={classes.iconBlock}>
-        <button title="Статистика" onClick={() => alert('hello')}>
+        <button title="Статистика" onClick={() => showScore(true)}>
           <img
             className={classes.resultsIcon}
             alt="Results"
