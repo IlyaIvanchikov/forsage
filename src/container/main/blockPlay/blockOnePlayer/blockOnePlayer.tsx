@@ -3,7 +3,7 @@ import classes from './blockoneplayer.module.scss';
 import { Col } from 'react-bootstrap';
 import BlockGame from './blockGame/blockGame';
 import { makeExercises } from '../../../../ts/exerciseLogic/makeExercises';
-import { testOrders } from '../../../../ts/exerciseLogic/testOptions';
+// import { testOrders } from '../../../../ts/exerciseLogic/testOptions';
 
 type blockPlayOpt = {
   numOfPlayer: number;
@@ -22,13 +22,7 @@ const BlockOnePlayer = ({
   terms,
   orders,
 }: blockPlayOpt) => {
-  //options ==================================================================
-  numOfRounds = 7;
-  digits = 2;
-  terms = 5;
-  speed = 3000;
-  orders = testOrders.any;
-  //options ==================================================================
+
   const exercises: any[] = [];
 
   for (let i = 0; i < numOfRounds; i++) {
@@ -41,7 +35,7 @@ const BlockOnePlayer = ({
       <BlockGame
         exercises={exercises}
         numOfPlayer={numOfPlayer}
-        timing={speed}
+        timing={speed * 1000}
       />
     </Col>
   );

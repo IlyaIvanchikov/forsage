@@ -13,7 +13,7 @@ const BlockTerm = ({ term, numOfTerms, timing }: blockTermOpt) => {
   });
 
   useEffect(() => {
-    if (term[0] < numOfTerms) {
+    if (term[0] < numOfTerms - 1) {
       setTimeout(() => {
         setStyle({
           opacity: '0',
