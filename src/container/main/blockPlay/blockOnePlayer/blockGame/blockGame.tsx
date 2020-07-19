@@ -13,9 +13,18 @@ type blockGameOpt = {
   exercises: any;
   timing: number;
   showScore: any;
+  setResults: any;
+  results: any;
 };
 
-const BlockGame = ({ numOfPlayer, exercises, timing, showScore }: blockGameOpt) => {
+const BlockGame = ({
+  numOfPlayer,
+  exercises,
+  timing,
+  showScore,
+  setResults,
+  results,
+}: blockGameOpt) => {
   const { state } = useContext(ParametersContext);
   const delayTermApear = 200;
   const [round, setRound] = useState(1);
@@ -41,18 +50,25 @@ const BlockGame = ({ numOfPlayer, exercises, timing, showScore }: blockGameOpt) 
   }, [exercises, round, term, timing, numOfTerms]);
 
   const handleSendAnswer = (event: any) => {
+    const rez = results;
     event.preventDefault();
     console.log(state);
     let resultText = '';
     +answerText === +exercises[round - 1][numOfTerms - 1]
       ? (resultText = 'Верно!')
       : (resultText = 'Ошибка!');
+    if (!rez.roundsScore[round - 1])
+      rez.roundsScore.push({ exercise: exercises[round - 1], answer: 0 });
     if (round < numOfRounds) {
+      rez.roundsScore[round - 1].answer = +answerText;
       alert(resultText + ' Начинаем следующий раунд');
       setRound(round + 1);
       setTerm([0, exercises[round][0]]);
     } else {
+      rez.roundsScore[round - 1].answer = +answerText;
       alert(resultText + ' Игра окончена. Ваши результаты');
+      setResults(rez);
+      showScore(true);
     }
     setAnswerText('');
     setDisableInput(true);

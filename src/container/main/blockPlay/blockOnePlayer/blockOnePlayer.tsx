@@ -24,6 +24,8 @@ const BlockOnePlayer = ({
   orders,
 }: blockPlayOpt) => {
   const [viewScore, setViewScore] = useState(false);
+  const [results, setResults] = useState({numOfRounds, roundsScore: []});
+
 
   const exercises: any[] = [];
 
@@ -35,13 +37,15 @@ const BlockOnePlayer = ({
   return (
     <Col className={classes.onePlayerField}>
       {viewScore ? (
-        <BlockResults showScore={setViewScore} />
+        <BlockResults results={results} showScore={setViewScore} />
       ) : (
         <BlockGame
           exercises={exercises}
           numOfPlayer={numOfPlayer}
           timing={speed * 1000}
           showScore={setViewScore}
+          setResults={setResults}
+          results={results}
         />
       )}
     </Col>
