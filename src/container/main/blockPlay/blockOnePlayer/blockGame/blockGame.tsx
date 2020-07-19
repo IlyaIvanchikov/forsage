@@ -18,6 +18,7 @@ const BlockGame = ({ numOfPlayer, exercises, timing }: blockGameOpt) => {
   const { state } = useContext(ParametersContext);
   timing += 200;
   const [round, setRound] = useState(1);
+  const [disableInput, setDisableInput] = useState(true);
   const [answerText, setAnswerText] = useState('');
   const [term, setTerm] = useState([0, exercises[0][0]]);
   const numOfRounds = exercises.length;
@@ -34,6 +35,7 @@ const BlockGame = ({ numOfPlayer, exercises, timing }: blockGameOpt) => {
       }, timing);
     } else if (term[0] !== 100) {
       setTerm([100, '???']);
+      setDisableInput(false);
     }
   }, [exercises, round, term, timing, numOfTerms]);
 
@@ -52,6 +54,7 @@ const BlockGame = ({ numOfPlayer, exercises, timing }: blockGameOpt) => {
       alert(resultText + ' Игра окончена. Ваши результаты');
     }
     setAnswerText('');
+    setDisableInput(true);
   };
 
   return (
@@ -65,12 +68,13 @@ const BlockGame = ({ numOfPlayer, exercises, timing }: blockGameOpt) => {
         <form id="answerForm" onSubmit={handleSendAnswer}>
           <input
             onChange={handleTextField}
+            disabled={disableInput}
             required={true}
             value={answerText}
             placeholder="Ответ:"
             type="number"
           />
-          <button type="submit">
+          <button type="submit" disabled={disableInput}>
             <img src={ArrowIcon} alt="arrow" />
           </button>
         </form>
