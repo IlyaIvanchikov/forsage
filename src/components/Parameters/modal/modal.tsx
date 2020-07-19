@@ -8,6 +8,7 @@ interface EventHandlerProps {
   handleChooseModalClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
   title: string;
   children: React.ReactNode;
+  modalParams: boolean;
 }
 
 const ModalComponent = ({
@@ -16,6 +17,7 @@ const ModalComponent = ({
   handleChooseModalClick,
   title,
   children,
+  modalParams,
 }: EventHandlerProps) => {
   return (
     <>
@@ -25,29 +27,33 @@ const ModalComponent = ({
         centered={true}
         className={classes.modal}
       >
-        <Modal.Header
-          className="justify-content-center"
-          style={{ borderBottom: 'none' }}
-        >
-          <Modal.Title>{title}</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>{children}</Modal.Body>
-        <Modal.Footer className={classes.footer}>
-          <Button
-            className={classes.footer__btn}
-            onClick={handleChooseModalClick}
+        {modalParams === true && (
+          <Modal.Header
+            className="justify-content-center"
+            style={{ borderBottom: 'none', paddingBottom: '0' }}
           >
-            Выбрать
-          </Button>
-          {title === 'Законы' ? null : (
+            <Modal.Title>{title}</Modal.Title>
+          </Modal.Header>
+        )}
+        <Modal.Body>{children}</Modal.Body>
+        {modalParams === true && (
+          <Modal.Footer className={classes.footer}>
             <Button
               className={classes.footer__btn}
-              onClick={handleCloseModalClick}
+              onClick={handleChooseModalClick}
             >
-              Отмена
+              Выбрать
             </Button>
-          )}
-        </Modal.Footer>
+            {title === 'Законы' ? null : (
+              <Button
+                className={classes.footer__btn}
+                onClick={handleCloseModalClick}
+              >
+                Отмена
+              </Button>
+            )}
+          </Modal.Footer>
+        )}
       </Modal>
     </>
   );

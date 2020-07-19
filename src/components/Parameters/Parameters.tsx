@@ -4,7 +4,11 @@ import { SubmitForm, UsuallyProps, AdditionalParameters } from '../../ts/store';
 import { StateTypeItem } from '../../container/main/state/reducer';
 import { UsuallyContext } from '../../container/main/main-context';
 
-const Parameters = ({ handleSubmit, playerParameters }: SubmitForm) => {
+const Parameters = ({
+  handleSubmit,
+  playerParameters,
+  paramPlayers,
+}: SubmitForm) => {
   const {
     speed,
     digits,
@@ -93,6 +97,7 @@ const Parameters = ({ handleSubmit, playerParameters }: SubmitForm) => {
 
   return (
     <ParametersView
+      paramPlayers={paramPlayers}
       additionalParameters={additionalParameters}
       setAdditionalParameters={setAdditionalParameters}
       laws={valueModalSelect}

@@ -10,6 +10,7 @@ import { Signs } from './modal/components/signs/signs';
 import { Laws } from './modal/components/laws/laws';
 import { ButtonID } from '../../ts/store';
 import { SubmitFormView, AdditionalParametersProps } from '../../ts/store';
+// import { ParametersContext } from '../../container/main/main-context';
 // import { ActionType } from '../../container/main/state/reducer';
 
 interface EventHandlerProps
@@ -19,6 +20,7 @@ interface EventHandlerProps
   showPlayers: boolean;
   showLaws: boolean;
   showSigns: boolean;
+  paramPlayers: boolean;
   handleModalPlayersClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
   handleCloseModalPlayersClick: (
     e: React.MouseEvent<HTMLButtonElement>
@@ -34,6 +36,7 @@ interface EventHandlerProps
 }
 
 const ParametersView = ({
+  paramPlayers,
   additionalParameters,
   setAdditionalParameters,
   laws,
@@ -60,7 +63,10 @@ const ParametersView = ({
   handleChooseModalPlayersClick,
   countPlayers,
 }: EventHandlerProps) => {
+  // const { state } = useContext(ParametersContext);
+  // console.log(state.playerParameters.length);
   const signs = valueModalSigns.signs;
+  // const players = countPlayers.countPlayers;
   return (
     <Form
       className={classes.form}
@@ -77,20 +83,26 @@ const ParametersView = ({
       }
     >
       <h2 className="text-center">Выберите параметры:</h2>
-      <FormButton
-        title="Количество игроков:"
-        handleModalClick={handleModalPlayersClick}
-        nameButton={countPlayers.nameButton}
-      />
-      <ModalComponent
-        showModal={showPlayers}
-        handleCloseModalClick={handleCloseModalPlayersClick}
-        handleChooseModalClick={handleChooseModalPlayersClick}
-        title="Количество игроков"
-      >
-        {' '}
-        <Players handleButtonClick={handleButtonClick} />
-      </ModalComponent>
+      {paramPlayers === true && (
+        <>
+          <FormButton
+            title="Количество игроков:"
+            handleModalClick={handleModalPlayersClick}
+            nameButton={countPlayers.nameButton}
+          />
+          <ModalComponent
+            showModal={showPlayers}
+            handleCloseModalClick={handleCloseModalPlayersClick}
+            handleChooseModalClick={handleChooseModalPlayersClick}
+            title="Количество игроков"
+            modalParams={true}
+          >
+            {' '}
+            <Players handleButtonClick={handleButtonClick} />
+          </ModalComponent>
+        </>
+      )}
+
       <FormRange
         title="Скорость:"
         min={0.3}
@@ -109,6 +121,7 @@ const ParametersView = ({
         handleCloseModalClick={handleCloseModalSignsClick}
         handleChooseModalClick={handleChooseModalSignsClick}
         title="Количество знаков"
+        modalParams={true}
       >
         {' '}
         <Signs handleButtonClick={handleButtonClick} />
@@ -139,6 +152,7 @@ const ParametersView = ({
         handleCloseModalClick={handleCloseModalLawsClick}
         handleChooseModalClick={handleCloseModalLawsClick}
         title="Законы"
+        modalParams={true}
       >
         {' '}
         <Laws laws={laws} setValueModalSelect={setValueModalSelect} />

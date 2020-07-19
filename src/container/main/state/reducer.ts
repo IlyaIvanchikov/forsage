@@ -18,11 +18,17 @@ export interface StateTypeItem {
   };
 }
 
-export type ActionType = {
-  type: 'CREATE_PARAMETERS';
-  playerParameters: StateTypeItem;
-  players: number;
-};
+export type ActionType =
+  | {
+      type: 'CREATE_PARAMETERS';
+      playerParameters: StateTypeItem;
+      players: number;
+    }
+  | {
+      type: 'CHANGE_PARAMETERS';
+      playerParameters: StateTypeItem;
+      player: number;
+    };
 
 export const initialState: StateType = {
   playerParameters: [
@@ -51,6 +57,10 @@ export const reducer = (state: StateType, action: ActionType): StateType => {
       state.playerParameters[0] = action.playerParameters;
       newPlayers.fill(state.playerParameters[0]);
       state.playerParameters = state.playerParameters.concat(newPlayers);
+      return state;
+    }
+    case 'CHANGE_PARAMETERS': {
+      state.playerParameters[action.player - 1] = action.playerParameters;
       return state;
     }
     default:

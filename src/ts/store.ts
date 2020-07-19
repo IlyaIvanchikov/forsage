@@ -15,6 +15,7 @@ export interface RangeParameters extends TitleParameters {
 
 export interface SubmitForm extends HandleSubmitForm {
   playerParameters: StateTypeItem;
+  paramPlayers: boolean;
 }
 export interface HandleParamsForm {
   event: React.FormEvent<HTMLFormElement>;
