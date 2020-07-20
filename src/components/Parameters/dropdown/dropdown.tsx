@@ -73,14 +73,15 @@ const Dropdown = ({
         </del>
       ) : (
         <>
-          <a href="/" onClick={handleBtnClick} className={classes.wrapper__a}>
-            Дополнительные настройки{' '}
-            {showDropdown ? (
-              <div className={classes.wrapper__divOpen} />
-            ) : (
-              <div className={classes.wrapper__divClose} />
-            )}
-          </a>
+          {showDropdown ? (
+            <a href="/" onClick={handleBtnClick} className={classes.wrapper__a}>
+              Дополнительные настройки&#9660;{' '}
+            </a>
+          ) : (
+            <a href="/" onClick={handleBtnClick} className={classes.wrapper__a}>
+              Дополнительные настройки&#9650;{' '}
+            </a>
+          )}
           {transitions.map(({ item, key, props }: Animation) => {
             return (
               item && (

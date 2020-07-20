@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import ParametersView from './parameters.view';
 import { SubmitForm, UsuallyProps, AdditionalParameters } from '../../ts/store';
 import { StateTypeItem } from '../../container/main/state/reducer';
@@ -16,6 +16,7 @@ const Parameters = ({
     signs,
     laws,
     additional,
+    nameButtonSigns,
   }: StateTypeItem = playerParameters;
   const [showPlayers, setShowPlayers] = useState<boolean>(false);
   const [showSigns, setShowSigns] = useState<boolean>(false);
@@ -33,7 +34,7 @@ const Parameters = ({
     nameButton: string;
   }>({
     signs,
-    nameButton: '1 (от 1 до 9)',
+    nameButton: nameButtonSigns,
   });
   const [valueModalSelect, setValueModalSelect] = useState<{
     five: string[];
@@ -51,11 +52,12 @@ const Parameters = ({
   });
 
   /////ЧЕКАТЬ ЭФФЕКТ НА ОСТАЛЬНЫЕ ПАРАМЕТРЫ
-  useEffect(() => {
-    setValueRangeRounds(rounds);
-    setValueRangeDigits(digits);
-    setValueRangeSpeed(speed);
-  }, [rounds, speed, digits]);
+  
+  // useEffect(() => {
+  //   setValueRangeRounds(rounds);
+  //   setValueRangeDigits(digits);
+  //   setValueRangeSpeed(speed);
+  // }, [rounds, speed, digits]);
 
   const handleModalPlayersClick = () => {
     setShowPlayers(true);

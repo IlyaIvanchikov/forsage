@@ -66,6 +66,7 @@ const ParametersView = ({
   // const { state } = useContext(ParametersContext);
   // console.log(state.playerParameters.length);
   const signs = valueModalSigns.signs;
+  const nameButton = valueModalSigns.nameButton;
   // const players = countPlayers.countPlayers;
   return (
     <Form
@@ -79,6 +80,7 @@ const ParametersView = ({
           signs,
           laws,
           additionalParameters,
+          nameButton,
         })
       }
     >
@@ -96,6 +98,7 @@ const ParametersView = ({
             handleChooseModalClick={handleChooseModalPlayersClick}
             title="Количество игроков"
             modalParams={true}
+            size="sm"
           >
             {' '}
             <Players handleButtonClick={handleButtonClick} />
@@ -122,6 +125,7 @@ const ParametersView = ({
         handleChooseModalClick={handleChooseModalSignsClick}
         title="Количество знаков"
         modalParams={true}
+        size='sm'
       >
         {' '}
         <Signs handleButtonClick={handleButtonClick} />
@@ -153,6 +157,7 @@ const ParametersView = ({
         handleChooseModalClick={handleCloseModalLawsClick}
         title="Законы"
         modalParams={true}
+        size='sm'
       >
         {' '}
         <Laws laws={laws} setValueModalSelect={setValueModalSelect} />

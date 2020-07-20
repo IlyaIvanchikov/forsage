@@ -28,6 +28,7 @@ export interface HandleParamsForm {
     ten: string[];
   };
   additionalParameters: AdditionalParameters;
+  nameButton: string;
 }
 export interface HandleSubmitForm {
   handleSubmit: ({
@@ -38,6 +39,7 @@ export interface HandleSubmitForm {
     signs,
     laws,
     additionalParameters,
+    nameButton,
   }: HandleParamsForm) => void;
 }
 
@@ -71,6 +73,7 @@ export interface UsuallyProps {
     signs,
     laws,
     additionalParameters,
+    nameButton,
   }: HandleParamsForm) => void;
   handleCountPlayersClick: (id: number, item: string) => void;
   countPlayers: {

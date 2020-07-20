@@ -9,6 +9,7 @@ interface EventHandlerProps {
   title: string;
   children: React.ReactNode;
   modalParams: boolean;
+  size: 'sm' | 'lg' | 'xl';
 }
 
 const ModalComponent = ({
@@ -18,6 +19,7 @@ const ModalComponent = ({
   title,
   children,
   modalParams,
+  size,
 }: EventHandlerProps) => {
   return (
     <>
@@ -25,6 +27,7 @@ const ModalComponent = ({
         show={showModal}
         onHide={handleCloseModalClick}
         centered={true}
+        size={size}
         className={classes.modal}
       >
         {modalParams === true && (

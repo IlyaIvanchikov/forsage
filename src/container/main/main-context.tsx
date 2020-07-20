@@ -14,7 +14,7 @@ export const UsuallyContext = React.createContext<UsuallyProps>({
   countPlayers: {
     countPlayers: 1,
     nameButton: '1 игрок',
-  },
+  }
 });
 
 export const DispatchParametersContext = React.createContext<{

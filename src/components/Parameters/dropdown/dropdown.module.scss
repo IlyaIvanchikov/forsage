@@ -14,24 +14,6 @@
     position: relative;
     color: $textColor;
     text-decoration: none;
-
-    div {
-      position: absolute;
-      top: 28%;
-      left: 101%;
-      width: 0;
-      height: 0;
-      border-style: solid;
-    }
-    .wrapper__divClose {
-      border-width: 0.4em 0.4em 0.4em 0.8em;
-      border-color: transparent transparent transparent $textColor;
-    }
-
-    .wrapper__divOpen {
-      border-width: 0.8em 0.4em 0.4em 0.4em;
-      border-color: $textColor transparent transparent transparent;
-    }
   }
 }
 

@@ -7,6 +7,7 @@ export interface StateTypeItem {
   rounds: number;
   digits: number;
   signs: number;
+  nameButtonSigns: string;
   laws: {
     five: string[];
     ten: string[];
@@ -37,6 +38,7 @@ export const initialState: StateType = {
       rounds: 10,
       digits: 2,
       signs: 1,
+      nameButtonSigns: '1 (от 1 до 9)',
       laws: {
         five: ['Любой'],
         ten: ['Любой'],

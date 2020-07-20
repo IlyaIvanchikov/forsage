@@ -29,6 +29,7 @@ const Main: React.FC = () => {
     signs,
     laws,
     additionalParameters,
+    nameButton,
   }: HandleParamsForm) => {
     event.preventDefault();
     setLoading(true);
@@ -41,6 +42,7 @@ const Main: React.FC = () => {
         signs,
         laws,
         additional: additionalParameters,
+        nameButtonSigns: nameButton,
       },
       players: countPlayers.countPlayers,
     });
@@ -67,7 +69,11 @@ const Main: React.FC = () => {
     <DispatchParametersContext.Provider value={{ dispatch }}>
       <ParametersContext.Provider value={{ state }}>
         <UsuallyContext.Provider
-          value={{ handleShowSubmit, handleCountPlayersClick, countPlayers }}
+          value={{
+            handleShowSubmit,
+            handleCountPlayersClick,
+            countPlayers,
+          }}
         >
           <MainView show={show} loading={isLoading} />
         </UsuallyContext.Provider>

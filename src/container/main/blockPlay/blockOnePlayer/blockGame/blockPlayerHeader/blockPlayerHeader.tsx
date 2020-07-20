@@ -42,6 +42,7 @@ const BlockPlayerHeader = ({ numOfPlayer }: blockGameHeaderOpt) => {
     signs,
     laws,
     additionalParameters,
+    nameButton,
   }: HandleParamsForm) => {
     event.preventDefault();
     dispatch({
@@ -53,6 +54,7 @@ const BlockPlayerHeader = ({ numOfPlayer }: blockGameHeaderOpt) => {
         signs,
         laws,
         additional: additionalParameters,
+        nameButtonSigns: nameButton,
       },
       player: numOfPlayer,
     });
@@ -71,6 +73,7 @@ const BlockPlayerHeader = ({ numOfPlayer }: blockGameHeaderOpt) => {
           handleChooseModalClick={handlerCloseMainModal}
           title={`Игрок ${numOfPlayer}`}
           modalParams={false}
+          size="lg"
         >
           {' '}
           <Parameters
