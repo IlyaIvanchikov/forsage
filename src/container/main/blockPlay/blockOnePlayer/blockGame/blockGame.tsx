@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useState, useEffect } from 'react';
 import BlockPlayerHeader from './blockPlayerHeader/blockPlayerHeader';
 import classes from './blockgame.module.scss';
@@ -6,7 +6,6 @@ import { Row } from 'react-bootstrap';
 import BlockTerm from './blockTerm';
 import CoinsIcon from '../../../../../resources/images/Coins.png';
 import ArrowIcon from '../../../../../resources/images/Arrow.png';
-import { ParametersContext } from '../../../main-context';
 
 type blockGameOpt = {
   numOfPlayer: number;
@@ -15,8 +14,6 @@ type blockGameOpt = {
 };
 
 const BlockGame = ({ numOfPlayer, exercises, timing }: blockGameOpt) => {
-  const { state } = useContext(ParametersContext);
-  timing += 200;
   const [round, setRound] = useState(1);
   const [answerText, setAnswerText] = useState('');
   const [term, setTerm] = useState([0, exercises[0][0]]);
@@ -39,7 +36,6 @@ const BlockGame = ({ numOfPlayer, exercises, timing }: blockGameOpt) => {
 
   const handleSendAnswer = (event: any) => {
     event.preventDefault();
-    console.log(state);
     let resultText = '';
     +answerText === +exercises[round - 1][numOfTerms - 1]
       ? (resultText = 'Верно!')

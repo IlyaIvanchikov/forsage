@@ -19,14 +19,6 @@ const BlockPlayerHeader = ({ numOfPlayer }: blockGameHeaderOpt) => {
   const { state } = useContext(ParametersContext);
   const { dispatch } = useContext(DispatchParametersContext);
 
-  // const usePrevious = (value: boolean) => {
-  //   const ref = useRef<boolean | undefined>();
-  //   useEffect(() => {
-  //     ref.current = value;
-  //   }, [value]);
-  //   return ref.current;
-  // };
-  // const prevState = usePrevious(showMainModal);
   const handlerShowClick = () => {
     setShowMainModal(!showMainModal);
   };
