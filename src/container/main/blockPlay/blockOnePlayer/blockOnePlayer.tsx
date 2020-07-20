@@ -3,7 +3,7 @@ import classes from './blockoneplayer.module.scss';
 import { Col } from 'react-bootstrap';
 import BlockGame from './blockGame/blockGame';
 import BlockResults from './blockResults/blockResults';
-import { makeExercises } from '../../../../ts/exerciseLogic/makeExercises';
+import { makeExercises } from '../../../../components/exerciseLogic/makeExercises';
 // import { testOrders } from '../../../../ts/exerciseLogic/testOptions';
 
 type blockPlayOpt = {
