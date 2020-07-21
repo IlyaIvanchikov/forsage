@@ -90,6 +90,7 @@ const BlockGame = ({
         <form id="answerForm" onSubmit={handleSendAnswer}>
           <input
             onChange={handleTextField}
+            style={disableInput ? { backgroundColor: 'lightgrey' } : {}}
             disabled={disableInput}
             required={true}
             value={answerText}
