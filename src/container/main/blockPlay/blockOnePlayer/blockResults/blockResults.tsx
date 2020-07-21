@@ -13,14 +13,6 @@ type BlockResProps = {
 const BlockResults = ({ showScore, results }: BlockResProps) => {
   console.log(results);
 
-  results.rightAnswers = 0;
-  results.roundsScore.map((el: any) => {
-    if (el.exercise[el.exercise.length - 1] === el.answer) {
-      results.rightAnswers++;
-    }
-    return null;
-  });
-
   const gameScorePercent = (results.rightAnswers / results.numOfRounds) * 100;
 
   return (

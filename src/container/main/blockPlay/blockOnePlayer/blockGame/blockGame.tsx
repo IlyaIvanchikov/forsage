@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useState, useEffect } from 'react';
 import BlockPlayerHeader from './blockPlayerHeader/blockPlayerHeader';
 import classes from './blockgame.module.scss';
@@ -6,7 +6,6 @@ import { Row } from 'react-bootstrap';
 import BlockTerm from './blockTerm';
 import CoinsIcon from '../../../../../resources/images/Coins.png';
 import ArrowIcon from '../../../../../resources/images/Arrow.png';
-import { ParametersContext } from '../../../main-context';
 
 type blockGameOpt = {
   numOfPlayer: number;
@@ -25,7 +24,6 @@ const BlockGame = ({
   setResults,
   results,
 }: blockGameOpt) => {
-  const { state } = useContext(ParametersContext);
   const delayTermApear = 200;
   const [round, setRound] = useState(1);
   const [disableInput, setDisableInput] = useState(true);
@@ -33,6 +31,9 @@ const BlockGame = ({
   const [term, setTerm] = useState([0, exercises[0][0]]);
   const numOfRounds = exercises.length;
   const numOfTerms = exercises[0].length;
+  if (results.gameOver) {
+    setResults({ numOfRounds, rightAnswers: 0, roundsScore: [] });
+  }
 
   const handleTextField = (event: any) => {
     setAnswerText(event.target.value);
@@ -52,11 +53,14 @@ const BlockGame = ({
   const handleSendAnswer = (event: any) => {
     const rez = results;
     event.preventDefault();
-    console.log(state);
+    console.log(rez);
     let resultText = '';
-    +answerText === +exercises[round - 1][numOfTerms - 1]
-      ? (resultText = 'Верно!')
-      : (resultText = 'Ошибка!');
+    if (+answerText === +exercises[round - 1][numOfTerms - 1]) {
+      resultText = 'Верно!';
+      rez.rightAnswers++;
+    } else {
+      resultText = 'Ошибка!';
+    }
     if (!rez.roundsScore[round - 1])
       rez.roundsScore.push({ exercise: exercises[round - 1], answer: 0 });
     if (round < numOfRounds) {
@@ -67,6 +71,7 @@ const BlockGame = ({
     } else {
       rez.roundsScore[round - 1].answer = +answerText;
       alert(resultText + ' Игра окончена. Ваши результаты');
+      rez.gameOver = 1;
       setResults(rez);
       showScore(true);
     }
@@ -97,7 +102,7 @@ const BlockGame = ({
         </form>
       </Row>
       <Row className={classes.coins}>
-        <span>5</span>
+        <span>{results.rightAnswers}</span>
         <img src={CoinsIcon} alt="coins" />
       </Row>
     </>
