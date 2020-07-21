@@ -2,52 +2,26 @@ import React from 'react';
 import classes from './blockresults.module.scss';
 import { Col, Row } from 'react-bootstrap';
 import ProgressBar from 'react-bootstrap/ProgressBar';
-import TableOfPlayerResults from './tableOfPlayerResults/tableOfPlayerResults'
+import TableOfPlayerResults from './tableOfPlayerResults/tableOfPlayerResults';
 import CloseIcon from '../../../../../resources/images/Close.png';
 
-const gameData = {
-  numOfRounds: 10,
-  rightAnswers: 4,
-  playerName: 'Дима',
-  roundsScore: [
-    {
-      exercise: [7, -6, 9, -2],
-      answer: 15,
-      rightAnswer: 10,
-      isRight: false,
-    },
-    {
-      exercise: [7, 5, 1, 9],
-      answer: 14,
-      rightAnswer: 9,
-      isRight: false,
-    },
-    {
-      exercise: [6, -11, 5, -4],
-      answer: 7,
-      rightAnswer: 7,
-      isRight: false,
-    },
-    {
-      exercise: [6, 7, -5, -4],
-      answer: 11,
-      rightAnswer: 11,
-      isRight: true,
-    },
-  ],
+type BlockResProps = {
+  showScore: any;
+  results: any;
 };
 
-const BlockResults: React.FC = () => {
+const BlockResults = ({ showScore, results }: BlockResProps) => {
+  console.log(results);
 
-  function getRandomIntInclusive(min: number, max: number): number {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min; //Максимум и минимум включаются
-  }
+  results.rightAnswers = 0;
+  results.roundsScore.map((el: any) => {
+    if (el.exercise[el.exercise.length - 1] === el.answer) {
+      results.rightAnswers++;
+    }
+    return null;
+  });
 
-  gameData.rightAnswers = getRandomIntInclusive(1, 10);
-
-  const gameScorePercent = (gameData.rightAnswers / gameData.numOfRounds) * 100;
+  const gameScorePercent = (results.rightAnswers / results.numOfRounds) * 100;
 
   return (
     <Col className={classes.resultsBlock}>
@@ -57,7 +31,7 @@ const BlockResults: React.FC = () => {
           <h5>Результаты</h5>
         </Col>
         <Col className={classes.right}>
-          <button title="Закрыть" onClick={() => alert('Close')}>
+          <button title="Закрыть" onClick={() => showScore(false)}>
             <img
               className={classes.resultsIcon}
               alt="Закрыть"
@@ -73,14 +47,14 @@ const BlockResults: React.FC = () => {
         <span>Правильно:</span>
         <Col className={classes.visualResultsPogress}>
           <p className={classes.relResult}>
-            {`${gameData.rightAnswers} из ${gameData.numOfRounds} `}
+            {`${results.rightAnswers} из ${results.numOfRounds} `}
           </p>
           <ProgressBar now={gameScorePercent} />
         </Col>
       </Row>
       <Row>
         <Col className={classes.tableOfResults}>
-          <TableOfPlayerResults />
+          <TableOfPlayerResults results={results.roundsScore} />
         </Col>
       </Row>
     </Col>

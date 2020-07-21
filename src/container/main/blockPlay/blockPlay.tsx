@@ -18,9 +18,9 @@ const BlockPlay = () => {
         {players.map((el: any) => (
           <BlockOnePlayer
             key={el}
-            digits={digits}
+            digits={signs}
             speed={speed}
-            terms={signs}
+            terms={digits}
             numOfRounds={rounds}
             numOfPlayer={el}
             orders={laws}

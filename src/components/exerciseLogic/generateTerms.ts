@@ -1,4 +1,4 @@
-import { getRandomIntInclusive } from '../getRandomIntInclusive';
+import { getRandomIntInclusive } from './getRandomIntInclusive';
 
 const minMax = (num: number) => ({
   max: Math.pow(10, num) - 1,

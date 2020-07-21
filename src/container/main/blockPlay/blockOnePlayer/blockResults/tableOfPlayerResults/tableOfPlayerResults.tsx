@@ -3,34 +3,13 @@ import classes from './tableofplayerresults.module.scss';
 import { Table, Row } from 'react-bootstrap';
 import OneRowOfTable from '../oneRowOfResultsTable/oneRowOfResultsTable';
 
-const exercises = [
-  {
-    exercise: [7, -6, 9, -2],
-    answer: 15,
-    rightAnswer: 10,
-    isRight: false,
-  },
-  {
-    exercise: [7, 5, 1, 9],
-    answer: 14,
-    rightAnswer: 9,
-    isRight: false,
-  },
-  {
-    exercise: [6, -11, 5, -4],
-    answer: 7,
-    rightAnswer: 7,
-    isRight: false,
-  },
-  {
-    exercise: [6, 7, -5, -4],
-    answer: 11,
-    rightAnswer: 11,
-    isRight: true,
-  },
-];
+type TableResProps = {
+  results: any[];
+};
 
-const TableOfPlayerResults: React.FC = () => {
+const TableOfPlayerResults = ({ results }: TableResProps) => {
+  console.log(results);
+
   return (
     <Row className={classes.table}>
       <Table responsive striped hover>
@@ -43,13 +22,17 @@ const TableOfPlayerResults: React.FC = () => {
           </tr>
         </thead>
         <tbody>
-          {exercises.map((item, index) => (
-            <OneRowOfTable
-              exercises={item}
-              number={index + 1}
-              key={item.exercise.toString() + index}
-            />
-          ))}
+          {results.length ? (
+            results.map((item, index) => (
+              <OneRowOfTable
+                exercises={item}
+                number={index + 1}
+                key={item.exercise.join('')}
+              />
+            ))
+          ) : (
+            <p>Нет результатов</p>
+          )}
         </tbody>
       </Table>
     </Row>

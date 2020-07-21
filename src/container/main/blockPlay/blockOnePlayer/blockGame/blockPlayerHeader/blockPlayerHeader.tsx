@@ -2,8 +2,8 @@ import React, { useState, useContext } from 'react';
 import classes from './blockplayerheader.module.scss';
 import ResultsIcon from '../../../../../../resources/images/Results.png';
 import { Row, Col } from 'react-bootstrap';
-import ModalComponent from '../../../../../../components/parameters/modal/modal';
-import Parameters from '../../../../../../components/parameters/parameters';
+import ModalComponent from '../../../../../../components/Parameters/modal/modal';
+import Parameters from '../../../../../../components/Parameters/Parameters';
 import {
   ParametersContext,
   DispatchParametersContext,
@@ -12,9 +12,10 @@ import { HandleParamsForm } from '../../../../../../ts/store';
 
 type blockGameHeaderOpt = {
   numOfPlayer: number;
+  showScore: any;
 };
 
-const BlockPlayerHeader = ({ numOfPlayer }: blockGameHeaderOpt) => {
+const BlockPlayerHeader = ({ numOfPlayer, showScore }: blockGameHeaderOpt) => {
   const [showMainModal, setShowMainModal] = useState<boolean>(false);
   const { state } = useContext(ParametersContext);
   const { dispatch } = useContext(DispatchParametersContext);
@@ -77,7 +78,7 @@ const BlockPlayerHeader = ({ numOfPlayer }: blockGameHeaderOpt) => {
       </Col>
       <Col className={classes.playerTitle}>Игрок {numOfPlayer}</Col>
       <Col className={classes.iconBlock}>
-        <button title="Статистика" onClick={() => alert('hello')}>
+        <button title="Статистика" onClick={() => showScore(true)}>
           <img
             className={classes.resultsIcon}
             alt="Results"

@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import classes from './blockoneplayer.module.scss';
 import { Col } from 'react-bootstrap';
 import BlockGame from './blockGame/blockGame';
-import { makeExercises } from '../../../../ts/exerciseLogic/makeExercises';
-import { testOrders } from '../../../../ts/exerciseLogic/testOptions';
+import BlockResults from './blockResults/blockResults';
+import { makeExercises } from '../../../../components/exerciseLogic/makeExercises';
+// import { testOrders } from '../../../../ts/exerciseLogic/testOptions';
 
 type blockPlayOpt = {
   numOfPlayer: number;
@@ -22,13 +23,10 @@ const BlockOnePlayer = ({
   terms,
   orders,
 }: blockPlayOpt) => {
-  //options ==================================================================
-  numOfRounds = 7;
-  digits = 2;
-  terms = 5;
-  speed = 3000;
-  orders = testOrders.any;
-  //options ==================================================================
+  const [viewScore, setViewScore] = useState(false);
+  const [results, setResults] = useState({numOfRounds, roundsScore: []});
+
+
   const exercises: any[] = [];
 
   for (let i = 0; i < numOfRounds; i++) {
@@ -38,11 +36,18 @@ const BlockOnePlayer = ({
   console.log(exercises);
   return (
     <Col className={classes.onePlayerField}>
-      <BlockGame
-        exercises={exercises}
-        numOfPlayer={numOfPlayer}
-        timing={speed}
-      />
+      {viewScore ? (
+        <BlockResults results={results} showScore={setViewScore} />
+      ) : (
+        <BlockGame
+          exercises={exercises}
+          numOfPlayer={numOfPlayer}
+          timing={speed * 1000}
+          showScore={setViewScore}
+          setResults={setResults}
+          results={results}
+        />
+      )}
     </Col>
   );
 };

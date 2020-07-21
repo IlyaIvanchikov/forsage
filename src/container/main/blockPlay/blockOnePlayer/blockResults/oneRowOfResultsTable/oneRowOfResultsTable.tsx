@@ -3,7 +3,7 @@ import classes from './onerow.module.scss';
 
 const exerciseString: any = (arrOfNumbers: any) => {
   let string = arrOfNumbers[0];
-  for (let i = 1; i < arrOfNumbers.length; i++) {
+  for (let i = 1; i < arrOfNumbers.length - 1; i++) {
     arrOfNumbers[i] >= 0
       ? (string += ' ✚ ' + arrOfNumbers[i])
       : (string += ' - ' + arrOfNumbers[i] * -1);
@@ -14,7 +14,8 @@ const exerciseString: any = (arrOfNumbers: any) => {
 
 const OneRowOfTable = (props: any) => {
   const { exercises, number } = props;
-  const { exercise, answer, rightAnswer } = exercises;
+  const { exercise, answer } = exercises;
+  const rightAnswer = exercise[exercise.length - 1];
   const isRightAnswer = () => (answer === rightAnswer ? true : false);
 
   return (
