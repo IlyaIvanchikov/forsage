@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import BlockPlayerHeader from './blockPlayerHeader/blockPlayerHeader';
+import BlockAnswerIndicate from './blockAnswerIndicate';
 import classes from './blockgame.module.scss';
 import { Row } from 'react-bootstrap';
 import BlockTerm from './blockTerm';
@@ -26,6 +27,11 @@ const BlockGame = ({
 }: blockGameOpt) => {
   const delayTermApear = 200;
   const [round, setRound] = useState(1);
+  const [resultOfExercise, setResultOfExercise] = useState({
+    isRightAnswer: true,
+    isRoundComplete: false,
+    isShow: false,
+  });
   const [disableInput, setDisableInput] = useState(true);
   const [answerText, setAnswerText] = useState('');
   const [term, setTerm] = useState([0, exercises[0][0]]);
@@ -40,6 +46,18 @@ const BlockGame = ({
   };
 
   useEffect(() => {
+    if (resultOfExercise.isShow) {
+      setTimeout(() => {
+        setResultOfExercise({
+          isRightAnswer: true,
+          isRoundComplete: false,
+          isShow: false,
+        });
+      }, 3000);
+    }
+  }, [resultOfExercise]);
+
+  useEffect(() => {
     if (term[0] < numOfTerms - 1) {
       setTimeout(() => {
         setTerm([term[0] + 1, exercises[round - 1][term[0] + 1]]);
@@ -50,27 +68,54 @@ const BlockGame = ({
     }
   }, [exercises, round, term, timing, numOfTerms]);
 
+  // const indacateResult = (isRight: boolean, isGameOver: boolean) => {
+  //   const textIndicates = {
+  //     gameOver: 'Игра окончена. Ваши результаты',
+  //     nextRound: 'Начинаем следующий раунд',
+  //     rightAnswer: 'Верно',
+  //     wrongAnswer: 'Ошибка',
+  //   };
+
+  //   alert(
+  //     `${isRight ? textIndicates.rightAnswer : textIndicates.wrongAnswer}! ${
+  //       isGameOver ? textIndicates.gameOver : textIndicates.nextRound
+  //     }`
+  //   );
+  // };
+
   const handleSendAnswer = (event: any) => {
     const rez = results;
     event.preventDefault();
     console.log(rez);
-    let resultText = '';
+    let isRightAnswer;
     if (+answerText === +exercises[round - 1][numOfTerms - 1]) {
-      resultText = 'Верно!';
+      isRightAnswer = true;
       rez.rightAnswers++;
     } else {
-      resultText = 'Ошибка!';
+      isRightAnswer = false;
     }
     if (!rez.roundsScore[round - 1])
       rez.roundsScore.push({ exercise: exercises[round - 1], answer: 0 });
     if (round < numOfRounds) {
       rez.roundsScore[round - 1].answer = +answerText;
-      alert(resultText + ' Начинаем следующий раунд');
-      setRound(round + 1);
-      setTerm([0, exercises[round][0]]);
+      setResultOfExercise({
+        isRightAnswer,
+        isRoundComplete: false,
+        isShow: true,
+      });
+      // indacateResult(isRightAnswer, false);
+      setTimeout(() => {
+        setRound(round + 1);
+        setTerm([0, exercises[round][0]]);
+      }, 3000);
     } else {
       rez.roundsScore[round - 1].answer = +answerText;
-      alert(resultText + ' Игра окончена. Ваши результаты');
+      setResultOfExercise({
+        isRightAnswer,
+        isRoundComplete: true,
+        isShow: true,
+      });
+      // indacateResult(isRightAnswer, true);
       rez.gameOver = 1;
       setResults(rez);
       showScore(true);
@@ -83,6 +128,7 @@ const BlockGame = ({
     <>
       <BlockPlayerHeader showScore={showScore} numOfPlayer={numOfPlayer} />
       <Row className={classes.gamefieldDisplayNumbers}>
+        <BlockAnswerIndicate resultOfExercise={resultOfExercise} />
         <BlockTerm timing={timing} numOfTerms={numOfTerms - 1} term={term} />
       </Row>
       <Row className={classes.gameCounter}>{`${round}/${numOfRounds}`}</Row>
