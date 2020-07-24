@@ -73,7 +73,11 @@ const BlockGame = ({
 
   return (
     <>
-      <BlockPlayerHeader showScore={showScore} numOfPlayer={numOfPlayer} />
+      <BlockPlayerHeader
+        showScore={showScore}
+        numOfPlayer={numOfPlayer}
+        disableInput={disableInput}
+      />
       <Row className={classes.gamefieldDisplayNumbers}>
         <BlockTerm timing={timing} numOfTerms={numOfTerms - 1} term={term} />
       </Row>

@@ -1,0 +1,13 @@
+@import '../../styleGuide/variable.scss';
+
+.hint {
+    background-color: $orangeColor;
+    position: relative;
+    @include adaptive-font(12, 10);
+    width: 45%;
+    border-radius: $borderRadius;
+    left: 19%;
+    bottom: 5px;
+    padding: 3%;
+    color: black; 
+}

@@ -33,7 +33,6 @@ const BlockOnePlayer = ({
     exercises.push(makeExercises(digits, terms, orders));
   }
 
-  console.log(exercises);
   return (
     <Col className={classes.onePlayerField}>
       {viewScore ? (

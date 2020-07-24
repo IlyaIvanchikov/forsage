@@ -2,8 +2,9 @@ import React, { useState, useContext } from 'react';
 import classes from './blockplayerheader.module.scss';
 import ResultsIcon from '../../../../../../resources/images/Results.png';
 import { Row, Col } from 'react-bootstrap';
-import ModalComponent from '../../../../../../components/Parameters/modal/modal';
-import Parameters from '../../../../../../components/Parameters/Parameters';
+import ModalComponent from '../../../../../../components/parameters/modal/modal';
+import Parameters from '../../../../../../components/parameters/parameters';
+import Hint from '../../../../../../components/hint/hint';
 import {
   ParametersContext,
   DispatchParametersContext,
@@ -13,19 +14,50 @@ import { HandleParamsForm } from '../../../../../../ts/store';
 type blockGameHeaderOpt = {
   numOfPlayer: number;
   showScore: any;
+  disableInput: boolean;
 };
 
-const BlockPlayerHeader = ({ numOfPlayer, showScore }: blockGameHeaderOpt) => {
+const BlockPlayerHeader = ({
+  numOfPlayer,
+  showScore,
+  disableInput,
+}: blockGameHeaderOpt) => {
   const [showMainModal, setShowMainModal] = useState<boolean>(false);
   const { state } = useContext(ParametersContext);
   const { dispatch } = useContext(DispatchParametersContext);
-
+  const [showHint, setShowHint] = useState<boolean>(false);
+  const [showStatistics, setShowStatistics] = useState<boolean>(false);
+  // const [show, setShow] = useState(false);
   const handlerShowClick = () => {
     setShowMainModal(!showMainModal);
   };
+
   const handlerCloseMainModal = () => {
     setShowMainModal(false);
   };
+
+  const handlerShowHint = () => {
+    setShowHint(true);
+    setTimeout(() => {
+      setShowHint(false);
+    }, 2000);
+  };
+
+  const handlerShowStatisctics = () => {
+    setShowStatistics(true);
+    setTimeout(() => {
+      setShowStatistics(false);
+    }, 2000);
+  };
+  // useEffect(() => {
+  //   if (showHint === true) {
+  //     setShow(true);
+
+  //   }
+  // }, [showHint]);
+  // useEffect(() => {
+  //   setShowHint(false);
+  // }, [disableInput]);
 
   const handlerBroadcastParameters = ({
     event,
@@ -53,13 +85,31 @@ const BlockPlayerHeader = ({ numOfPlayer, showScore }: blockGameHeaderOpt) => {
     });
     handlerCloseMainModal();
   };
-
   return (
     <Row className={classes.playerHeader}>
+      <Hint
+        title="Параметры меняются только во время ввода ответа"
+        showHint={showHint}
+      />
+      <Hint
+        title="Статистику можно посмотреть только во время ввода ответа"
+        showHint={showStatistics}
+      />
       <Col className={classes.threePoints}>
-        <button title="Настройки" onClick={handlerShowClick}>
-          &bull; &bull; &bull;
-        </button>
+        {disableInput ? (
+          <button
+            title="Настройки"
+            onClick={handlerShowHint}
+            className={classes.col__buttonSettings}
+          >
+            &bull; &bull; &bull;
+          </button>
+        ) : (
+          <button title="Настройки" onClick={handlerShowClick}>
+            &bull; &bull; &bull;
+          </button>
+        )}
+
         <ModalComponent
           showModal={showMainModal}
           handleCloseModalClick={handlerCloseMainModal}
@@ -78,13 +128,23 @@ const BlockPlayerHeader = ({ numOfPlayer, showScore }: blockGameHeaderOpt) => {
       </Col>
       <Col className={classes.playerTitle}>Игрок {numOfPlayer}</Col>
       <Col className={classes.iconBlock}>
-        <button title="Статистика" onClick={() => showScore(true)}>
-          <img
-            className={classes.resultsIcon}
-            alt="Results"
-            src={ResultsIcon}
-          />
-        </button>
+        {disableInput ? (
+          <button title="Статистика" onClick={handlerShowStatisctics}>
+            <img
+              className={classes.resultsIcon}
+              alt="Results"
+              src={ResultsIcon}
+            />
+          </button>
+        ) : (
+          <button title="Статистика" onClick={() => showScore(true)}>
+            <img
+              className={classes.resultsIcon}
+              alt="Results"
+              src={ResultsIcon}
+            />
+          </button>
+        )}
       </Col>
     </Row>
   );

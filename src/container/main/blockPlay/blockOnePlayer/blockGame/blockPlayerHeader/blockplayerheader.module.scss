@@ -28,7 +28,11 @@
 .resultsIcon:hover {
   opacity: 0.7;
 }
-
+.threePoints {
+  .col__buttonSettings {
+    color: red;
+  }
+}
 .threePoints button,
 .iconBlock button {
   border: none;

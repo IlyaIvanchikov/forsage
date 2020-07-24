@@ -10,7 +10,7 @@ const menuItems: string[] = [
   'Супер турбо режим',
 ];
 
-interface Animation {
+export interface Animation {
   item: boolean;
   key: string;
   props: any;
