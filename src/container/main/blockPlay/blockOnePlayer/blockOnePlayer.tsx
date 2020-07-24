@@ -37,7 +37,7 @@ const BlockOnePlayer = ({
   return (
     <Col className={classes.onePlayerField}>
       {viewScore ? (
-        <BlockResults results={results} showScore={setViewScore} />
+        <BlockResults results={results} setResults={setResults} showScore={setViewScore} />
       ) : (
         <BlockGame
           exercises={exercises}

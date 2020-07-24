@@ -8,9 +8,10 @@ import CloseIcon from '../../../../../resources/images/Close.png';
 type BlockResProps = {
   showScore: any;
   results: any;
+  setResults: any;
 };
 
-const BlockResults = ({ showScore, results }: BlockResProps) => {
+const BlockResults = ({ showScore, setResults, results }: BlockResProps) => {
   console.log(results);
 
   const gameScorePercent = (results.rightAnswers / results.numOfRounds) * 100;
@@ -23,7 +24,17 @@ const BlockResults = ({ showScore, results }: BlockResProps) => {
           <h5>Результаты</h5>
         </Col>
         <Col className={classes.right}>
-          <button title="Закрыть" onClick={() => showScore(false)}>
+          <button
+            title="Закрыть"
+            onClick={() => {
+              showScore(false);
+              setResults({
+                numOfRounds: results.numOfRounds,
+                rightAnswers: 0,
+                roundsScore: [],
+              });
+            }}
+          >
             <img
               className={classes.resultsIcon}
               alt="Закрыть"

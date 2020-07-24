@@ -37,7 +37,8 @@ const BlockGame = ({
   const [term, setTerm] = useState([0, exercises[0][0]]);
   const numOfRounds = exercises.length;
   const numOfTerms = exercises[0].length;
-  if (results.gameOver) {
+  let rez: any;
+  if (results.gameOver && !resultOfExercise.isRoundComplete) {
     setResults({ numOfRounds, rightAnswers: 0, roundsScore: [] });
   }
 
@@ -84,7 +85,7 @@ const BlockGame = ({
   // };
 
   const handleSendAnswer = (event: any) => {
-    const rez = results;
+    rez = results;
     event.preventDefault();
     console.log(rez);
     let isRightAnswer;
@@ -117,8 +118,10 @@ const BlockGame = ({
       });
       // indacateResult(isRightAnswer, true);
       rez.gameOver = 1;
-      setResults(rez);
-      showScore(true);
+      setTimeout(() => {
+        setResults(rez);
+        showScore(true);
+      }, 2000);
     }
     setAnswerText('');
     setDisableInput(true);

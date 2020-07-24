@@ -4,16 +4,20 @@ import classes from './blockgame.module.scss';
 import imageRight from '../../../../../resources/images/owl_right.png';
 import imageWrong from '../../../../../resources/images/owl_wrong.png';
 
-type inducateProps = {
+type indicateProps = {
   resultOfExercise: any;
 };
 
-const BlockAnswerIndicate = ({ resultOfExercise }: inducateProps) => {
+const BlockAnswerIndicate = ({ resultOfExercise }: indicateProps) => {
   console.log(resultOfExercise);
   const text = {
     rightAnswer: ['Так держать!', 'Продолжай в том же духе!'],
     wrongAnswer: ['Упс! Ошибочка...', 'Попробуй еще и всё получится!'],
   };
+  if (resultOfExercise.isRoundComplete) {
+    text.rightAnswer = ['Верно!', 'Посмотри на свои результаты'];
+    text.wrongAnswer = ['Упс! Ошибочка...', 'Посмотри на свои результаты'];
+  }
 
   const style: any[] = [classes.indacateResult];
 
