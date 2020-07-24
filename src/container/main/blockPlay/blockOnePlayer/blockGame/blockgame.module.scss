@@ -9,7 +9,7 @@
   p {
     font-size: 4rem;
     margin: 0;
-    padding: 0;
+    padding: 10px 0;
     line-height: 130%;
   }
 }
@@ -33,7 +33,7 @@
     display: flex;
     align-items: center;
   }
-  
+
   input {
     width: 200px;
     height: 5vh;
@@ -87,16 +87,31 @@
   }
 }
 
-@media (max-width: 1440px) {
-  .coins {
-    padding: 20px;
-    padding-top: 0;
+.indacateResult {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  padding: 10px;
+
+  .owlBlock {
+    background-color: white;
+    width: 100%;
+    height: 80%;
+
+    p {
+      color: #7a2e5d;
+      font-size: 3vh;
+    }
+
+    img {
+      height: 45%;
+      margin: 2px;
+      // max-width: 200px;
+    }
   }
 }
 
-@media (min-width: 1441px) {
-  .coins {
-    padding: 20px;
-    padding-top: 0;
-  }
+.hideBlock {
+  display: none;
 }

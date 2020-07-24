@@ -24,14 +24,15 @@ const TableOfPlayerResults = ({ results }: TableResProps) => {
         <tbody>
           {results.length ? (
             results.map((item, index) => (
-              <OneRowOfTable
-                exercises={item}
-                number={index + 1}
-                key={item.exercise.join('')}
-              />
+              <OneRowOfTable exercises={item} number={index + 1} key={index} />
             ))
           ) : (
-            <p>Нет результатов</p>
+            <tr>
+              <td></td>
+              <td>Нет результатов</td>
+              <td></td>
+              <td></td>
+            </tr>
           )}
         </tbody>
       </Table>
