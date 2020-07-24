@@ -3,11 +3,11 @@
 .hint {
     background-color: $orangeColor;
     position: relative;
-    @include adaptive-font(12, 10);
+    @include adaptive-font(14, 10);
     width: 45%;
     border-radius: $borderRadius;
     left: 19%;
     bottom: 5px;
-    padding: 3%;
+    padding: 2%;
     color: black; 
 }
