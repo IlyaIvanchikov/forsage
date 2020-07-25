@@ -9,7 +9,7 @@ type indicateProps = {
 };
 
 const BlockAnswerIndicate = ({ resultOfExercise }: indicateProps) => {
-  console.log(resultOfExercise);
+  // console.log(resultOfExercise);
   const text = {
     rightAnswer: ['Так держать!', 'Продолжай в том же духе!'],
     wrongAnswer: ['Упс! Ошибочка...', 'Попробуй еще и всё получится!'],

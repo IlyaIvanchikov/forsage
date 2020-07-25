@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+// import { ParametersContext } from '../../../main-context';
 
 type blockTermOpt = {
   term: any;
@@ -8,11 +9,12 @@ type blockTermOpt = {
 };
 
 const BlockTerm = ({ term, numOfTerms, timing }: blockTermOpt) => {
+  // const { state } = useContext(ParametersContext);
+  // console.log(state);
   const [style, setStyle] = useState({
     opacity: '1',
   });
   const delayTermApear = 200;
-
   useEffect(() => {
     if (term[0] < numOfTerms - 1) {
       setTimeout(() => {

@@ -31,10 +31,11 @@ const BlockOnePlayer = ({
   });
 
   const exercises: any[] = [];
-
   for (let i = 0; i < numOfRounds; i++) {
     exercises.push(makeExercises(digits, terms, orders));
   }
+  console.log(exercises);
+
 
   return (
     <Col className={classes.onePlayerField}>

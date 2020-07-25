@@ -2,28 +2,23 @@ import React, { useContext } from 'react';
 import classes from './blockplay.module.scss';
 import BlockOnePlayer from './blockOnePlayer/blockOnePlayer';
 import { Row } from 'react-bootstrap';
-import { ParametersContext, UsuallyContext } from '../main-context';
+import { ParametersContext } from '../main-context';
+import { StateTypeItem } from '../state/reducer';
 
 const BlockPlay = () => {
   const { state } = useContext(ParametersContext);
-  const { countPlayers } = useContext(UsuallyContext);
-  const { signs, speed, rounds, digits, laws } = state.playerParameters[0];
-  const players = [];
-  for (let i = 1; i <= countPlayers.countPlayers; i++) {
-    players.push(i);
-  }
   return (
     <>
       <Row className={classes.gameField}>
-        {players.map((el: any) => (
+        {state.playerParameters.map((item: StateTypeItem, index: number) => (
           <BlockOnePlayer
-            key={el}
-            digits={signs}
-            speed={speed}
-            terms={digits}
-            numOfRounds={rounds}
-            numOfPlayer={el}
-            orders={laws}
+            key={index + 1}
+            digits={item.signs}
+            speed={item.speed}
+            terms={item.digits}
+            numOfRounds={item.rounds}
+            numOfPlayer={index + 1}
+            orders={item.laws}
           />
         ))}
       </Row>
