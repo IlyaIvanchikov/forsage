@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import BlockPlayerHeader from './blockPlayerHeader/blockPlayerHeader';
 import BlockAnswerIndicate from './blockAnswerIndicate';
-import { makeExercises } from '../../../../../components/exerciseLogic/makeExercises';
+// import { makeExercises } from '../../../../../components/exerciseLogic/makeExercises';
 import classes from './blockgame.module.scss';
 import { Row } from 'react-bootstrap';
 import BlockTerm from './blockTerm';
@@ -11,36 +11,33 @@ import ArrowIcon from '../../../../../resources/images/Arrow.png';
 
 type blockGameOpt = {
   numOfPlayer: number;
-  // exercises: any;
+  exercises: any;
   timing: number;
   showScore: any;
   setResults: any;
   results: any;
-  orders: any;
-  digits: any;
-  terms: any;
+  // orders: any;
+  // digits: any;
+  // terms: any;
   numOfRounds: any;
 };
 
 const BlockGame = ({
   numOfPlayer,
-  orders,
-  digits,
-  terms,
+  // orders,
+  // digits,
+  // terms,
   numOfRounds,
-  // exercises,
+  exercises,
   timing,
   showScore,
   setResults,
   results,
 }: blockGameOpt) => {
 
-   let exercises: any = [];
   //  exercises.push(makeExercises(digits, terms, orders));
   // let test: any = [];
-  for (let i = 0; i < numOfRounds; i++) {
-    exercises.push(makeExercises(digits, terms, orders));
-  };
+
 
   const delayTermApear = 200;
   const [round, setRound] = useState(1);
@@ -150,6 +147,11 @@ const BlockGame = ({
         showScore={showScore}
         numOfPlayer={numOfPlayer}
         disableInput={disableInput}
+        setResults={setResults}
+        setRound={setRound}
+        setResultOfExercise={setResultOfExercise}
+        setTerm={setTerm}
+        exercises={exercises}
       />
       <Row className={classes.gamefieldDisplayNumbers}>
         <BlockAnswerIndicate resultOfExercise={resultOfExercise} />

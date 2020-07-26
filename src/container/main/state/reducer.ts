@@ -27,7 +27,20 @@ export type ActionType =
     }
   | {
       type: 'CHANGE_PARAMETERS';
-      playerParameters: StateTypeItem;
+      speed: number;
+      rounds: number;
+      digits: number;
+      signs: number;
+      nameButtonSigns: string;
+      laws: {
+        five: string[];
+        ten: string[];
+      };
+      additional: {
+        soundPlay: boolean;
+        turboPlay: boolean;
+        superTurboPlay: boolean;
+      };
       player: number;
     };
 
@@ -61,10 +74,27 @@ export const reducer = (state: StateType, action: ActionType): StateType => {
       state.playerParameters = state.playerParameters.concat(newPlayers);
       return state;
     }
-    case 'CHANGE_PARAMETERS': {
-      state.playerParameters[action.player - 1] = action.playerParameters;
-      return state;
-    }
+    case 'CHANGE_PARAMETERS':
+      // console.log({...state, playerParameters: [...state.playerParameters, {
+
+      // }]});
+      return {
+        ...state,
+        playerParameters: state.playerParameters.map((item, index) =>
+          index + 1 === action.player
+            ? {
+                ...item,
+                speed: action.speed,
+                rounds: action.rounds,
+                digits: action.digits,
+                signs: action.signs,
+                nameButtonSigns: action.nameButtonSigns,
+                laws: action.laws,
+                additional: action.additional,
+              }
+            : item
+        ),
+      };
     default:
       throw new Error();
   }

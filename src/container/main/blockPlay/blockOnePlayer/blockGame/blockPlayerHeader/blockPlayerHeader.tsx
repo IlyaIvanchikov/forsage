@@ -3,6 +3,7 @@ import classes from './blockplayerheader.module.scss';
 import ResultsIcon from '../../../../../../resources/images/Results.png';
 import { Row, Col } from 'react-bootstrap';
 import ModalComponent from '../../../../../../components/parameters/modal/modal';
+import { generateNumber } from '../../../../../../components/exerciseLogic/generateNumber';
 import Parameters from '../../../../../../components/parameters/parameters';
 import Hint from '../../../../../../components/hint/hint';
 import {
@@ -15,12 +16,22 @@ type blockGameHeaderOpt = {
   numOfPlayer: number;
   showScore: any;
   disableInput: boolean;
+  setResults: any;
+  setRound: any;
+  setResultOfExercise: any;
+  setTerm: any;
+  exercises: any;
 };
 
 const BlockPlayerHeader = ({
   numOfPlayer,
   showScore,
   disableInput,
+  setResults,
+  setRound,
+  setResultOfExercise,
+  setTerm,
+  exercises,
 }: blockGameHeaderOpt) => {
   const [showMainModal, setShowMainModal] = useState<boolean>(false);
   const { state } = useContext(ParametersContext);
@@ -72,17 +83,29 @@ const BlockPlayerHeader = ({
     event.preventDefault();
     dispatch({
       type: 'CHANGE_PARAMETERS',
-      playerParameters: {
-        speed,
-        digits,
-        rounds,
-        signs,
-        laws,
-        additional: additionalParameters,
-        nameButtonSigns: nameButton,
-      },
+      speed,
+      digits,
+      rounds,
+      signs,
+      laws,
+      additional: additionalParameters,
+      nameButtonSigns: nameButton,
       player: numOfPlayer,
     });
+    setResults({
+      numOfRounds: rounds,
+      rightAnswers: 0,
+      roundsScore: [],
+    });
+    setRound(1);
+    setResultOfExercise({
+      isRightAnswer: true,
+      isRoundComplete: false,
+      isShow: false,
+    });
+    exercises = [];
+    generateNumber(exercises, rounds, signs, digits, laws);
+    setTerm([0, exercises[0][0]]);
     handlerCloseMainModal();
   };
   return (
