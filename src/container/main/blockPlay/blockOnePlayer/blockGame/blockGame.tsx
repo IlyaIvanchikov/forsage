@@ -16,29 +16,24 @@ type blockGameOpt = {
   showScore: any;
   setResults: any;
   results: any;
-  // orders: any;
-  // digits: any;
-  // terms: any;
   numOfRounds: any;
+  additional: {
+    soundPlay: boolean;
+    turboPlay: boolean;
+    superTurboPlay: boolean;
+  };
 };
 
 const BlockGame = ({
   numOfPlayer,
-  // orders,
-  // digits,
-  // terms,
   numOfRounds,
   exercises,
   timing,
   showScore,
   setResults,
   results,
+  additional,
 }: blockGameOpt) => {
-
-  //  exercises.push(makeExercises(digits, terms, orders));
-  // let test: any = [];
-
-
   const delayTermApear = 200;
   const [round, setRound] = useState(1);
   const [resultOfExercise, setResultOfExercise] = useState({
@@ -49,7 +44,6 @@ const BlockGame = ({
   const [disableInput, setDisableInput] = useState(true);
   const [answerText, setAnswerText] = useState('');
   const [term, setTerm] = useState([0, exercises[0][0]]);
-  // const numOfRounds = exercises.length;
   const numOfTerms = exercises[0].length;
   let rez: any;
   if (results.gameOver && !resultOfExercise.isRoundComplete) {
@@ -83,25 +77,9 @@ const BlockGame = ({
     }
   }, [exercises, round, term, timing, numOfTerms]);
 
-  // const indacateResult = (isRight: boolean, isGameOver: boolean) => {
-  //   const textIndicates = {
-  //     gameOver: 'Игра окончена. Ваши результаты',
-  //     nextRound: 'Начинаем следующий раунд',
-  //     rightAnswer: 'Верно',
-  //     wrongAnswer: 'Ошибка',
-  //   };
-
-  //   alert(
-  //     `${isRight ? textIndicates.rightAnswer : textIndicates.wrongAnswer}! ${
-  //       isGameOver ? textIndicates.gameOver : textIndicates.nextRound
-  //     }`
-  //   );
-  // };
-
   const handleSendAnswer = (event: any) => {
     rez = results;
     event.preventDefault();
-    console.log(rez);
     let isRightAnswer;
     if (+answerText === +exercises[round - 1][numOfTerms - 1]) {
       isRightAnswer = true;
@@ -130,7 +108,6 @@ const BlockGame = ({
         isRoundComplete: true,
         isShow: true,
       });
-      // indacateResult(isRightAnswer, true);
       rez.gameOver = 1;
       setTimeout(() => {
         setResults(rez);
@@ -155,7 +132,12 @@ const BlockGame = ({
       />
       <Row className={classes.gamefieldDisplayNumbers}>
         <BlockAnswerIndicate resultOfExercise={resultOfExercise} />
-        <BlockTerm timing={timing} numOfTerms={numOfTerms - 1} term={term} />
+        <BlockTerm
+          timing={timing}
+          numOfTerms={numOfTerms - 1}
+          term={term}
+          additional={additional}
+        />
       </Row>
       <Row className={classes.gameCounter}>{`${round}/${numOfRounds}`}</Row>
       <Row className={classes.blockAnswer}>

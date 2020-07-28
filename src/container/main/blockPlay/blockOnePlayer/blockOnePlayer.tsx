@@ -14,6 +14,11 @@ type blockPlayOpt = {
   terms: number;
   digits: number;
   orders: any;
+  additional: {
+    soundPlay: boolean;
+    turboPlay: boolean;
+    superTurboPlay: boolean;
+  };
 };
 
 const BlockOnePlayer = ({
@@ -23,6 +28,7 @@ const BlockOnePlayer = ({
   speed,
   terms,
   orders,
+  additional,
 }: blockPlayOpt) => {
   const [viewScore, setViewScore] = useState(false);
 
@@ -32,33 +38,8 @@ const BlockOnePlayer = ({
     roundsScore: [],
   });
 
-  // useEffect(() => {
-  //   setResults({
-  //     numOfRounds,
-  //     rightAnswers: 0,
-  //     roundsScore: [],
-  //   })
-  // }, [numOfRounds, digits, speed, terms, orders]);
   const exercises: any = [];
-  //   // let test: any = [];
-  // const generateNumber = () => {
-  //   for (let i = 0; i < numOfRounds; i++) {
-  //     exercises.push(makeExercises(digits, terms, orders));
-  //   }
-  // };
-
   generateNumber(exercises, numOfRounds, digits, terms, orders);
-
-  //   const [exercises, setExercise] = useState(test);
-  //   console.log(exercises);
-  //   useEffect(() => {
-  //     setExercise(test);
-  //     setResults({
-  //       numOfRounds,
-  //       rightAnswers: 0,
-  //       roundsScore: [],
-  //     });
-  //   }, [digits, terms, orders, speed, numOfRounds]);
 
   return (
     <Col className={classes.onePlayerField}>
@@ -77,9 +58,7 @@ const BlockOnePlayer = ({
           showScore={setViewScore}
           setResults={setResults}
           results={results}
-          // digits={digits}
-          // terms={terms}
-          // orders={orders}
+          additional={additional}
         />
       )}
     </Col>

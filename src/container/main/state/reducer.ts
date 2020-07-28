@@ -80,19 +80,20 @@ export const reducer = (state: StateType, action: ActionType): StateType => {
       // }]});
       return {
         ...state,
-        playerParameters: state.playerParameters.map((item, index) =>
-          index + 1 === action.player
-            ? {
-                ...item,
-                speed: action.speed,
-                rounds: action.rounds,
-                digits: action.digits,
-                signs: action.signs,
-                nameButtonSigns: action.nameButtonSigns,
-                laws: action.laws,
-                additional: action.additional,
-              }
-            : item
+        playerParameters: state.playerParameters.map(
+          (item: StateTypeItem, index: number) =>
+            index + 1 === action.player
+              ? {
+                  ...item,
+                  speed: action.speed,
+                  rounds: action.rounds,
+                  digits: action.digits,
+                  signs: action.signs,
+                  nameButtonSigns: action.nameButtonSigns,
+                  laws: action.laws,
+                  additional: action.additional,
+                }
+              : item
         ),
       };
     default:

@@ -19,6 +19,7 @@ const BlockPlay = () => {
             numOfRounds={item.rounds}
             numOfPlayer={index + 1}
             orders={item.laws}
+            additional={item.additional}
           />
         ))}
       </Row>

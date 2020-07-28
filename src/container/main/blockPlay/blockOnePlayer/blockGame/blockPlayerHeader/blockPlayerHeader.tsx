@@ -38,7 +38,6 @@ const BlockPlayerHeader = ({
   const { dispatch } = useContext(DispatchParametersContext);
   const [showHint, setShowHint] = useState<boolean>(false);
   const [showStatistics, setShowStatistics] = useState<boolean>(false);
-  // const [show, setShow] = useState(false);
   const handlerShowClick = () => {
     setShowMainModal(!showMainModal);
   };
@@ -60,15 +59,6 @@ const BlockPlayerHeader = ({
       setShowStatistics(false);
     }, 2000);
   };
-  // useEffect(() => {
-  //   if (showHint === true) {
-  //     setShow(true);
-
-  //   }
-  // }, [showHint]);
-  // useEffect(() => {
-  //   setShowHint(false);
-  // }, [disableInput]);
 
   const handlerBroadcastParameters = ({
     event,
