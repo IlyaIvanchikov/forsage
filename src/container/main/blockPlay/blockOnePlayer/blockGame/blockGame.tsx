@@ -2,7 +2,6 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import BlockPlayerHeader from './blockPlayerHeader/blockPlayerHeader';
 import BlockAnswerIndicate from './blockAnswerIndicate';
-// import { makeExercises } from '../../../../../components/exerciseLogic/makeExercises';
 import classes from './blockgame.module.scss';
 import { Row } from 'react-bootstrap';
 import BlockTerm from './blockTerm';
@@ -34,11 +33,6 @@ const BlockGame = ({
   setResults,
   results,
 }: blockGameOpt) => {
-
-  //  exercises.push(makeExercises(digits, terms, orders));
-  // let test: any = [];
-
-
   const delayTermApear = 200;
   const [round, setRound] = useState(1);
   const [resultOfExercise, setResultOfExercise] = useState({
@@ -49,7 +43,6 @@ const BlockGame = ({
   const [disableInput, setDisableInput] = useState(true);
   const [answerText, setAnswerText] = useState('');
   const [term, setTerm] = useState([0, exercises[0][0]]);
-  // const numOfRounds = exercises.length;
   const numOfTerms = exercises[0].length;
   let rez: any;
   if (results.gameOver && !resultOfExercise.isRoundComplete) {
@@ -82,21 +75,6 @@ const BlockGame = ({
       setDisableInput(false);
     }
   }, [exercises, round, term, timing, numOfTerms]);
-
-  // const indacateResult = (isRight: boolean, isGameOver: boolean) => {
-  //   const textIndicates = {
-  //     gameOver: 'Игра окончена. Ваши результаты',
-  //     nextRound: 'Начинаем следующий раунд',
-  //     rightAnswer: 'Верно',
-  //     wrongAnswer: 'Ошибка',
-  //   };
-
-  //   alert(
-  //     `${isRight ? textIndicates.rightAnswer : textIndicates.wrongAnswer}! ${
-  //       isGameOver ? textIndicates.gameOver : textIndicates.nextRound
-  //     }`
-  //   );
-  // };
 
   const handleSendAnswer = (event: any) => {
     rez = results;
