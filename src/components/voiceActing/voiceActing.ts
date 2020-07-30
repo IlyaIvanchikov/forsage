@@ -1,6 +1,7 @@
 import { voices } from './voiceFiles';
 
 export const voiceActing = (num: number, isQuiet: boolean) => {
+  console.log(num);
   if (isQuiet || Math.abs(num) > 999 || !Number(num)) return;
 
   const numbers = {
@@ -39,7 +40,6 @@ export const voiceActing = (num: number, isQuiet: boolean) => {
       words.push(
         numbers.hundreds[Number(stringNumber[stringNumber.length - 3])]
       );
-
   } else {
     words.push(num);
   }
