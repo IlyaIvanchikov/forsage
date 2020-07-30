@@ -43,12 +43,14 @@ const Dropdown = ({
         setAdditionalParameters({
           ...additionalParameters,
           turboPlay: !additionalParameters.turboPlay,
+          superTurboPlay: false,
         });
         break;
       case 2:
         setAdditionalParameters({
           ...additionalParameters,
           superTurboPlay: !additionalParameters.superTurboPlay,
+          turboPlay: false,
         });
         break;
       default:

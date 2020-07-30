@@ -59,6 +59,7 @@ const BlockOnePlayer = ({
           setResults={setResults}
           results={results}
           additional={additional}
+        digits={digits}
         />
       )}
     </Col>

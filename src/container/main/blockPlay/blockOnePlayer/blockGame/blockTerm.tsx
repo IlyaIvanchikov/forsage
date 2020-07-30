@@ -12,17 +12,56 @@ type blockTermOpt = {
     turboPlay: boolean;
     superTurboPlay: boolean;
   };
+  randomNumber: number;
 };
 
-const BlockTerm = ({ term, numOfTerms, timing, additional }: blockTermOpt) => {
-  console.log(additional);
+const BlockTerm = ({
+  term,
+  numOfTerms,
+  timing,
+  additional,
+  randomNumber,
+}: blockTermOpt) => {
   const turbo = additional.turboPlay;
+  const superTyrboPlay = additional.superTurboPlay;
+  const colour = ['red', 'green', ' brown', 'black', 'blue', 'orange'];
+  const rand = Math.floor(Math.random() * colour.length);
 
+  const supertTurboPlayNumber = () => {
+    if (randomNumber === 0 && !turbo) {
+      return (
+        <>
+          <p style={style}>{term[1]}</p>
+        </>
+      );
+    } else if (randomNumber === 1 && !turbo) {
+      return (
+        <p
+          style={{
+            ...style,
+            color: colour[rand],
+          }}
+        >
+          {term[1]}
+        </p>
+      );
+    }
+    return;
+  };
+  const turboPlayNumber = () => {
+    if (turbo && !superTyrboPlay) {
+      return (
+        <p className={classes.turboP} style={{ ...style, ...randomOfPlace }}>
+          {term[1]}
+        </p>
+      );
+    }
+    return;
+  };
   const randomOfPlace = {
     left: `${Math.random() * (80 - 20) + 20}%`,
     top: `${Math.random() * (80 - 20) + 20}%`,
-    color: `#${Math.floor(Math.random() * 16777215).toString(16)}`,
-    fontSize: '6rem',
+    color: colour[rand],
   };
 
   const [style, setStyle] = useState({
@@ -47,17 +86,11 @@ const BlockTerm = ({ term, numOfTerms, timing, additional }: blockTermOpt) => {
 
   return (
     <>
-      {/* {turbo && (
-        <p className={classes.turboP} style={randomOfPlace}>
-          {term[1]}
-        </p>
-      )} */}
-      {!turbo || term[1] === '???' ? (
+      {superTyrboPlay && term[1] !== '???' && supertTurboPlayNumber()}
+      {(!turbo && !superTyrboPlay) || term[1] === '???' ? (
         <p style={style}>{term[1]}</p>
       ) : (
-        <p className={classes.turboP} style={{ ...style, ...randomOfPlace }}>
-          {term[1]}
-        </p>
+        turboPlayNumber()
       )}
     </>
   );

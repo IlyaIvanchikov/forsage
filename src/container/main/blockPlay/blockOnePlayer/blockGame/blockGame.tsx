@@ -8,10 +8,12 @@ import { Row } from 'react-bootstrap';
 import BlockTerm from './blockTerm';
 import CoinsIcon from '../../../../../resources/images/Coins.png';
 import ArrowIcon from '../../../../../resources/images/Arrow.png';
-
+import { getRandomIntInclusive } from '../../../../../components/exerciseLogic/getRandomIntInclusive';
+import { makeFirstTerm } from '../../../../../components/exerciseLogic/generateTerms';
 type blockGameOpt = {
   numOfPlayer: number;
   exercises: any;
+  digits: number;
   timing: number;
   showScore: any;
   setResults: any;
@@ -33,7 +35,12 @@ const BlockGame = ({
   setResults,
   results,
   additional,
+  digits,
 }: blockGameOpt) => {
+  const superTyrboPlay = additional.superTurboPlay;
+  // const randomNumber = getRandomIntInclusive(0, 1);
+  const [isRealNumber, setIsRealNumber] = useState(true);
+  const [randomNumber, setRandomNumber] = useState(getRandomIntInclusive(0, 1));
   const delayTermApear = 200;
   const [round, setRound] = useState(1);
   const [resultOfExercise, setResultOfExercise] = useState({
@@ -44,6 +51,7 @@ const BlockGame = ({
   const [disableInput, setDisableInput] = useState(true);
   const [answerText, setAnswerText] = useState('');
   const [term, setTerm] = useState([0, exercises[0][0]]);
+  const [currentNumber, setCurrentNumber] = useState(-1);
   const numOfTerms = exercises[0].length;
   let rez: any;
   if (results.gameOver && !resultOfExercise.isRoundComplete) {
@@ -65,15 +73,34 @@ const BlockGame = ({
       }, 3000);
     }
   }, [resultOfExercise]);
-
   useEffect(() => {
-    if (term[0] < numOfTerms - 1) {
+    if (term[0] < numOfTerms - 1 && randomNumber === 1 && superTyrboPlay) {
+      setTimeout(() => {
+        setRandomNumber(getRandomIntInclusive(0, 1));
+        setTerm(
+          term.map((item, index: number) =>
+            index === 1 ? makeFirstTerm(digits) : item
+          )
+        );
+      }, timing + delayTermApear);
+    } else if (
+      (term[0] < numOfTerms - 1 && randomNumber === 0 && superTyrboPlay) ||
+      (term[0] < numOfTerms - 1 && !superTyrboPlay)
+    ) {
+      setRandomNumber(getRandomIntInclusive(0, 1));
       setTimeout(() => {
         setTerm([term[0] + 1, exercises[round - 1][term[0] + 1]]);
       }, timing + delayTermApear);
     } else if (term[0] !== 100) {
       setTerm([100, '???']);
       setDisableInput(false);
+    }
+
+    if (currentNumber !== term[0]) {
+      setCurrentNumber(term[0]);
+      setIsRealNumber(true);
+    } else if (currentNumber === term[0]) {
+      setIsRealNumber(false);
     }
   }, [exercises, round, term, timing, numOfTerms]);
 
@@ -96,10 +123,11 @@ const BlockGame = ({
         isRoundComplete: false,
         isShow: true,
       });
-      // indacateResult(isRightAnswer, false);
       setTimeout(() => {
         setRound(round + 1);
         setTerm([0, exercises[round][0]]);
+        setCurrentNumber(-1);
+        setIsRealNumber(true);
       }, 3000);
     } else {
       rez.roundsScore[round - 1].answer = +answerText;
@@ -137,6 +165,7 @@ const BlockGame = ({
           numOfTerms={numOfTerms - 1}
           term={term}
           additional={additional}
+          randomNumber={isRealNumber === true ? 0 : 1}
         />
       </Row>
       <Row className={classes.gameCounter}>{`${round}/${numOfRounds}`}</Row>
