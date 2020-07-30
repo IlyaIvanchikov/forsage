@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import BlockPlayerHeader from './blockPlayerHeader/blockPlayerHeader';
 import BlockAnswerIndicate from './blockAnswerIndicate';
 import classes from './blockgame.module.scss';
@@ -8,6 +8,7 @@ import BlockTerm from './blockTerm';
 import CoinsIcon from '../../../../../resources/images/Coins.png';
 import ArrowIcon from '../../../../../resources/images/Arrow.png';
 import { voiceActing } from '../../../../../components/voiceActing/voiceActing';
+import { ParametersContext } from '../../../main-context';
 
 type blockGameOpt = {
   numOfPlayer: number;
@@ -36,6 +37,8 @@ const BlockGame = ({
 }: blockGameOpt) => {
   const delayTermApear = 200;
   const [round, setRound] = useState(1);
+  const { state } = useContext(ParametersContext);
+  console.log(state);
   const [resultOfExercise, setResultOfExercise] = useState({
     isRightAnswer: true,
     isRoundComplete: false,
@@ -52,7 +55,8 @@ const BlockGame = ({
   if (
     term[0] !== 100 &&
     term[0] !== numOfTerms - 1 &&
-    !resultOfExercise.isShow
+    !resultOfExercise.isShow &&
+    state.playerParameters[0].additional.soundPlay
   ) {
     voiceActing(term[1]);
   }
