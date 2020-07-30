@@ -49,8 +49,12 @@ const BlockGame = ({
   if (results.gameOver && !resultOfExercise.isRoundComplete) {
     setResults({ numOfRounds, rightAnswers: 0, roundsScore: [] });
   }
-  if (term[0] !== 100 && term[0] !== numOfTerms - 1) {
-    voiceActing(term[1], false);
+  if (
+    term[0] !== 100 &&
+    term[0] !== numOfTerms - 1 &&
+    !resultOfExercise.isShow
+  ) {
+    voiceActing(term[1]);
   }
 
   const handleTextField = (event: any) => {
@@ -72,7 +76,6 @@ const BlockGame = ({
   useEffect(() => {
     if (term[0] < numOfTerms - 1) {
       setTimeout(() => {
-        console.log(exercises[round - 1][term[0] + 1], exercises[round - 1][term[0] + 1]);
         setTerm([term[0] + 1, exercises[round - 1][term[0] + 1]]);
       }, timing + delayTermApear - 50);
     } else if (term[0] !== 100) {
@@ -84,7 +87,6 @@ const BlockGame = ({
   const handleSendAnswer = (event: any) => {
     rez = results;
     event.preventDefault();
-    console.log(rez);
     let isRightAnswer;
     if (+answerText === +exercises[round - 1][numOfTerms - 1]) {
       isRightAnswer = true;

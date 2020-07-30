@@ -1,8 +1,7 @@
 import { voices } from './voiceFiles';
 
-export const voiceActing = (num: number, isQuiet: boolean) => {
-  console.log(num);
-  if (isQuiet || Math.abs(num) > 999 || !Number(num)) return;
+export const voiceActing = (num: number) => {
+  if (Math.abs(num) > 999 || !Number(num)) return;
 
   const numbers = {
     twenty: [0, 10, 20, 30, 40, 50, 60, 70, 80, 90],
