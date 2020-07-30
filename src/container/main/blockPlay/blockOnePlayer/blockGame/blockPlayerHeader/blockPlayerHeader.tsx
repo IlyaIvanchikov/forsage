@@ -21,6 +21,8 @@ type blockGameHeaderOpt = {
   setResultOfExercise: any;
   setTerm: any;
   exercises: any;
+  setCurrentNumber: any;
+  setIsRealNumber: any;
 };
 
 const BlockPlayerHeader = ({
@@ -32,6 +34,8 @@ const BlockPlayerHeader = ({
   setResultOfExercise,
   setTerm,
   exercises,
+  setCurrentNumber,
+  setIsRealNumber,
 }: blockGameHeaderOpt) => {
   const [showMainModal, setShowMainModal] = useState<boolean>(false);
   const { state } = useContext(ParametersContext);
@@ -96,6 +100,8 @@ const BlockPlayerHeader = ({
     exercises = [];
     generateNumber(exercises, rounds, signs, digits, laws);
     setTerm([0, exercises[0][0]]);
+    setCurrentNumber(-1);
+    setIsRealNumber(true);
     handlerCloseMainModal();
   };
   return (

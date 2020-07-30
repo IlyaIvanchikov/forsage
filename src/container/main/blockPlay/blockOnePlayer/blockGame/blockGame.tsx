@@ -157,6 +157,8 @@ const BlockGame = ({
         setResultOfExercise={setResultOfExercise}
         setTerm={setTerm}
         exercises={exercises}
+        setCurrentNumber={setCurrentNumber}
+        setIsRealNumber={setIsRealNumber}
       />
       <Row className={classes.gamefieldDisplayNumbers}>
         <BlockAnswerIndicate resultOfExercise={resultOfExercise} />
