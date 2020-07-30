@@ -7,6 +7,7 @@ import { Row } from 'react-bootstrap';
 import BlockTerm from './blockTerm';
 import CoinsIcon from '../../../../../resources/images/Coins.png';
 import ArrowIcon from '../../../../../resources/images/Arrow.png';
+import { voiceActing } from '../../../../../components/voiceActing/voiceActing';
 
 type blockGameOpt = {
   numOfPlayer: number;
@@ -48,6 +49,8 @@ const BlockGame = ({
   if (results.gameOver && !resultOfExercise.isRoundComplete) {
     setResults({ numOfRounds, rightAnswers: 0, roundsScore: [] });
   }
+  voiceActing(term[1], false);
+  console.log('fffirst')
 
   const handleTextField = (event: any) => {
     setAnswerText(event.target.value);
@@ -68,6 +71,11 @@ const BlockGame = ({
   useEffect(() => {
     if (term[0] < numOfTerms - 1) {
       setTimeout(() => {
+        if (term[0] < numOfTerms - 2) {
+
+          voiceActing(exercises[round - 1][term[0] + 1], false);
+          console.log('fff', exercises[round - 1][term[0] + 1])
+        }
         setTerm([term[0] + 1, exercises[round - 1][term[0] + 1]]);
       }, timing + delayTermApear);
     } else if (term[0] !== 100) {

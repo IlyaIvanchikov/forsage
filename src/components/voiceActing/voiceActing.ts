@@ -1,7 +1,7 @@
 import { voices } from './voiceFiles';
 
 export const voiceActing = (num: number, isQuiet: boolean) => {
-  if (isQuiet && num > 999) return;
+  if (isQuiet || Math.abs(num) > 999 || !Number(num)) return;
 
   const numbers = {
     twenty: [0, 10, 20, 30, 40, 50, 60, 70, 80, 90],
@@ -51,5 +51,5 @@ export const voiceActing = (num: number, isQuiet: boolean) => {
     audio.autoplay = true; // Автоматически запускаем
     counter++;
     if (counter > words.length - 1) clearInterval(say);
-  }, 770);
+  }, 670);
 };
