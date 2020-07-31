@@ -56,8 +56,7 @@ const BlockGame = ({
     term[0] !== 100 &&
     term[0] !== numOfTerms - 1 &&
     !resultOfExercise.isShow &&
-    // state.playerParameters[0].additional.soundPlay
-    true
+    state.playerParameters[0].additional.soundPlay
   ) {
     voiceActing(term[1]);
   }
