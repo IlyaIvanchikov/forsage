@@ -20,7 +20,6 @@ export const voiceActing = (num: number) => {
   let stringNumber = num.toString();
 
   if (num > 19) {
-    // let counter = 0;
     const twoDigits = Number(
       stringNumber[stringNumber.length - 2] +
         stringNumber[stringNumber.length - 1]
@@ -42,13 +41,16 @@ export const voiceActing = (num: number) => {
   } else {
     words.push(num);
   }
-  if (minus) words.push('minus');
+  if (minus) {
+    audio.src = voices.minus;
+    audio.autoplay = true;
+  }
   words = words.reverse();
   let counter = 0;
   const say = setInterval(() => {
-    audio.src = voices[words[counter]]; // Указываем путь к звуку "клика"
-    audio.autoplay = true; // Автоматически запускаем
+    audio.src = voices[words[counter]];
+    audio.autoplay = true;
     counter++;
     if (counter > words.length - 1) clearInterval(say);
-  }, 670);
+  }, 820);
 };
