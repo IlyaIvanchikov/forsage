@@ -1,8 +1,7 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import BlockPlayerHeader from './blockPlayerHeader/blockPlayerHeader';
 import BlockAnswerIndicate from './blockAnswerIndicate';
-// import { makeExercises } from '../../../../../components/exerciseLogic/makeExercises';
 import classes from './blockgame.module.scss';
 import { Row } from 'react-bootstrap';
 import BlockTerm from './blockTerm';
@@ -10,6 +9,9 @@ import CoinsIcon from '../../../../../resources/images/Coins.png';
 import ArrowIcon from '../../../../../resources/images/Arrow.png';
 import { getRandomIntInclusive } from '../../../../../components/exerciseLogic/getRandomIntInclusive';
 import { makeFirstTerm } from '../../../../../components/exerciseLogic/generateTerms';
+import { voiceActing } from '../../../../../components/voiceActing/voiceActing';
+import { ParametersContext } from '../../../main-context';
+
 type blockGameOpt = {
   numOfPlayer: number;
   exercises: any;
@@ -43,6 +45,7 @@ const BlockGame = ({
   const [randomNumber, setRandomNumber] = useState(getRandomIntInclusive(0, 1));
   const delayTermApear = 200;
   const [round, setRound] = useState(1);
+  const { state } = useContext(ParametersContext);
   const [resultOfExercise, setResultOfExercise] = useState({
     isRightAnswer: true,
     isRoundComplete: false,
@@ -56,6 +59,14 @@ const BlockGame = ({
   let rez: any;
   if (results.gameOver && !resultOfExercise.isRoundComplete) {
     setResults({ numOfRounds, rightAnswers: 0, roundsScore: [] });
+  }
+  if (
+    term[0] !== 100 &&
+    term[0] !== numOfTerms - 1 &&
+    !resultOfExercise.isShow &&
+    state.playerParameters[0].additional.soundPlay
+  ) {
+    voiceActing(term[1]);
   }
 
   const handleTextField = (event: any) => {
@@ -90,7 +101,7 @@ const BlockGame = ({
       setRandomNumber(getRandomIntInclusive(0, 1));
       setTimeout(() => {
         setTerm([term[0] + 1, exercises[round - 1][term[0] + 1]]);
-      }, timing + delayTermApear);
+      }, timing + delayTermApear - 50);
     } else if (term[0] !== 100) {
       setTerm([100, '???']);
       setDisableInput(false);

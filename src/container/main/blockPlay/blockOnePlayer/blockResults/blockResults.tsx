@@ -12,8 +12,6 @@ type BlockResProps = {
 };
 
 const BlockResults = ({ showScore, setResults, results }: BlockResProps) => {
-  console.log(results);
-
   const gameScorePercent = (results.rightAnswers / results.numOfRounds) * 100;
 
   return (

@@ -1,7 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import classes from './blockgame.module.scss';
-// import { ParametersContext } from '../../../main-context';
 
 type blockTermOpt = {
   term: any;
@@ -69,8 +68,9 @@ const BlockTerm = ({
   });
 
   const delayTermApear = 200;
+
   useEffect(() => {
-    if (term[0] < numOfTerms - 1) {
+    if (term[0] < numOfTerms) {
       setTimeout(() => {
         setStyle({
           opacity: '0',

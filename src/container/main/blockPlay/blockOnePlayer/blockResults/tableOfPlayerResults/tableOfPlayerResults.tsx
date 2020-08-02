@@ -8,8 +8,6 @@ type TableResProps = {
 };
 
 const TableOfPlayerResults = ({ results }: TableResProps) => {
-  console.log(results);
-
   return (
     <Row className={classes.table}>
       <Table responsive striped hover>
