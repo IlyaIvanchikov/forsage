@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect } from 'react';
 import BlockPlayerHeader from './blockPlayerHeader/blockPlayerHeader';
 import BlockAnswerIndicate from './blockAnswerIndicate';
 import classes from './blockgame.module.scss';
@@ -10,7 +10,6 @@ import ArrowIcon from '../../../../../resources/images/Arrow.png';
 import { getRandomIntInclusive } from '../../../../../components/exerciseLogic/getRandomIntInclusive';
 import { makeFirstTerm } from '../../../../../components/exerciseLogic/generateTerms';
 import { voiceActing } from '../../../../../components/voiceActing/voiceActing';
-import { ParametersContext } from '../../../main-context';
 
 type blockGameOpt = {
   numOfPlayer: number;
@@ -40,12 +39,10 @@ const BlockGame = ({
   digits,
 }: blockGameOpt) => {
   const superTyrboPlay = additional.superTurboPlay;
-  // const randomNumber = getRandomIntInclusive(0, 1);
   const [isRealNumber, setIsRealNumber] = useState(true);
   const [randomNumber, setRandomNumber] = useState(getRandomIntInclusive(0, 1));
   const delayTermApear = 200;
   const [round, setRound] = useState(1);
-  const { state } = useContext(ParametersContext);
   const [resultOfExercise, setResultOfExercise] = useState({
     isRightAnswer: true,
     isRoundComplete: false,
@@ -64,7 +61,7 @@ const BlockGame = ({
     term[0] !== 100 &&
     term[0] !== numOfTerms - 1 &&
     !resultOfExercise.isShow &&
-    state.playerParameters[0].additional.soundPlay
+    additional.soundPlay
   ) {
     voiceActing(term[1]);
   }
