@@ -3,9 +3,7 @@ import classes from './blockoneplayer.module.scss';
 import { Col } from 'react-bootstrap';
 import BlockGame from './blockGame/blockGame';
 import BlockResults from './blockResults/blockResults';
-// import { makeExercises } from '../../../../components/exerciseLogic/makeExercises';
 import { generateNumber } from '../../../../components/exerciseLogic/generateNumber';
-// import { testOrders } from '../../../../ts/exerciseLogic/testOptions';
 
 type blockPlayOpt = {
   numOfPlayer: number;
@@ -31,8 +29,8 @@ const BlockOnePlayer = ({
   additional,
 }: blockPlayOpt) => {
   const [viewScore, setViewScore] = useState(false);
-
-  const [results, setResults] = useState({
+  const [round, setRound] = useState(1);
+  const [results, setResults] = useState<any>({
     numOfRounds,
     rightAnswers: 0,
     roundsScore: [],
@@ -41,6 +39,13 @@ const BlockOnePlayer = ({
   const exercises: any = [];
   generateNumber(exercises, numOfRounds, digits, terms, orders);
 
+  const [newExercises, setNewExercises] = useState(exercises);
+  // console.log(results);
+  console.log(newExercises);
+
+  // useEffect(() => {
+
+  // },)
   return (
     <Col className={classes.onePlayerField}>
       {viewScore ? (
@@ -48,10 +53,14 @@ const BlockOnePlayer = ({
           results={results}
           setResults={setResults}
           showScore={setViewScore}
+          setExercises={setNewExercises}
+          setRound={setRound}
+          round={round}
+          exercises={newExercises}
         />
       ) : (
         <BlockGame
-          exercises={exercises}
+          exercises={newExercises}
           numOfRounds={numOfRounds}
           numOfPlayer={numOfPlayer}
           timing={speed * 1000}
@@ -59,7 +68,9 @@ const BlockOnePlayer = ({
           setResults={setResults}
           results={results}
           additional={additional}
-        digits={digits}
+          digits={digits}
+          round={round}
+          setRound={setRound}
         />
       )}
     </Col>

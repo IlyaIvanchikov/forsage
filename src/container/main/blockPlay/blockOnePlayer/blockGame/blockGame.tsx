@@ -12,13 +12,15 @@ import { makeFirstTerm } from '../../../../../components/exerciseLogic/generateT
 import { voiceActing } from '../../../../../components/voiceActing/voiceActing';
 
 type blockGameOpt = {
+  results: any;
+  setResults: any;
+  round: number;
+  setRound: any;
   numOfPlayer: number;
   exercises: any;
   digits: number;
   timing: number;
   showScore: any;
-  setResults: any;
-  results: any;
   numOfRounds: any;
   additional: {
     soundPlay: boolean;
@@ -33,16 +35,18 @@ const BlockGame = ({
   exercises,
   timing,
   showScore,
-  setResults,
-  results,
   additional,
   digits,
+  round,
+  setRound,
+  results,
+  setResults,
 }: blockGameOpt) => {
   const superTyrboPlay = additional.superTurboPlay;
   const [isRealNumber, setIsRealNumber] = useState(true);
   const [randomNumber, setRandomNumber] = useState(getRandomIntInclusive(0, 1));
   const delayTermApear = 200;
-  const [round, setRound] = useState(1);
+  // const [round, setRound] = useState(1);
   const [resultOfExercise, setResultOfExercise] = useState({
     isRightAnswer: true,
     isRoundComplete: false,
@@ -50,13 +54,10 @@ const BlockGame = ({
   });
   const [disableInput, setDisableInput] = useState(true);
   const [answerText, setAnswerText] = useState('');
-  const [term, setTerm] = useState([0, exercises[0][0]]);
+  const [term, setTerm] = useState([round - 1, exercises[0][0]]);
   const [currentNumber, setCurrentNumber] = useState(-1);
   const numOfTerms = exercises[0].length;
   let rez: any;
-  if (results.gameOver && !resultOfExercise.isRoundComplete) {
-    setResults({ numOfRounds, rightAnswers: 0, roundsScore: [] });
-  }
   if (
     term[0] !== 100 &&
     term[0] !== numOfTerms - 1 &&
@@ -71,7 +72,7 @@ const BlockGame = ({
   };
 
   useEffect(() => {
-    if (resultOfExercise.isShow) {
+    if (resultOfExercise.isShow && !results.gameOver) {
       setTimeout(() => {
         setResultOfExercise({
           isRightAnswer: true,
