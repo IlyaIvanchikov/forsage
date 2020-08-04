@@ -56,9 +56,7 @@ const BlockResults = ({
                 setExercises(exercises);
               } else {
                 setRound(round);
-                // setExercises(exercises);
               }
-              // setRound(round);
               showScore(false);
             }}
           >

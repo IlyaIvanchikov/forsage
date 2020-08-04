@@ -40,12 +40,8 @@ const BlockOnePlayer = ({
   generateNumber(exercises, numOfRounds, digits, terms, orders);
 
   const [newExercises, setNewExercises] = useState(exercises);
-  // console.log(results);
   console.log(newExercises);
 
-  // useEffect(() => {
-
-  // },)
   return (
     <Col className={classes.onePlayerField}>
       {viewScore ? (
@@ -56,7 +52,7 @@ const BlockOnePlayer = ({
           setExercises={setNewExercises}
           setRound={setRound}
           round={round}
-          exercises={newExercises}
+          exercises={exercises}
         />
       ) : (
         <BlockGame
