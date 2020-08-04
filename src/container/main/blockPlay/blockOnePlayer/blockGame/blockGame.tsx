@@ -110,7 +110,7 @@ const BlockGame = ({
     } else if (currentNumber === term[0]) {
       setIsRealNumber(false);
     }
-  }, [exercises, round, term, timing, numOfTerms]);
+  }, [exercises, round, term, timing, numOfTerms, randomNumber, superTyrboPlay, currentNumber, digits]);
 
   const handleSendAnswer = (event: any) => {
     rez = results;

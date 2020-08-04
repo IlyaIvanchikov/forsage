@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './hint.module.scss';
 import { animated, useTransition } from 'react-spring';
-import { Animation } from './../parameters/dropdown/dropdown';
+import { Animation } from './../Parameters/dropdown/dropdown';
 
 interface HintProps {
   title: string;
