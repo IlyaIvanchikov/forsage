@@ -71,7 +71,7 @@ const BlockGame = ({
   };
 
   useEffect(() => {
-    if (resultOfExercise.isShow) {
+    if (resultOfExercise.isShow && !results.gameOver) {
       setTimeout(() => {
         setResultOfExercise({
           isRightAnswer: true,
@@ -80,7 +80,7 @@ const BlockGame = ({
         });
       }, 3000);
     }
-  }, [resultOfExercise]);
+  }, [resultOfExercise, results.gameOver]);
   useEffect(() => {
     if (term[0] < numOfTerms - 1 && randomNumber === 1 && superTyrboPlay) {
       setTimeout(() => {
@@ -110,7 +110,17 @@ const BlockGame = ({
     } else if (currentNumber === term[0]) {
       setIsRealNumber(false);
     }
-  }, [exercises, round, term, timing, numOfTerms, randomNumber, superTyrboPlay, currentNumber, digits]);
+  }, [
+    exercises,
+    round,
+    term,
+    timing,
+    numOfTerms,
+    randomNumber,
+    superTyrboPlay,
+    currentNumber,
+    digits,
+  ]);
 
   const handleSendAnswer = (event: any) => {
     rez = results;
