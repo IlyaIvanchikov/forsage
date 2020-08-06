@@ -63,7 +63,7 @@ export const makeNextTerm = (
       let isFiveOrder, two, sum;
       do {
         term = '';
-        for (let i = prevRezString.length - 1; i >= 0; i--) {
+        for (let i = 0; i < prevRezString.length; i++) {
           const minimum = i === 0 ? 1 : 0;
           const one = +prevRezString[i];
           if (digits === 1 && plus === -1 && one === 5) plus = 1;
@@ -74,15 +74,17 @@ export const makeNextTerm = (
             isFiveOrder =
               !ordersArray.five.withoutOrders[one].includes(two) &&
               Math.abs(two) < 5;
-          } while (isFiveOrder);
-          console.log(two, 'two');
+          } while (
+            isFiveOrder ||
+            one + two > 9 ||
+            one + two < 0 ||
+            (two === 0 && i === 0)
+          );
           term += Math.abs(two);
         }
         term = +term * plus;
         sum = prevResult + term;
-        console.log('in', term, prevResult);
       } while (sum > max || sum < min);
-      console.log('without 5');
     }
   }
   // console.log('next', term);
