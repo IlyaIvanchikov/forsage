@@ -1,11 +1,12 @@
 import { makeExercises } from './makeExercises';
 import { testOrders } from './testOptions';
+import { ordersArray } from './orders';
 
 export function viewOrders() {
   const digits = 1,
     terms = 5;
   const { max, min } = minMax(digits);
-  const ex = makeExercises(digits, terms, testOrders.any);
+  const ex = makeExercises(digits, terms, testOrders.without5);
   console.log(ex);
   let sum = 0;
   for (let index = 0; index < ex.length - 1; index++) {
@@ -37,7 +38,7 @@ const checkOrders = (firstTerm: number, secondTerm: number) => {
     } else {
       if (sum > 9) console.log('Закон на 10 плюс', one, two);
     }
-    if (sum >= 0 && two < 5 && ((one < 5 && sum >= 5) || (one >= 5 && sum < 5)))
+    if (!ordersArray.five.withoutOrders[one].includes(two) && Math.abs(two) < 5)
       console.log('Закон на 5', one, two);
   }
 };

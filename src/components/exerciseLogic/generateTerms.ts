@@ -38,7 +38,7 @@ export const makeNextTerm = (
     const prevRezString = prevResult.toString();
     term = '';
     let max1, min1;
-    const plus = plusMinus(prevResult, max, min);
+    let plus = plusMinus(prevResult, max, min);
     // без законов на 10
     if (orders.ten.length === 0 && orders.five[0] === 'Любой') {
       do {
@@ -60,70 +60,32 @@ export const makeNextTerm = (
 
     // Последующие слагаемые без законов на 5
     if (orders.five.length === 0) {
+      let isFiveOrder, two, sum;
       do {
-        for (let index = 0; index < prevRezString.length; index++) {
-          let element;
+        term = '';
+        for (let i = prevRezString.length - 1; i >= 0; i--) {
+          const minimum = i === 0 ? 1 : 0;
+          const one = +prevRezString[i];
+          if (digits === 1 && plus === -1 && one === 5) plus = 1;
+
           do {
-            element =
-              ordersArray.five.withoutOrders[prevRezString[index]][
-                getRandomIntInclusive(1, 4)
-              ];
-            console.log(
-              'el/pl',
-              element,
-              '/',
-              plus,
-              element >= 0 && plus > 0,
-              element <= 0 && plus < 0
-            );
-          } while (element >= 0 && plus > 0);
-          // termArrOfStr.push(element);
+            two = getRandomIntInclusive(minimum, 9) * plus;
+
+            isFiveOrder =
+              !ordersArray.five.withoutOrders[one].includes(two) &&
+              Math.abs(two) < 5;
+          } while (isFiveOrder);
+          console.log(two, 'two');
+          term += Math.abs(two);
         }
-        // eslint-disable-next-line no-loop-func
-        // termArrOfStr.forEach((el) => (term += el.toString()));
         term = +term * plus;
-      } while (checkRez(prevResult, term, min, max));
+        sum = prevResult + term;
+        console.log('in', term, prevResult);
+      } while (sum > max || sum < min);
       console.log('without 5');
     }
   }
-
   // console.log('next', term);
-  return term;
-};
-
-export const makeNextTermWithout5orders = (
-  prevResult: [number, string],
-  digits: number
-) => {
-  const termArrOfStr = [];
-  const max = Math.pow(10, digits) - 1;
-  const min = Math.pow(10, digits - 1);
-  let plus = 1;
-  const firstTerm = prevResult.toString();
-  // проверка на возможность сложения с числом той же разрядности.
-  if (+prevResult > max - min && +prevResult[0] === 4) {
-    plus = -1;
-  } else {
-    if (getRandomIntInclusive(0, 1) && prevResult[0] > 1) plus = -1;
-  }
-  let term: any = '';
-  do {
-    let max1, min1;
-    for (let i = 0; i < firstTerm.length; i++) {
-      i === 0 ? (min1 = 1) : (min1 = 0);
-      if (plus > 0) {
-        max1 = 9 - +firstTerm[i];
-      } else {
-        max1 = +firstTerm[i] - 1;
-      }
-      const element = getRandomIntInclusive(min1, max1);
-      termArrOfStr.push(element);
-    }
-    // eslint-disable-next-line no-loop-func
-    termArrOfStr.forEach((el) => (term += el.toString()));
-    term = +term * plus;
-  } while (prevResult + term < min || prevResult + term > max);
-
   return term;
 };
 
@@ -134,7 +96,8 @@ const plusMinus = (prevRez: number, ma: number, mi: number) => {
   if (prevRez > ma - mi) {
     plus = -1;
   } else {
-    if (getRandomIntInclusive(0, 1) && Number(prevRez.toString()[0]) > 1) plus = -1;
+    if (getRandomIntInclusive(0, 1) && Number(prevRez.toString()[0]) > 1)
+      plus = -1;
   }
   return plus;
 };
