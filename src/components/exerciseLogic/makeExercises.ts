@@ -15,7 +15,22 @@ export function makeExercises(dig: number, terms: number, orders: any): any {
     }
     arrOfTerms.push(answer(arrOfTerms[arrOfTerms.length - 1], prevResult));
   };
-  arrOfTerms.push(makeFirstTerm(dig, orders));
-  makeInCircle(makeNextTerm);
+  if (dig > 2 && orders.five.length === 0) {
+    terms += 1;
+    makeWithout5(dig);
+  } else {
+    arrOfTerms.push(makeFirstTerm(dig, orders));
+    makeInCircle(makeNextTerm);
+  }
   return arrOfTerms;
+
 }
+
+function makeWithout5(digits: number) {
+  for (let i = digits; i > 0; i--) {
+
+  }
+  // makeFirstTerm
+  // makeNextTerm()
+}
+

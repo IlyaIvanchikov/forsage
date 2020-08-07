@@ -5,17 +5,12 @@ import { ordersArray } from './orders';
 export function viewOrders() {
   const digits = 1,
     terms = 5;
-  const { max, min } = minMax(digits);
   const ex = makeExercises(digits, terms, testOrders.without5);
   console.log(ex);
-  let sum = 0;
-  for (let index = 0; index < ex.length - 1; index++) {
+  let sum = ex[0];
+  for (let index = 1; index < ex.length - 1; index++) {
     checkOrders(sum, ex[index]);
     sum += ex[index];
-    if (sum > max || sum < min) {
-      console.log('выход за границу');
-      return;
-    }
   }
 }
 
@@ -38,12 +33,10 @@ const checkOrders = (firstTerm: number, secondTerm: number) => {
     } else {
       if (sum > 9) console.log('Закон на 10 плюс', one, two);
     }
-    if (!ordersArray.five.withoutOrders[one].includes(two) && Math.abs(two) < 5)
+    if (
+      (!ordersArray.five.withoutOrders[one].includes(two) &&
+        Math.abs(two) < 5)
+    )
       console.log('Закон на 5', one, two);
   }
 };
-
-const minMax = (num: number) => ({
-  max: Math.pow(10, num) - 1,
-  min: Math.pow(10, num - 1),
-});

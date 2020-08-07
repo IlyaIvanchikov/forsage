@@ -52,7 +52,6 @@ export const makeNextTerm = (
           const element = getRandomIntInclusive(min1, max1);
           term += element;
         }
-        // eslint-disable-next-line no-loop-func
         term = +term * plus;
         console.log('without 10', term);
       } while (checkRez(prevResult, term, min, max));
@@ -60,31 +59,15 @@ export const makeNextTerm = (
 
     // Последующие слагаемые без законов на 5
     if (orders.five.length === 0) {
-      let isFiveOrder, two, sum;
-      do {
-        term = '';
-        for (let i = 0; i < prevRezString.length; i++) {
-          const minimum = i === 0 ? 1 : 0;
-          const one = +prevRezString[i];
-          if (digits === 1 && plus === -1 && one === 5) plus = 1;
-
-          do {
-            two = getRandomIntInclusive(minimum, 9) * plus;
-
-            isFiveOrder =
-              !ordersArray.five.withoutOrders[one].includes(two) &&
-              Math.abs(two) < 5;
-          } while (
-            isFiveOrder ||
-            one + two > 9 ||
-            one + two < 0 ||
-            (two === 0 && i === 0)
-          );
-          term += Math.abs(two);
-        }
-        term = +term * plus;
-        sum = prevResult + term;
-      } while (sum > max || sum < min);
+      if (digits === 1) {
+        term =
+          ordersArray.five.withoutOrders[prevResult][
+            getRandomIntInclusive(1, 4)
+          ];
+      } else {
+        
+        console.log('digits', digits);
+      }
     }
   }
   // console.log('next', term);
