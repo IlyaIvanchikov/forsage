@@ -57,6 +57,7 @@ const BlockOnePlayer = ({
       ) : (
         <BlockGame
           exercises={newExercises}
+          setNewExercises={setNewExercises}
           numOfRounds={numOfRounds}
           numOfPlayer={numOfPlayer}
           timing={speed * 1000}

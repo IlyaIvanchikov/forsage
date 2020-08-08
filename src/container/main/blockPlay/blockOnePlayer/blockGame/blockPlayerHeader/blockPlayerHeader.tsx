@@ -23,6 +23,7 @@ type blockGameHeaderOpt = {
   exercises: any;
   setCurrentNumber: any;
   setIsRealNumber: any;
+  setNewExercises: any;
 };
 
 const BlockPlayerHeader = ({
@@ -36,6 +37,7 @@ const BlockPlayerHeader = ({
   exercises,
   setCurrentNumber,
   setIsRealNumber,
+  setNewExercises,
 }: blockGameHeaderOpt) => {
   const [showMainModal, setShowMainModal] = useState<boolean>(false);
   const { state } = useContext(ParametersContext);
@@ -99,6 +101,7 @@ const BlockPlayerHeader = ({
     });
     exercises = [];
     generateNumber(exercises, rounds, signs, digits, laws);
+    setNewExercises(exercises);
     setTerm([0, exercises[0][0]]);
     setCurrentNumber(-1);
     setIsRealNumber(true);

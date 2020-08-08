@@ -12,6 +12,7 @@ import { makeFirstTerm } from '../../../../../components/exerciseLogic/generateT
 import { voiceActing } from '../../../../../components/voiceActing/voiceActing';
 
 type blockGameOpt = {
+  setNewExercises: any;
   results: any;
   setResults: any;
   round: number;
@@ -31,6 +32,7 @@ type blockGameOpt = {
 
 const BlockGame = ({
   numOfPlayer,
+  setNewExercises,
   numOfRounds,
   exercises,
   timing,
@@ -46,7 +48,6 @@ const BlockGame = ({
   const [isRealNumber, setIsRealNumber] = useState(true);
   const [randomNumber, setRandomNumber] = useState(getRandomIntInclusive(0, 1));
   const delayTermApear = 200;
-  // const [round, setRound] = useState(1);
   const [resultOfExercise, setResultOfExercise] = useState({
     isRightAnswer: true,
     isRoundComplete: false,
@@ -54,7 +55,9 @@ const BlockGame = ({
   });
   const [disableInput, setDisableInput] = useState(true);
   const [answerText, setAnswerText] = useState('');
-  const [term, setTerm] = useState([round - 1, exercises[0][0]]);
+  const [term, setTerm] = useState([0, exercises[round-1][0]]);
+  console.log(term);
+  console.log(round)
   const [currentNumber, setCurrentNumber] = useState(-1);
   const numOfTerms = exercises[0].length;
   let rez: any;
@@ -168,6 +171,7 @@ const BlockGame = ({
         exercises={exercises}
         setCurrentNumber={setCurrentNumber}
         setIsRealNumber={setIsRealNumber}
+        setNewExercises={setNewExercises}
       />
       <Row className={classes.gamefieldDisplayNumbers}>
         <BlockAnswerIndicate resultOfExercise={resultOfExercise} />
