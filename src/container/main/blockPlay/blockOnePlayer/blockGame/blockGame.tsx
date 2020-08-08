@@ -56,24 +56,32 @@ const BlockGame = ({
   const [disableInput, setDisableInput] = useState(true);
   const [answerText, setAnswerText] = useState('');
   const [term, setTerm] = useState([0, exercises[round-1][0]]);
-  console.log(term);
-  console.log(round)
   const [currentNumber, setCurrentNumber] = useState(-1);
   const numOfTerms = exercises[0].length;
   let rez: any;
-  if (
-    term[0] !== 100 &&
-    term[0] !== numOfTerms - 1 &&
-    !resultOfExercise.isShow &&
-    additional.soundPlay
-  ) {
-    voiceActing(term[1]);
-  }
-
+  // if (
+  //   term[0] !== 100 &&
+  //   term[0] !== numOfTerms - 1 &&
+  //   !resultOfExercise.isShow &&
+  //   additional.soundPlay
+  // ) {
+  //   console.log(term[1]);
+  //   // voiceActing(5);
+  // }
+  // voiceActing(5);
   const handleTextField = (event: any) => {
     setAnswerText(event.target.value);
   };
 
+
+  useEffect(() => {
+    if (term[0] !== numOfTerms - 1 &&
+      !resultOfExercise.isShow &&
+      additional.soundPlay) {
+        voiceActing(term[1])
+      }
+  },[resultOfExercise, term]);
+  
   useEffect(() => {
     if (resultOfExercise.isShow && !results.gameOver) {
       setTimeout(() => {
@@ -103,7 +111,8 @@ const BlockGame = ({
       setTimeout(() => {
         setTerm([term[0] + 1, exercises[round - 1][term[0] + 1]]);
       }, timing + delayTermApear - 50);
-    } else if (term[0] !== 100) {
+    } 
+    else if (term[0] !== 100) {
       setTerm([100, '???']);
       setDisableInput(false);
     }
