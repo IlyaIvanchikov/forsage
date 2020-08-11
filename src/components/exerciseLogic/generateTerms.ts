@@ -1,5 +1,4 @@
 import { getRandomIntInclusive } from './getRandomIntInclusive';
-import { ordersArray } from './orders';
 
 export const answer = (prevSum: number, lastTerm: number) => prevSum + lastTerm;
 
@@ -56,21 +55,7 @@ export const makeNextTerm = (
         console.log('without 10', term);
       } while (checkRez(prevResult, term, min, max));
     }
-
-    // Последующие слагаемые без законов на 5
-    if (orders.five.length === 0) {
-      if (digits === 1) {
-        term =
-          ordersArray.five.withoutOrders[prevResult][
-            getRandomIntInclusive(1, 4)
-          ];
-      } else {
-        
-        console.log('digits', digits);
-      }
-    }
   }
-  // console.log('next', term);
   return term;
 };
 
