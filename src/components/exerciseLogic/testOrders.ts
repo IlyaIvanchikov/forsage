@@ -1,22 +1,22 @@
-import { makeExercises } from './makeExercises';
-import { testOrders } from './testOptions';
+// import { makeExercises } from './makeExercises';
+// import { testOrders } from './testOptions';
 // import { ordersArray } from './orders';
 
 export function viewOrders() {
-  const digits = 3,
-    terms = 5;
-  const ex = makeExercises(digits, terms, testOrders.without5);
-  // let ex = ordersArray.five.exercises;
-  for (let ico = 0; ico < ex.length; ico++) {
-    // console.log('=========', ico, '=======');
-    // let exx = ex[ico];
-    // exx = exx.filter((idx) => idx % 2 !== 0 || idx === 0);
-    // let sum = exx[0];
-    // for (let index = 1; index < exx.length; index++) {
-    //   checkOrders(sum, exx[index]);
-    //   sum += exx[index];
-    // }
-  }
+  // const digits = 3,
+  //   terms = 5;
+  // const ex = makeExercises(digits, terms, testOrders.without5);
+  // // let ex = ordersArray.five.exercises;
+  // for (let ico = 0; ico < ex.length; ico++) {
+  //   // console.log('=========', ico, '=======');
+  //   // let exx = ex[ico];
+  //   // exx = exx.filter((idx) => idx % 2 !== 0 || idx === 0);
+  //   // let sum = exx[0];
+  //   // for (let index = 1; index < exx.length; index++) {
+  //   //   checkOrders(sum, exx[index]);
+  //   //   sum += exx[index];
+  //   // }
+  // }
 }
 
 // const checkOrders = (firstTerm: number, secondTerm: number) => {

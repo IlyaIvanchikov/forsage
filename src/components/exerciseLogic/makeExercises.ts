@@ -43,6 +43,7 @@ export const gen5Exercise = (digits: number, terms: number) => {
   for (let i = 0; i < terms - 1; i++) {
     termsArr.push(sliceTerm(line[startPos + 1 + i * 2], digits));
   }
+  termsArr.push(termsArr.reduce((a, b) => a + b, 0));
   console.log(termsArr);
 
   return termsArr;
@@ -56,7 +57,6 @@ const sliceTerm = (term: number, digits: number) => {
     plus = -1;
   }
   rezTerm = rezTerm.slice(0, digits);
-  console.log(+rezTerm * plus);
   return +rezTerm * plus;
 };
 
