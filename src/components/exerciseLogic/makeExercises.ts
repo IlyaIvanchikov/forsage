@@ -30,20 +30,19 @@ export function makeExercises(dig: number, terms: number, orders: any): any {
 
 export const gen5Exercise = (digits: number, terms: number) => {
   let termsArr = [];
-  if (digits < 7 && terms < 11) {
-    const line =
-      ordersArray.five.exercises[
-        getRandomIntInclusive(0, ordersArray.five.exercises.length - 1)
-      ];
-    // const exampleDigits = line[0].toString().length;
-    let startPos =
-      terms === 10 ? 0 : plus2(getRandomIntInclusive(0, 10 - terms));
+  const exampleDigits = ordersArray.five.exercises[0][0].toString().length;
+  if (digits > exampleDigits) digits = exampleDigits;
+  if (terms > 10) terms = 10;
+  const line =
+    ordersArray.five.exercises[
+      getRandomIntInclusive(0, ordersArray.five.exercises.length - 1)
+    ];
+  let startPos = terms === 10 ? 0 : plus2(getRandomIntInclusive(0, 10 - terms));
 
-    termsArr.push(sliceTerm(line[startPos], digits));
-    for (let i = 0; i < terms - 1; i++) {
-      termsArr.push(sliceTerm(line[startPos + 1 + i * 2], digits));
-    }
-  } else return [];
+  termsArr.push(sliceTerm(line[startPos], digits));
+  for (let i = 0; i < terms - 1; i++) {
+    termsArr.push(sliceTerm(line[startPos + 1 + i * 2], digits));
+  }
   console.log(termsArr);
 
   return termsArr;

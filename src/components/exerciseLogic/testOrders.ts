@@ -4,7 +4,7 @@ import { testOrders } from './testOptions';
 
 export function viewOrders() {
   const digits = 3,
-    terms = 4;
+    terms = 5;
   const ex = makeExercises(digits, terms, testOrders.without5);
   // let ex = ordersArray.five.exercises;
   for (let ico = 0; ico < ex.length; ico++) {
