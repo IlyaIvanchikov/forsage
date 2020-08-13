@@ -19,7 +19,10 @@ export const makeFirstTerm = (digits: number, orders: any = {}) => {
 export const makeNextTerm = (
   prevResult: number,
   digits: number,
-  orders: any
+  orders: any = {
+    five: ['Любой'],
+    ten: ['Любой'],
+  }
 ) => {
   let term: any;
   const { min, max } = minMax(digits);

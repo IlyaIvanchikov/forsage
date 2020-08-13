@@ -15,8 +15,8 @@ export const testOrders = {
     five: [],
     ten: [],
   },
-  with10: {
-    five: [],
-    ten: [3]
-  }
+  withOrders: {
+    five: ['-4', '+4', '-3', '+1'],
+    ten: ['3'],
+  },
 };
