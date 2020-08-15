@@ -1,15 +1,16 @@
-// import { makeExercises } from './makeExercises';
-import { makeInOrderEx } from './exInOrders';
+import { makeExercises } from './makeExercises';
+// import { makeFirstTerm, makeNextTerm } from './generateTerms';
+// import { gen10Exercise } from './makeExercises';
 import { testOrders } from './testOptions';
 // import { ordersArray } from './orders';
 
 export function viewOrders() {
-  const digits = 3,
-    terms = 2;
-    console.log('Законы:', testOrders.withOrders.five)
-  for (let i = 0; i < 20; i++) {
-    console.log('а, б, сумма', makeInOrderEx(testOrders.withOrders, terms, digits));
-  }
+  const digits = 1,
+  terms = 5;
+  console.log(makeExercises(digits, terms, testOrders.withOrders));
+  // for (let i = 0; i < 20; i++) {
+  //   console.log('а, б, сумма', makeInOrderEx(testOrders.withOrders, terms, digits));
+  // }
   // const ex = makeExercises(digits, terms, testOrders.without5);
   // // let ex = ordersArray.five.exercises;
   // for (let ico = 0; ico < ex.length; ico++) {

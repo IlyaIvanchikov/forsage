@@ -7,13 +7,20 @@ export const makeInOrderEx = (
   digits: number = 1
 ) => {
   // console.log(orders.five);
-
-  const exercise = makeOneDigitInTerm(orders.five, terms);
+  orders.five = orders.five.map((el: string) => el.slice(0, 2));
+  orders.ten = orders.ten.map((el: string) => el.slice(0, 2));
   const signs: any[] = [];
-  exercise.forEach((el) => signs.push(el[0] === '-' ? '-' : ''));
-  // console.log(signs);
-  for (let i = 1; i < digits; i++) {
-    // const ex = makeOneDigitInTerm(orders.five, terms, signs)
+  let exercise = makeOneDigitInTerm(orders.five, terms);
+  exercise.forEach((el) => signs.push(el[0] === '-' ? '-' : '+'));
+  if (digits > 1) {
+    for (let i = 1; i < digits; i++) {
+      const ex = makeOneDigitInTerm(orders.five, terms, signs);
+      console.log(ex);
+
+      exercise = exercise.map(
+        (el, idx) => el + (ex[idx][0] === '-' ? ex[idx].slice(1) : ex[idx])
+      );
+    }
   }
   return exercise.map((el) => +el);
 };
@@ -23,7 +30,11 @@ const makeOneDigitInTerm = (
   terms: number,
   signs: string[] = []
 ) => {
-  const order = orders[getRandomIntInclusive(0, orders.length - 1)];
+  let order;
+  do {
+    order = orders[getRandomIntInclusive(0, orders.length - 1)];
+    console.log('wi', order, signs);
+  } while (signs.length && order[0] !== signs[1][0]);
   const ordersWith5 = ordersArray.five.orders[order];
   const firstTerm =
     ordersWith5[getRandomIntInclusive(0, ordersWith5.length - 1)];
@@ -31,9 +42,11 @@ const makeOneDigitInTerm = (
   let sum = termDigits.reduce((a, b) => a + b, 0);
   if (terms > 1) {
     for (let i = 2; i < terms - 1; i++) {
-      // eslint-disable-next-line no-loop-func
-      const matchedOrders = orders.filter((order) =>
-        ordersArray.five.orders[order].includes(sum)
+      const matchedOrders = orders.filter(
+        // eslint-disable-next-line no-loop-func
+        (order) =>
+          ordersArray.five.orders[order].includes(sum) &&
+          signs[i][0] === order[0]
       );
       let t; // Цифра в разряде числа
       if (!matchedOrders) {
@@ -45,7 +58,7 @@ const makeOneDigitInTerm = (
               ordersArray.five.withoutOrders[sum].length - 2
             )
           ];
-        termDigits.push(t);
+        termDigits.push(+t);
       } else {
         do {
           t = Number(orders[getRandomIntInclusive(0, orders.length - 1)]);
@@ -54,11 +67,11 @@ const makeOneDigitInTerm = (
         termDigits.push(t);
       }
       sum += t;
+      console.log(sum, t);
     }
   }
   termDigits = termDigits.map((el) => el.toString());
   termDigits.push(sum.toString());
-  // console.log(termDigits);
 
   return termDigits;
 };

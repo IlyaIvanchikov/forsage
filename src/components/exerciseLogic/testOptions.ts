@@ -16,7 +16,7 @@ export const testOrders = {
     ten: [],
   },
   withOrders: {
-    five: ['-4', '+4', '-3', '+1'],
-    ten: ['3'],
+    five: ['-3', '+3'],
+    ten: ['Любой'],
   },
 };

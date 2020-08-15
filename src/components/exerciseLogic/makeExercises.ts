@@ -4,6 +4,7 @@ import {
   // makeNextTermWithout10orders,
   answer,
 } from './generateTerms';
+import { makeInOrderEx } from './exInOrders';
 import { ordersArray } from './orders';
 import { getRandomIntInclusive } from './getRandomIntInclusive';
 
@@ -18,15 +19,30 @@ export function makeExercises(dig: number, terms: number, orders: any): any {
     }
     arrOfTerms.push(answer(arrOfTerms[arrOfTerms.length - 1], prevResult));
   };
-  if (orders.five.length === 0 || orders.five[0] !== 'Любой') {
-    console.log('ex 5');
-    arrOfTerms = gen5Exercise(dig, terms);
+  if (orders.five[0] !== 'Любой' || Number(orders.five[0].slice(0, 1))) {
+    // законы на 5
+    console.log('ex 5', orders);
+    if (orders.five.length === 0) {
+      arrOfTerms = gen5Exercise(dig, terms);
+    } else {
+      arrOfTerms = makeInOrderEx(orders, terms, dig);
+    }
+  } else if (orders.ten[0] !== 'Любой' || Number(orders.ten[0].slice(0, 1))) {
+    // законы на 10
+    console.log('10 orders');
+    arrOfTerms.push(makeFirstTerm(dig, orders));
+    arrOfTerms.push(gen10Exercise(arrOfTerms[0], orders.ten));
   } else {
+    // любые законы
     arrOfTerms.push(makeFirstTerm(dig, orders));
     makeInCircle(makeNextTerm);
   }
   return arrOfTerms;
 }
+export const gen10Exercise = (prevRez: number, orders: string[]) => {
+  // const term = ordersArray.ten[orders.ten]
+  return 15;
+};
 
 export const gen5Exercise = (digits: number, terms: number) => {
   let termsArr = [];
