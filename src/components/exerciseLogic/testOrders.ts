@@ -1,13 +1,13 @@
-import { makeExercises } from './makeExercises';
+// import { makeExercises } from './makeExercises';
 // import { makeFirstTerm, makeNextTerm } from './generateTerms';
 // import { gen10Exercise } from './makeExercises';
-import { testOrders } from './testOptions';
+// import { testOrders } from './testOptions';
 // import { ordersArray } from './orders';
 
 export function viewOrders() {
-  const digits = 1,
-  terms = 5;
-  console.log(makeExercises(digits, terms, testOrders.withOrders));
+  // const digits = 1,
+  // terms = 5;
+  // console.log(makeExercises(digits, terms, testOrders.withOrders));
   // for (let i = 0; i < 20; i++) {
   //   console.log('а, б, сумма', makeInOrderEx(testOrders.withOrders, terms, digits));
   // }
