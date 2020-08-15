@@ -18,7 +18,7 @@ export function makeExercises(dig: number, terms: number, orders: any): any {
     }
     arrOfTerms.push(answer(arrOfTerms[arrOfTerms.length - 1], prevResult));
   };
-  if (orders.five.length === 0) {
+  if (orders.five.length === 0 || orders.five[0] !== 'Любой') {
     console.log('ex 5');
     arrOfTerms = gen5Exercise(dig, terms);
   } else {

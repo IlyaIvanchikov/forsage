@@ -7,6 +7,7 @@ export const makeInOrderEx = (
   digits: number = 1
 ) => {
   // console.log(orders.five);
+
   const exercise = makeOneDigitInTerm(orders.five, terms);
   const signs: any[] = [];
   exercise.forEach((el) => signs.push(el[0] === '-' ? '-' : ''));
@@ -14,7 +15,7 @@ export const makeInOrderEx = (
   for (let i = 1; i < digits; i++) {
     // const ex = makeOneDigitInTerm(orders.five, terms, signs)
   }
-  return exercise.map(el => +el);
+  return exercise.map((el) => +el);
 };
 
 const makeOneDigitInTerm = (
