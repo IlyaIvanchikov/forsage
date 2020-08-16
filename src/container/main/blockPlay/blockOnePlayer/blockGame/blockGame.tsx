@@ -7,8 +7,8 @@ import { Row } from 'react-bootstrap';
 import BlockTerm from './blockTerm';
 import CoinsIcon from '../../../../../resources/images/Coins.png';
 import ArrowIcon from '../../../../../resources/images/Arrow.png';
-import { getRandomIntInclusive } from '../../../../../components/exerciseLogic/getRandomIntInclusive';
-import { makeFirstTerm } from '../../../../../components/exerciseLogic/generateTerms';
+import { getRandomIntInclusive } from '../../../../../components/exercisesLogic/extraFunctions/getRandomIntInclusive';
+import { makeFirstTerm } from '../../../../../components/exercisesLogic/ganarateTerms';
 import { voiceActing } from '../../../../../components/voiceActing/voiceActing';
 
 type blockGameOpt = {
@@ -55,7 +55,7 @@ const BlockGame = ({
   });
   const [disableInput, setDisableInput] = useState(true);
   const [answerText, setAnswerText] = useState('');
-  const [term, setTerm] = useState([0, exercises[round-1][0]]);
+  const [term, setTerm] = useState([0, exercises[round - 1][0]]);
   const [currentNumber, setCurrentNumber] = useState(-1);
   const numOfTerms = exercises[0].length;
   let rez: any;
@@ -73,15 +73,16 @@ const BlockGame = ({
     setAnswerText(event.target.value);
   };
 
-
   useEffect(() => {
-    if (term[0] !== numOfTerms - 1 &&
+    if (
+      term[0] !== numOfTerms - 1 &&
       !resultOfExercise.isShow &&
-      additional.soundPlay) {
-        voiceActing(term[1])
-      }
-  },[resultOfExercise, term]);
-  
+      additional.soundPlay
+    ) {
+      voiceActing(term[1]);
+    }
+  }, [resultOfExercise, term]);
+
   useEffect(() => {
     if (resultOfExercise.isShow && !results.gameOver) {
       setTimeout(() => {
@@ -111,8 +112,7 @@ const BlockGame = ({
       setTimeout(() => {
         setTerm([term[0] + 1, exercises[round - 1][term[0] + 1]]);
       }, timing + delayTermApear - 50);
-    } 
-    else if (term[0] !== 100) {
+    } else if (term[0] !== 100) {
       setTerm([100, '???']);
       setDisableInput(false);
     }

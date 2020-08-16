@@ -3,7 +3,7 @@ import classes from './blockoneplayer.module.scss';
 import { Col } from 'react-bootstrap';
 import BlockGame from './blockGame/blockGame';
 import BlockResults from './blockResults/blockResults';
-import { generateNumber } from '../../../../components/exerciseLogic/generateNumber';
+import { generateNumber } from '../../../../components/exercisesLogic/generateNumber';
 
 type blockPlayOpt = {
   numOfPlayer: number;

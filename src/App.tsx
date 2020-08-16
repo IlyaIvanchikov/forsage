@@ -1,13 +1,12 @@
 import React from 'react';
 import classes from './App.module.scss';
-// import { Button, Container, Row, Col } from 'react-bootstrap';
 import Header from './container/header/header';
 import Footer from './container/footer/footer';
 import Main from './container/main/main';
-import { viewOrders } from './components/exerciseLogic/testOrders';
+import { testOrdersFunc } from './components/exercisesLogic/test/testOrders';
 
 const App = () => {
-  viewOrders();
+  testOrdersFunc();
 
   return (
     <div className={classes.wrapper}>
