@@ -7,7 +7,7 @@ import { Row } from 'react-bootstrap';
 import BlockTerm from './blockTerm';
 import CoinsIcon from '../../../../../resources/images/Coins.png';
 import ArrowIcon from '../../../../../resources/images/Arrow.png';
-import { getRandomIntInclusive } from '../../../../../components/exercisesLogic/extraFunctions/getRandomIntInclusive';
+import getRandomIntInclusive from '../../../../../components/exercisesLogic/extraFunctions/getRandomIntInclusive';
 import { makeFirstTerm } from '../../../../../components/exercisesLogic/ganarateTerms';
 import { voiceActing } from '../../../../../components/voiceActing/voiceActing';
 
