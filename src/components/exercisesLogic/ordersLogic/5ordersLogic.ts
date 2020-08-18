@@ -30,10 +30,12 @@ const makeWith5Orders = (
   if (digits > 1) {
     for (let i = 1; i < digits; i++) {
       const ex = makeOneDigitInTerm(orders, terms, signs);
-      console.log(ex);
-
       exercise = exercise.map(
-        (el, idx) => el + (ex[idx][0] === '-' ? ex[idx].slice(1) : ex[idx])
+        (el, idx) =>
+          el +
+          (ex[idx][0] === '-' || ex[idx][0] === '+'
+            ? ex[idx].slice(1)
+            : ex[idx])
       );
     }
   }

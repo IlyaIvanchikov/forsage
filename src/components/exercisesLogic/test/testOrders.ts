@@ -4,8 +4,8 @@ import { ordersArray } from '../dataBaseExercises/orders';
 
 export const testOrdersFunc = () => {
   // Data
-  const d = 1; // digits
-  const t = 5; // terms
+  const d = 2; // digits
+  const t = 3; // terms
   //Data
   const ex = makeExercises(d, t, testOrders.withOrders);
   console.log('Exercises test', ex);
