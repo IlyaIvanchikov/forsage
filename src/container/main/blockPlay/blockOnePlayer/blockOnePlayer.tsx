@@ -40,7 +40,6 @@ const BlockOnePlayer = ({
   generateNumber(exercises, numOfRounds, digits, terms, orders);
 
   const [newExercises, setNewExercises] = useState(exercises);
-  console.log(newExercises);
 
   return (
     <Col className={classes.onePlayerField}>

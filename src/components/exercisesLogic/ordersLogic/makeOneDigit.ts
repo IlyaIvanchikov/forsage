@@ -6,11 +6,12 @@ const makeOneDigitInTerm = (
   terms: number,
   signs: string[] = []
 ) => {
-  let order;
+  const ordersWith5 = ordersArray.five.orders;
+  let order: string;
   do {
     order = orders[getRandomIntInclusive(0, orders.length - 1)];
   } while (signs.length && order[0] !== signs[1][0]);
-  const ordersWith5 = ordersArray.five.orders;
+  console.log (ordersWith5, orders)
   const firstTerm =
     ordersWith5[order][getRandomIntInclusive(0, ordersWith5[order].length - 1)];
   let termDigits = [firstTerm, Number(order)];

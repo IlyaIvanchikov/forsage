@@ -7,7 +7,9 @@ export const makeIn5Orders = (
   digits: number = 1
 ) => {
   let termsArr = [];
-  orders = orders.map((el: string) => el.slice(0, 2));
+  orders = orders.map((el: string) =>
+    el[0] !== '-' ? '+' + el.slice(0, 1) : el.slice(0, 2)
+  );
   if (orders.length === 0) {
     // без законов на 5
     termsArr = without5Orders(digits, terms);
