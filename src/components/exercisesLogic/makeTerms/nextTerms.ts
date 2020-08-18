@@ -46,7 +46,6 @@ const makeNextTerm = (
           term += element;
         }
         term = +term * plus;
-        console.log('without 10', term);
       } while (checkRez(prevResult, term, min, max));
     }
   }

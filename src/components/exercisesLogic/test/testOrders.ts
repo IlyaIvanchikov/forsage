@@ -4,10 +4,10 @@ import { ordersArray } from '../dataBaseExercises/orders';
 
 export const testOrdersFunc = () => {
   // Data
-  const d = 3; // digits
+  const d = 1; // digits
   const t = 5; // terms
   //Data
-  const ex = makeExercises(d, t, testOrders.any);
+  const ex = makeExercises(d, t, testOrders.withOrders);
   console.log('Exercises test', ex);
   let sum = ex[0];
   for (let i = 1; i < ex.length - 1; i++) {
