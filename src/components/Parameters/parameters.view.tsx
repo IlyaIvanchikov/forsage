@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './parameters.module.scss';
+import classes from './Parameters.module.scss';
 import { Form, Row, Col, Button } from 'react-bootstrap';
 import Dropdown from './dropdown/dropdown';
 import FormButton from './formButton/formButton';
@@ -125,7 +125,7 @@ const ParametersView = ({
         handleChooseModalClick={handleChooseModalSignsClick}
         title="Количество знаков"
         modalParams={true}
-        size='sm'
+        size="sm"
       >
         {' '}
         <Signs handleButtonClick={handleButtonClick} />
@@ -157,7 +157,7 @@ const ParametersView = ({
         handleChooseModalClick={handleCloseModalLawsClick}
         title="Законы"
         modalParams={true}
-        size='sm'
+        size="sm"
       >
         {' '}
         <Laws laws={laws} setValueModalSelect={setValueModalSelect} />
