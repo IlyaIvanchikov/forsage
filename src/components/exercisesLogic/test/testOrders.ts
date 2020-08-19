@@ -4,8 +4,8 @@ import { ordersArray } from '../dataBaseExercises/orders';
 
 export const testOrdersFunc = () => {
   // Data
-  const d = 23; // digits
-  const t = 3; // terms
+  const d = 1; // digits
+  const t = 7; // terms
   //Data
   const ex = makeExercises(d, t, testOrders.withOrders);
   console.log('Exercises test', ex);
@@ -25,6 +25,7 @@ const checkOrders = (firstTerm: number, secondTerm: number) => {
     second = second.slice(1);
     plus = -1;
   }
+  if (first.length - second.length === 1) second = '0' + second;
   for (let i = first.length - 1; i >= 0; i--) {
     const one = Number(first[i]);
     const two = Number(second[i]) * plus;
@@ -35,6 +36,7 @@ const checkOrders = (firstTerm: number, secondTerm: number) => {
     } else {
       if (sum > 9) console.log('Закон на 10 плюс', one, two);
     }
+    console.log('one:', one)
     if (!ordersArray.five.withoutOrders[one].includes(two) && Math.abs(two) < 5)
       console.log('Закон на 5', one, two);
   }
