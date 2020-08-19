@@ -8,9 +8,6 @@ const minMax = (num: number) => ({
 export const makeFirstTerm = (digits: number, orders: any = {}) => {
   const { min, max } = minMax(digits);
   let firstTerm = getRandomIntInclusive(min, max);
-  if (digits === 1 && orders.ten.length !== 0 && orders.ten[0] !== 'Любой') {
-    firstTerm += 9;
-  }
   return firstTerm;
 };
 

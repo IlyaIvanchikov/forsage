@@ -13,8 +13,7 @@ export const makeExercises = (digits: number, terms: number, orders: any) => {
     arrOfTerms = makeIn5Orders(orders.five, terms, digits);
   } else if (
     // законы на 10
-    (orders.ten.length > 0 && orders.ten[0] !== 'Любой') ||
-    orders.ten.length === 0
+    (orders.ten.length > 0 && orders.ten[0] !== 'Любой')
   ) {
     arrOfTerms = makeIn10Orders(orders.ten, terms, digits);
   } else {
