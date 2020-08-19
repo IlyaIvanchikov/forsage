@@ -7,7 +7,7 @@
   color: #5bc2dc;
 
   p {
-    font-size: 4rem;
+    @include adaptive-font(120, 90);
     margin: 0;
     padding: 10px 0;
     line-height: 130%;
@@ -19,7 +19,7 @@
 }
 
 .gameCounter {
-  font-size: 3vh;
+  @include adaptive-font(24, 12);
   padding-bottom: 0;
   padding-top: 0;
   color: $orangeColor;
@@ -42,7 +42,7 @@
     width: 200px;
     height: 5vh;
     padding: 20px;
-    font-size: 3vh;
+    @include adaptive-font(32, 18);
     color: #a6a2a3;
     border: $blockBorderSize solid $orangeColor;
     border-bottom-left-radius: 10px;
