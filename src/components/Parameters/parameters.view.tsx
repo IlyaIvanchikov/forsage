@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './Parameters.module.scss';
+import classes from './parameters.module.scss';
 import { Form, Row, Col, Button } from 'react-bootstrap';
 import Dropdown from './dropdown/dropdown';
 import FormButton from './formButton/formButton';
@@ -131,7 +131,7 @@ const ParametersView = ({
         <Signs handleButtonClick={handleButtonClick} />
       </ModalComponent>
       <FormRange
-        title="Количество примеров:"
+        title="Количество раундов:"
         min={1}
         max={40}
         step={1}
@@ -139,7 +139,7 @@ const ParametersView = ({
         setValueRange={setValueRangeRounds}
       />
       <FormRange
-        title="Количество цифр в примере:"
+        title="Количество цифр в раунде:"
         min={2}
         max={20}
         step={1}
