@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import BlockPlayerHeader from './blockPlayerHeader/blockPlayerHeader';
 import BlockAnswerIndicate from './blockAnswerIndicate';
 import classes from './blockgame.module.scss';
@@ -44,6 +44,7 @@ const BlockGame = ({
   results,
   setResults,
 }: blockGameOpt) => {
+  const answerRef = useRef<HTMLInputElement | null>(null);
   const superTyrboPlay = additional.superTurboPlay;
   const [isRealNumber, setIsRealNumber] = useState(true);
   const [randomNumber, setRandomNumber] = useState(getRandomIntInclusive(0, 1));
@@ -73,6 +74,12 @@ const BlockGame = ({
     setAnswerText(event.target.value);
   };
 
+  useEffect(() => {
+    if (numOfPlayer === 1) {
+      answerRef.current?.focus();
+    }
+  });
+  
   useEffect(() => {
     if (
       term[0] !== numOfTerms - 1 &&
@@ -203,6 +210,7 @@ const BlockGame = ({
             value={answerText}
             placeholder="Ответ:"
             type="number"
+            ref={answerRef}
           />
           <button type="submit" disabled={disableInput}>
             <img src={ArrowIcon} alt="arrow" />
