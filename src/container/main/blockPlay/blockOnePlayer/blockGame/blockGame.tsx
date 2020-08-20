@@ -8,7 +8,7 @@ import BlockTerm from './blockTerm';
 import CoinsIcon from '../../../../../resources/images/Coins.png';
 import ArrowIcon from '../../../../../resources/images/Arrow.png';
 import getRandomIntInclusive from '../../../../../components/exercisesLogic/extraFunctions/getRandomIntInclusive';
-import { makeFirstTerm } from '../../../../../components/exercisesLogic/ganarateTerms';
+import { makeFirstTerm } from '../../../../../components/exercisesLogic/makeTerms/firstTerm';
 import { voiceActing } from '../../../../../components/voiceActing/voiceActing';
 
 type blockGameOpt = {
@@ -79,7 +79,7 @@ const BlockGame = ({
       answerRef.current?.focus();
     }
   });
-  
+
   useEffect(() => {
     if (
       term[0] !== numOfTerms - 1 &&
