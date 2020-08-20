@@ -6,6 +6,7 @@ export const makeIn10Orders = (
   terms: number,
   digits: number = 1
 ) => {
+  console.log('БОЛЬШЕ');
   orders = orders.map((el: string) =>
     el[0] !== '-' ? '+' + el.slice(0, 1) : el.slice(0, 2)
   );
@@ -13,7 +14,7 @@ export const makeIn10Orders = (
   const orders10 = ordersArray.ten;
   let firstTerm = randomFromArray(orders10[order]);
   if (order[0] === '-') firstTerm += 10;
-  const arrOfTerms = [firstTerm, Number(order)];
+  let arrOfTerms = [firstTerm, Number(order)];
   let sum = arrOfTerms[0] + arrOfTerms[1];
   if (terms > 2) {
     let term;
@@ -24,21 +25,21 @@ export const makeIn10Orders = (
         sum > 9
           ? matchedOrders.filter((el) => el[0] === '-')
           : matchedOrders.filter((el) => el[0] === '+');
-      console.log(matchedOrders);
       if (matchedOrders.length) {
         const order = randomFromArray(matchedOrders);
         term = Number(order);
-        console.log('ordered', term, order, matchedOrders);
       } else {
         // sum = arrOfTerms.reduce((a, b) => a + b, 0)
         term = getRandomIntInclusive(1, 9);
         if (sum > 9) term *= -1;
-        console.log('random', term);
       }
 
       sum += term;
       arrOfTerms.push(term);
     }
+  }
+  if (digits > 1) {
+    arrOfTerms = moreDigits10OrderedExercises(arrOfTerms, digits, orders);
   }
   return arrOfTerms;
 };
@@ -55,4 +56,40 @@ const findMatchedOrers = (
     // eslint-disable-next-line no-loop-func
     (el) => exampleOrders[el].includes(thingToFind)
   );
+};
+
+const moreDigits10OrderedExercises = (
+  arr: number[],
+  digits: number,
+  orders: string[]
+) => {
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (i === 0 && arr[i] > 9) arr[i] += 20;
+    arr[i] = addDigitInTerm(arr[i], sum);
+    sum += arr[i];
+  }
+  console.log('more digits');
+  return arr;
+};
+
+const addDigitInTerm = (item: number, prevTerm: number) => {
+  const plus = item > 0 ? 1 : -1;
+  let rezItem;
+  if (Math.abs(item) < 10) {
+    console.log(item, 'одноразрядное слагаемое. начинаем пересчет');
+    let counter = 0;
+    do {
+      rezItem = (Math.abs(item) + getRandomIntInclusive(1, 7) * 10) * plus;
+      counter++;
+      if (counter > 15) {
+        console.log(item, rezItem, prevTerm);
+        console.log('counter');
+        rezItem = 0;
+      }
+    } while (rezItem + prevTerm > 99 || rezItem + prevTerm < 10);
+  } else {
+    rezItem = item;
+  }
+  return rezItem;
 };
