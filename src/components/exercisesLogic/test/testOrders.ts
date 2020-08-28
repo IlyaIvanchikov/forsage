@@ -2,13 +2,24 @@ import { makeExercises } from '../makeExercises';
 import { testOrders } from './testOptions';
 import { ordersArray } from '../dataBaseExercises/orders';
 
-export const testOrdersFunc = () => {
+export const testOrdersFunc = (n: number) => {
+  const ord = [
+    'any',
+    'without10',
+    'with10',
+    'without5',
+    'with10without5',
+    'withoutAnyOrders',
+    'with5',
+    'with5without10',
+    'with10and5',
+  ];
   // Data
   const d = 2; // digits
   const t = 5; // terms
   //Data
-  const ex = makeExercises(d, t, testOrders.withOrders);
-  console.log('Exercises test', ex);
+  const ex = makeExercises(d, t, testOrders[ord[n]]);
+  console.log('Exercises test orders', ord[n]);
   let sum = ex[0];
   for (let i = 1; i < ex.length - 1; i++) {
     checkOrders(sum, ex[i]);

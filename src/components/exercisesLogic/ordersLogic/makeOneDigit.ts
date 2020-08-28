@@ -34,10 +34,11 @@ const makeOneDigitInTerm = (
       if (matchedOrders.length) {
         t = matchedOrder;
       } else {
+        console.log('ACSE', sum)
         t = ordersArray.five.withoutOrders[sum][getRandomIntInclusive(1, 5)];
       }
       termDigits.push(t);
-      sum += t;
+      sum += +t;
     }
   }
   termDigits = termDigits.map((el) => el.toString());

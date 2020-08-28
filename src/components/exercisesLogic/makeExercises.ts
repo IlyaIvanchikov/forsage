@@ -1,30 +1,41 @@
-import makeFirstTerm from './makeTerms/firstTerm';
-import makeNextTerm from './makeTerms/nextTerms';
-import { makeIn5Orders } from './ordersLogic/5ordersLogic';
-import { makeIn10Orders } from './ordersLogic/10ordersLogic';
+import {
+  caseAnyOrWithout10,
+  caseWith10,
+  caseWith5,
+} from './orderedMakeFuctions';
 
 export const makeExercises = (digits: number, terms: number, orders: any) => {
   let arrOfTerms: number[] = [];
-  if (
-    // законы на 5
-    (orders.five.length > 0 && orders.five[0] !== 'Любой') ||
-    orders.five.length === 0
-  ) {
-    arrOfTerms = makeIn5Orders(orders.five, terms, digits);
-  } else if (
-    // законы на 10
-    (orders.ten.length > 0 && orders.ten[0] !== 'Любой')
-  ) {
-    arrOfTerms = makeIn10Orders(orders.ten, terms, digits);
+
+  const n = orders.ten[0];
+  if (orders.five.length > 0) {
+    // законы на 5 (любой или особые)
+    if (orders.five[0] === 'Любой') {
+      // выбран любой закон на 5
+      n === 'Любой' || n === undefined
+        ? caseAnyOrWithout10(digits, terms, orders, arrOfTerms)
+        : caseWith10(digits, terms, orders, arrOfTerms);
+    } else {
+      // особые законы на 5
+      n === 'Любой' || n === undefined
+        ? caseWith5(digits, terms, orders, arrOfTerms)
+        : caseWith10(digits, terms, orders, arrOfTerms);
+    }
   } else {
-    // С любым законом или без законов на 10
-    arrOfTerms.push(makeFirstTerm(digits, orders));
-    // Генерируем и пушим в массив последующие слагаемые
-    let sum = arrOfTerms[0];
-    for (let i = 1; i < terms; i++) {
-      const term = makeNextTerm(sum, digits, orders);
-      arrOfTerms.push(term);
-      sum += term;
+    // без законов на 5
+    caseWith5(digits, terms, orders, arrOfTerms);
+
+    switch (n) {
+      case 'Любой':
+        // orderSrt = 'without5';
+        break;
+      case undefined:
+        // orderSrt = 'withoutAnyOrders';
+        break;
+
+      default:
+        // orderSrt = 'with10without5';
+        break;
     }
   }
   // считаем сумму и пушим в массив
