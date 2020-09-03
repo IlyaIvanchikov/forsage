@@ -8,9 +8,7 @@ export const makeIn10Orders = (
   digits: number = 1
 ) => {
   console.log('БОЛЬШЕ');
-  orders = orders.map((el: string) =>
-    el[0] !== '-' ? '+' + el.slice(0, 1) : el.slice(0, 2)
-  );
+  orders = orders.map((el: string) => el.slice(0, 2));
   const order = randomFromArray(orders);
   const orders10 = ordersArray.ten;
   let firstTerm = randomFromArray(orders10[order]);
@@ -50,11 +48,7 @@ const randomFromArray = (arr: any[]) =>
 //   );
 // };
 
-const otherItems = (
-  sum: number,
-  numOfT: number,
-  arrOfTerms: number[]
-) => {
+const otherItems = (sum: number, numOfT: number, arrOfTerms: number[]) => {
   for (let i = 0; i < numOfT; i++) {
     const sum1 = sum > 9 ? sum - 10 : sum;
     const term = makeNextTerm(sum1, 1, { ten: [], five: ['Любой'] });

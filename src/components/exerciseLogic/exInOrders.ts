@@ -9,13 +9,13 @@ export const makeInOrderEx = (
   // console.log(orders.five);
   orders.five = orders.five.map((el: string) => el.slice(0, 2));
   orders.ten = orders.ten.map((el: string) => el.slice(0, 2));
+  console.log(orders);
   const signs: any[] = [];
   let exercise = makeOneDigitInTerm(orders.five, terms);
-  exercise.forEach((el) => signs.push(el[0] === '-' ? '-' : '+'));
+  // exercise.forEach((el) => signs.push(el[0] === '-' ? '-' : '+'));
   if (digits > 1) {
     for (let i = 1; i < digits; i++) {
       const ex = makeOneDigitInTerm(orders.five, terms, signs);
-      console.log(ex);
 
       exercise = exercise.map(
         (el, idx) => el + (ex[idx][0] === '-' ? ex[idx].slice(1) : ex[idx])
