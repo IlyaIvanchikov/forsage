@@ -7,7 +7,6 @@ export const makeIn10Orders = (
   terms: number,
   digits: number = 1
 ) => {
-  console.log('БОЛЬШЕ');
   orders = orders.map((el: string) => el.slice(0, 2));
   const order = randomFromArray(orders);
   const orders10 = ordersArray.ten;
@@ -37,17 +36,6 @@ export const makeIn10Orders = (
 const randomFromArray = (arr: any[]) =>
   arr[getRandomIntInclusive(0, arr.length - 1)];
 
-// const findMatchedOrers = (
-//   orders: any[],
-//   exampleOrders: any,
-//   thingToFind: any
-// ) => {
-//   return orders.filter(
-//     // eslint-disable-next-line no-loop-func
-//     (el) => exampleOrders[el].includes(thingToFind)
-//   );
-// };
-
 const otherItems = (sum: number, numOfT: number, arrOfTerms: number[]) => {
   for (let i = 0; i < numOfT; i++) {
     const sum1 = sum > 9 ? sum - 10 : sum;
@@ -69,7 +57,6 @@ const moreDigits10OrderedExercises = (
     arr[i] = addDigitInTerm(arr[i], sum);
     sum += arr[i];
   }
-  console.log('more digits');
   return arr;
 };
 
@@ -77,14 +64,11 @@ const addDigitInTerm = (item: number, prevTerm: number) => {
   const plus = item > 0 ? 1 : -1;
   let rezItem;
   if (Math.abs(item) < 10) {
-    console.log(item, 'одноразрядное слагаемое. начинаем пересчет');
     let counter = 0;
     do {
       rezItem = (Math.abs(item) + getRandomIntInclusive(1, 7) * 10) * plus;
       counter++;
       if (counter > 15) {
-        console.log(item, rezItem, prevTerm);
-        console.log('counter');
         rezItem = 0;
       }
     } while (rezItem + prevTerm > 99 || rezItem + prevTerm < 10);

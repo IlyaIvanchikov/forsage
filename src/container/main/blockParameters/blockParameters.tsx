@@ -1,11 +1,10 @@
 import React, { useContext } from 'react';
 import classes from './blockParameters.module.scss';
-import Parameters from '../../../components/Parameters/Parameters';
+import Parameters from '../../../components/parameters/parameters';
 import owl from '../../../resources/images/main/owl.png';
 import { ParametersContext, UsuallyContext } from '../main-context';
 import { Row, Col, Container } from 'react-bootstrap';
 import { UsuallyProps } from '../../../ts/store';
-// import { StateType } from '../../../container/main/state/reducer';
 
 const BlockParameters: React.FC = () => {
   const { state } = useContext(ParametersContext);

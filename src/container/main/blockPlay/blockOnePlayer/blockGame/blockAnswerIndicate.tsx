@@ -1,5 +1,4 @@
 import React from 'react';
-// import { useState, useEffect } from 'react';
 import classes from './blockgame.module.scss';
 import imageRight from '../../../../../resources/images/owl_right.png';
 import imageWrong from '../../../../../resources/images/owl_wrong.png';

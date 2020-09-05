@@ -60,16 +60,6 @@ const BlockGame = ({
   const [currentNumber, setCurrentNumber] = useState(-1);
   const numOfTerms = exercises[0].length;
   let rez: any;
-  // if (
-  //   term[0] !== 100 &&
-  //   term[0] !== numOfTerms - 1 &&
-  //   !resultOfExercise.isShow &&
-  //   additional.soundPlay
-  // ) {
-  //   console.log(term[1]);
-  //   // voiceActing(5);
-  // }
-  // voiceActing(5);
   const handleTextField = (event: any) => {
     setAnswerText(event.target.value);
   };

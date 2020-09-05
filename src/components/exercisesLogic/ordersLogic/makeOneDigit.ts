@@ -11,7 +11,6 @@ const makeOneDigitInTerm = (
   do {
     order = orders[getRandomIntInclusive(0, orders.length - 1)];
   } while (signs.length && order[0] !== signs[1][0]);
-  console.log (ordersWith5, orders)
   const firstTerm =
     ordersWith5[order][getRandomIntInclusive(0, ordersWith5[order].length - 1)];
   let termDigits = [firstTerm, Number(order)];
@@ -34,7 +33,6 @@ const makeOneDigitInTerm = (
       if (matchedOrders.length) {
         t = matchedOrder;
       } else {
-        console.log('ACSE', sum)
         t = ordersArray.five.withoutOrders[sum][getRandomIntInclusive(1, 5)];
       }
       termDigits.push(t);
@@ -42,8 +40,6 @@ const makeOneDigitInTerm = (
     }
   }
   termDigits = termDigits.map((el) => el.toString());
-  // termDigits.push(sum.toString());
-
   return termDigits;
 };
 export default makeOneDigitInTerm;

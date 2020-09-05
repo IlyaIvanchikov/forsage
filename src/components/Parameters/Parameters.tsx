@@ -51,17 +51,8 @@ const Parameters = ({
     superTurboPlay: additional.superTurboPlay,
   });
 
-  /////ЧЕКАТЬ ЭФФЕКТ НА ОСТАЛЬНЫЕ ПАРАМЕТРЫ
-  
-  // useEffect(() => {
-  //   setValueRangeRounds(rounds);
-  //   setValueRangeDigits(digits);
-  //   setValueRangeSpeed(speed);
-  // }, [rounds, speed, digits]);
-
   const handleModalPlayersClick = () => {
     setShowPlayers(true);
-    // setLoading(true);
   };
   const handleCloseModalPlayersClick = () => setShowPlayers(false);
 
@@ -116,7 +107,6 @@ const Parameters = ({
       showPlayers={showPlayers}
       showSigns={showSigns}
       showLaws={showLaws}
-      // isLoading={isLoading}
       handleModalPlayersClick={handleModalPlayersClick}
       handleCloseModalPlayersClick={handleCloseModalPlayersClick}
       handleChooseModalPlayersClick={handleChooseModalPlayersClick}

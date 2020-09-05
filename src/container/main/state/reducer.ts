@@ -75,9 +75,6 @@ export const reducer = (state: StateType, action: ActionType): StateType => {
       return state;
     }
     case 'CHANGE_PARAMETERS':
-      // console.log({...state, playerParameters: [...state.playerParameters, {
-
-      // }]});
       return {
         ...state,
         playerParameters: state.playerParameters.map(

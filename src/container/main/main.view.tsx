@@ -15,7 +15,6 @@ const MainView = ({ show, loading }: showBlockPlay) => {
       {show && <BlockParameters />}
       {!show && loading && <Loader />}
       {!show && !loading && <BlockPlay />}
-      {/* {<BlockPlay />} */}
     </main>
   );
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './Parameters.module.scss';
+import classes from './parameters.module.scss';
 import { Form, Row, Col, Button } from 'react-bootstrap';
 import Dropdown from './dropdown/dropdown';
 import FormButton from './formButton/formButton';
@@ -10,8 +10,6 @@ import { Signs } from './modal/components/signs/signs';
 import { Laws } from './modal/components/laws/laws';
 import { ButtonID } from '../../ts/store';
 import { SubmitFormView, AdditionalParametersProps } from '../../ts/store';
-// import { ParametersContext } from '../../container/main/main-context';
-// import { ActionType } from '../../container/main/state/reducer';
 
 interface EventHandlerProps
   extends SubmitFormView,
@@ -63,11 +61,8 @@ const ParametersView = ({
   handleChooseModalPlayersClick,
   countPlayers,
 }: EventHandlerProps) => {
-  // const { state } = useContext(ParametersContext);
-  // console.log(state.playerParameters.length);
   const signs = valueModalSigns.signs;
   const nameButton = valueModalSigns.nameButton;
-  // const players = countPlayers.countPlayers;
   return (
     <Form
       className={classes.form}

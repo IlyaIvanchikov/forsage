@@ -5,7 +5,7 @@
 
   .footer {
     justify-content: space-evenly;
-    
+
     &__btn {
       @include btn__modal;
     }

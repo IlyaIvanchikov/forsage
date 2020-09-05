@@ -5,7 +5,6 @@ import smile from '../../../../../resources/images/modal/smile.svg';
 import girl from '../../../../../resources/images/modal/girl.svg';
 import cute from '../../../../../resources/images/modal/cute.svg';
 import freckles from '../../../../../resources/images/modal/freckles.svg';
-// import { UsuallyContext } from './../../../../../container/main/main-context';
 import { ButtonID } from './../../../../../ts/store';
 
 interface NameButton {
@@ -28,7 +27,6 @@ const nameButton: NameButton = {
 };
 
 export const Players = ({ handleButtonClick }: ButtonID): JSX.Element => {
-  // const { handleCountPlayersClick }: UsuallyProps = useContext(UsuallyContext);
   return (
     <Container>
       <Row>

@@ -1,12 +1,11 @@
 @import '../../styleGuide/variable.scss';
 
 .main {
-    background-color: $textColor;
-    color: $textColor;
-    flex: 1 0 auto;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    position: relative;
-    // padding: $paddingMain / 2 $paddingMain;
+  background-color: $textColor;
+  color: $textColor;
+  flex: 1 0 auto;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  position: relative;
 }

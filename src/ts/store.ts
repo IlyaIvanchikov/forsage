@@ -61,10 +61,6 @@ export interface SubmitFormView extends ModalSelect, HandleSubmitForm {
 }
 
 export interface UsuallyProps {
-  // handleShowSubmit: (
-  //   event: React.FormEvent<HTMLFormElement>,
-  //   speed: number
-  // ) => void;
   handleShowSubmit: ({
     event,
     speed,
