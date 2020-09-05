@@ -1,3 +1,4 @@
+import makeNextTerm from '../makeTerms/nextTerms';
 import { ordersArray } from '../dataBaseExercises/orders';
 import getRandomIntInclusive from '../extraFunctions/getRandomIntInclusive';
 
@@ -7,9 +8,7 @@ export const makeIn10Orders = (
   digits: number = 1
 ) => {
   console.log('БОЛЬШЕ');
-  orders = orders.map((el: string) =>
-    el[0] !== '-' ? '+' + el.slice(0, 1) : el.slice(0, 2)
-  );
+  orders = orders.map((el: string) => el.slice(0, 2));
   const order = randomFromArray(orders);
   const orders10 = ordersArray.ten;
   let firstTerm = randomFromArray(orders10[order]);
@@ -17,25 +16,16 @@ export const makeIn10Orders = (
   let arrOfTerms = [firstTerm, Number(order)];
   let sum = arrOfTerms[0] + arrOfTerms[1];
   if (terms > 2) {
-    let term;
-    for (let i = 2; i < terms; i++) {
-      const sum1 = sum > 9 ? sum - 10 : sum;
-      let matchedOrders = findMatchedOrers(orders, orders10, sum1);
-      matchedOrders =
-        sum > 9
-          ? matchedOrders.filter((el) => el[0] === '-')
-          : matchedOrders.filter((el) => el[0] === '+');
-      if (matchedOrders.length) {
-        const order = randomFromArray(matchedOrders);
-        term = Number(order);
-      } else {
-        // sum = arrOfTerms.reduce((a, b) => a + b, 0)
-        term = getRandomIntInclusive(1, 9);
-        if (sum > 9) term *= -1;
+    // если больше двух слагаемых
+    if (firstTerm < 10 && firstTerm > 1) {
+      if (getRandomIntInclusive(0, 1)) {
+        const term1 = getRandomIntInclusive(1, firstTerm - 1);
+        arrOfTerms = [term1, firstTerm - term1, Number(order)];
+        sum = arrOfTerms.reduce((a, b) => a + b, 0);
       }
-
-      sum += term;
-      arrOfTerms.push(term);
+      otherItems(sum, terms - arrOfTerms.length, arrOfTerms);
+    } else {
+      otherItems(sum, terms - arrOfTerms.length, arrOfTerms);
     }
   }
   if (digits > 1) {
@@ -47,15 +37,25 @@ export const makeIn10Orders = (
 const randomFromArray = (arr: any[]) =>
   arr[getRandomIntInclusive(0, arr.length - 1)];
 
-const findMatchedOrers = (
-  orders: any[],
-  exampleOrders: any,
-  thingToFind: any
-) => {
-  return orders.filter(
-    // eslint-disable-next-line no-loop-func
-    (el) => exampleOrders[el].includes(thingToFind)
-  );
+// const findMatchedOrers = (
+//   orders: any[],
+//   exampleOrders: any,
+//   thingToFind: any
+// ) => {
+//   return orders.filter(
+//     // eslint-disable-next-line no-loop-func
+//     (el) => exampleOrders[el].includes(thingToFind)
+//   );
+// };
+
+const otherItems = (sum: number, numOfT: number, arrOfTerms: number[]) => {
+  for (let i = 0; i < numOfT; i++) {
+    const sum1 = sum > 9 ? sum - 10 : sum;
+    const term = makeNextTerm(sum1, 1, { ten: [], five: ['Любой'] });
+
+    sum += term;
+    arrOfTerms.push(term);
+  }
 };
 
 const moreDigits10OrderedExercises = (
