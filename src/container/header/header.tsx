@@ -10,7 +10,7 @@ const Header: React.FC = () => (
     <Row className={classes.row}>
       <Col className="flex-row justify-content-start align-items-center d-none d-sm-flex">
         <div className={classes.logo}>
-          <a href="/">
+          <a href="https://pifagoriyatsk.ru/forsage/">
             <img src={logo} alt="logo" />
           </a>
         </div>
@@ -20,7 +20,7 @@ const Header: React.FC = () => (
         <h1>Форсаж</h1>
       </Col>
       <Col className="d-flex flex-row justify-content-sm-end align-items-center justify-content-center">
-        <a href="/">
+        <a href="https://pifagoriyatsk.ru/866-2/trenajor/">
           <img className={classes.dumbbells} src={dumbbells} alt="brain" />
           К&nbsp;тренажерам
         </a>
