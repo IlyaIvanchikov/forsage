@@ -1,19 +1,47 @@
-interface StateType {
-  playerParameters: {
-    speed: number;
-    rounds: number;
-    digits: number;
-  }[];
+export interface StateType {
+  playerParameters: StateTypeItem[];
 }
 
-type ActionType =
+export interface StateTypeItem {
+  speed: number;
+  rounds: number;
+  digits: number;
+  signs: number;
+  nameButtonSigns: string;
+  laws: {
+    five: string[];
+    ten: string[];
+  };
+  additional: {
+    soundPlay: boolean;
+    turboPlay: boolean;
+    superTurboPlay: boolean;
+  };
+}
+
+export type ActionType =
   | {
       type: 'CREATE_PARAMETERS';
-      payload: StateType;
+      playerParameters: StateTypeItem;
+      players: number;
     }
   | {
       type: 'CHANGE_PARAMETERS';
-      payload: StateType;
+      speed: number;
+      rounds: number;
+      digits: number;
+      signs: number;
+      nameButtonSigns: string;
+      laws: {
+        five: string[];
+        ten: string[];
+      };
+      additional: {
+        soundPlay: boolean;
+        turboPlay: boolean;
+        superTurboPlay: boolean;
+      };
+      player: number;
     };
 
 export const initialState: StateType = {
@@ -21,21 +49,54 @@ export const initialState: StateType = {
     {
       speed: 2,
       rounds: 10,
-      digits: 1,
+      digits: 2,
+      signs: 1,
+      nameButtonSigns: '1 (от 1 до 9)',
+      laws: {
+        five: ['Любой'],
+        ten: ['Любой'],
+      },
+      additional: {
+        soundPlay: false,
+        turboPlay: false,
+        superTurboPlay: false,
+      },
     },
   ],
 };
 
-export const reducer = (state: StateType, action: ActionType) => {
+export const reducer = (state: StateType, action: ActionType): StateType => {
   switch (action.type) {
-    // case 'CREATE_PARAMETERS':
-    //   return [
-    //     state,
-    //     {
-    //       speed: action.payload,
-    //     },
-    //   ];
-    default:
+    case 'CREATE_PARAMETERS': {
+      const newPlayers: StateTypeItem[] = Array(action.players - 1);
+      state.playerParameters[0] = action.playerParameters;
+      newPlayers.fill(state.playerParameters[0]);
+      state.playerParameters = state.playerParameters.concat(newPlayers);
       return state;
+    }
+    case 'CHANGE_PARAMETERS':
+      // console.log({...state, playerParameters: [...state.playerParameters, {
+
+      // }]});
+      return {
+        ...state,
+        playerParameters: state.playerParameters.map(
+          (item: StateTypeItem, index: number) =>
+            index + 1 === action.player
+              ? {
+                  ...item,
+                  speed: action.speed,
+                  rounds: action.rounds,
+                  digits: action.digits,
+                  signs: action.signs,
+                  nameButtonSigns: action.nameButtonSigns,
+                  laws: action.laws,
+                  additional: action.additional,
+                }
+              : item
+        ),
+      };
+    default:
+      throw new Error();
   }
 };

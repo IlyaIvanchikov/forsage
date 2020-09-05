@@ -2,63 +2,64 @@ import React from 'react';
 import classes from './blockresults.module.scss';
 import { Col, Row } from 'react-bootstrap';
 import ProgressBar from 'react-bootstrap/ProgressBar';
-import TableOfPlayerResults from './tableOfPlayerResults/tableOfPlayerResults'
+import TableOfPlayerResults from './tableOfPlayerResults/tableOfPlayerResults';
 import CloseIcon from '../../../../../resources/images/Close.png';
+import ReturnIcon from '../../../../../resources/images/return.svg';
 
-const gameData = {
-  numOfRounds: 10,
-  rightAnswers: 4,
-  playerName: 'Дима',
-  roundsScore: [
-    {
-      exercise: '7 + 9 - 2 + 4',
-      answer: 10,
-      righrAnswer: 18,
-    },
-    {
-      exercise: '7 + 9 - 2 + 4',
-      answer: 10,
-      righrAnswer: 16,
-    },
-    {
-      exercise: '7 + 9 - 2 + 4',
-      answer: 10,
-      righrAnswer: 11,
-    },
-    {
-      exercise: '7 + 9 - 2 + 4',
-      answer: 10,
-      righrAnswer: 18,
-    },
-    {
-      exercise: '7 + 9 - 2 + 4',
-      answer: 10,
-      righrAnswer: 19,
-    },
-  ],
+type BlockResProps = {
+  showScore: any;
+  results: any;
+  setResults: any;
+  round: any;
+  setRound: any;
+  setExercises: any;
+  exercises: any;
 };
 
-const BlockResults: React.FC = () => {
-
-  function getRandomIntInclusive(min: number, max: number): number {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min; //Максимум и минимум включаются
-  }
-
-  gameData.rightAnswers = getRandomIntInclusive(1, 10);
-
-  const gameScorePercent = (gameData.rightAnswers / gameData.numOfRounds) * 100;
-
+const BlockResults = ({
+  showScore,
+  setResults,
+  results,
+  round,
+  setRound,
+  setExercises,
+  exercises,
+}: BlockResProps) => {
+  const gameScorePercent = (results.rightAnswers / results.numOfRounds) * 100;
   return (
     <Col className={classes.resultsBlock}>
       <Row className={classes.resultsHeader}>
-        <Col className={classes.left}></Col>
+        <Col className={classes.left} />
         <Col className={classes.resultsTitle}>
           <h5>Результаты</h5>
         </Col>
         <Col className={classes.right}>
-          <button title="Закрыть" onClick={() => alert('Close')}>
+          <a href="/">
+            <button>
+              <img
+                className={classes.resultsIcon}
+                alt="В главное меню"
+                src={ReturnIcon}
+              />
+            </button>
+          </a>
+          <button
+            title="Закрыть"
+            onClick={() => {
+              if (results.gameOver) {
+                setResults({
+                  numOfRounds: results.numOfRounds,
+                  rightAnswers: 0,
+                  roundsScore: [],
+                });
+                setRound(1);
+                setExercises(exercises);
+              } else {
+                setRound(round);
+              }
+              showScore(false);
+            }}
+          >
             <img
               className={classes.resultsIcon}
               alt="Закрыть"
@@ -74,14 +75,14 @@ const BlockResults: React.FC = () => {
         <span>Правильно:</span>
         <Col className={classes.visualResultsPogress}>
           <p className={classes.relResult}>
-            {`${gameData.rightAnswers} из ${gameData.numOfRounds} `}
+            {`${results.rightAnswers} из ${results.numOfRounds} `}
           </p>
           <ProgressBar now={gameScorePercent} />
         </Col>
       </Row>
       <Row>
         <Col className={classes.tableOfResults}>
-          <TableOfPlayerResults />
+          <TableOfPlayerResults results={results.roundsScore} />
         </Col>
       </Row>
     </Col>

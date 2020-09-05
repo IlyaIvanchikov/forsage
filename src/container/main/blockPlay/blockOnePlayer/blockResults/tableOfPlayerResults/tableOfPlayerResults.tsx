@@ -1,32 +1,37 @@
 import React from 'react';
 import classes from './tableofplayerresults.module.scss';
 import { Table, Row } from 'react-bootstrap';
+import OneRowOfTable from '../oneRowOfResultsTable/oneRowOfResultsTable';
 
-const TableOfPlayerResults: React.FC = () => {
+type TableResProps = {
+  results: any[];
+};
+
+const TableOfPlayerResults = ({ results }: TableResProps) => {
   return (
     <Row className={classes.table}>
-      <Table responsive striped bordered hover>
+      <Table responsive striped hover>
         <thead>
           <tr>
             <th>#</th>
             <th>Пример</th>
-            <th>Ответ</th>
-            <th>V</th>
+            <th>Ваш ответ</th>
+            <th>Правильный</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>7+200+56/85</td>
-            <td>40</td>
-            <td>55</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>70-32+14</td>
-            <td>40</td>
-            <td>43</td>
-          </tr>
+          {results.length ? (
+            results.map((item, index) => (
+              <OneRowOfTable exercises={item} number={index + 1} key={index} />
+            ))
+          ) : (
+            <tr>
+              <td></td>
+              <td>Нет результатов</td>
+              <td></td>
+              <td></td>
+            </tr>
+          )}
         </tbody>
       </Table>
     </Row>

@@ -1,23 +1,74 @@
-import React from 'react';
+import React, { useState } from 'react';
 import classes from './blockoneplayer.module.scss';
-import BlockResults from './blockResults/blockResults';
 import { Col } from 'react-bootstrap';
 import BlockGame from './blockGame/blockGame';
+import BlockResults from './blockResults/blockResults';
+import { generateNumber } from '../../../../components/exercisesLogic/generateNumber';
 
-const BlockOnePlayer: React.FC = () => {
-  // const [block, setBlock] = useState('');
+type blockPlayOpt = {
+  numOfPlayer: number;
+  numOfRounds: number;
+  speed: number;
+  terms: number;
+  digits: number;
+  orders: any;
+  additional: {
+    soundPlay: boolean;
+    turboPlay: boolean;
+    superTurboPlay: boolean;
+  };
+};
 
-  function getRandomIntInclusive(min: number, max: number): number {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min; //Максимум и минимум включаются
-  }
+const BlockOnePlayer = ({
+  numOfPlayer,
+  numOfRounds,
+  digits,
+  speed,
+  terms,
+  orders,
+  additional,
+}: blockPlayOpt) => {
+  const [viewScore, setViewScore] = useState(false);
+  const [round, setRound] = useState(1);
+  const [results, setResults] = useState<any>({
+    numOfRounds,
+    rightAnswers: 0,
+    roundsScore: [],
+  });
 
-  const block = getRandomIntInclusive(0, 1);
+  const exercises: any = [];
+  generateNumber(exercises, numOfRounds, digits, terms, orders);
+
+  const [newExercises, setNewExercises] = useState(exercises);
 
   return (
     <Col className={classes.onePlayerField}>
-      {block < 1 ? <BlockResults /> : <BlockGame />}
+      {viewScore ? (
+        <BlockResults
+          results={results}
+          setResults={setResults}
+          showScore={setViewScore}
+          setExercises={setNewExercises}
+          setRound={setRound}
+          round={round}
+          exercises={exercises}
+        />
+      ) : (
+        <BlockGame
+          exercises={newExercises}
+          setNewExercises={setNewExercises}
+          numOfRounds={numOfRounds}
+          numOfPlayer={numOfPlayer}
+          timing={speed * 1000}
+          showScore={setViewScore}
+          setResults={setResults}
+          results={results}
+          additional={additional}
+          digits={digits}
+          round={round}
+          setRound={setRound}
+        />
+      )}
     </Col>
   );
 };

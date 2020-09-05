@@ -7,15 +7,19 @@
   color: #5bc2dc;
 
   p {
-    font-size: 4rem;
+    @include adaptive-font(120, 90);
     margin: 0;
-    padding: 0;
+    padding: 10px 0;
     line-height: 130%;
+  }
+
+  .turboP {
+    position: fixed;
   }
 }
 
 .gameCounter {
-  font-size: 3vh;
+  @include adaptive-font(24, 12);
   padding-bottom: 0;
   padding-top: 0;
   color: $orangeColor;
@@ -26,13 +30,19 @@
 .blockAnswer {
   padding: 10px;
   justify-content: center;
+  align-items: center;
   margin: 0;
+
+  form {
+    display: flex;
+    align-items: center;
+  }
 
   input {
     width: 200px;
     height: 5vh;
     padding: 20px;
-    font-size: 3vh;
+    @include adaptive-font(32, 18);
     color: #a6a2a3;
     border: $blockBorderSize solid $orangeColor;
     border-bottom-left-radius: 10px;
@@ -41,7 +51,7 @@
 
   button {
     width: 73px;
-    border: none;
+    padding: 2px;
     background: none;
     border: $blockBorderSize solid $clrBackground;
     border-left: none;
@@ -81,16 +91,32 @@
   }
 }
 
-@media (max-width: 1440px) {
-  .coins {
-    padding: 20px;
-    padding-top: 0;
+.indacateResult {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  padding: 10px;
+  z-index: 1;
+
+  .owlBlock {
+    background-color: white;
+    width: 100%;
+    height: 83%;
+
+    p {
+      color: #7a2e5d;
+      font-size: 3vh;
+    }
+
+    img {
+      height: 45%;
+      margin: 2px;
+      // max-width: 200px;
+    }
   }
 }
 
-@media (min-width: 1441px) {
-  .coins {
-    padding: 20px;
-    padding-top: 0;
-  }
+.hideBlock {
+  display: none;
 }

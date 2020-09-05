@@ -1,21 +1,23 @@
 import React, { useContext } from 'react';
 import classes from './blockParameters.module.scss';
-import Parameters from '../../../components/parameters/parameters';
+import Parameters from '../../../components/Parameters/Parameters';
 import owl from '../../../resources/images/main/owl.png';
-import { DispatchParametersContext } from '../main-context';
+import { ParametersContext, UsuallyContext } from '../main-context';
 import { Row, Col, Container } from 'react-bootstrap';
+import { UsuallyProps } from '../../../ts/store';
+// import { StateType } from '../../../container/main/state/reducer';
 
 const BlockParameters: React.FC = () => {
-  // const { state }: any = useContext(ParametersContext);
-  const { handleShowSubmit }: any = useContext(DispatchParametersContext);
-  // const { playerParameters } = state;
+  const { state } = useContext(ParametersContext);
+  const { handleShowSubmit }: UsuallyProps = useContext(UsuallyContext);
   return (
     <Container>
       <Row className="flex-row justify-content-sm-center">
         <Col sm={12} lg={9}>
           <Parameters
             handleSubmit={handleShowSubmit}
-            // params={playerParameters}
+            playerParameters={state.playerParameters[0]}
+            paramPlayers={true}
           />
         </Col>
         <Col lg={3} className="d-none d-lg-block">

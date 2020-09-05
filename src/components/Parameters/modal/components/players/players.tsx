@@ -5,6 +5,8 @@ import smile from '../../../../../resources/images/modal/smile.svg';
 import girl from '../../../../../resources/images/modal/girl.svg';
 import cute from '../../../../../resources/images/modal/cute.svg';
 import freckles from '../../../../../resources/images/modal/freckles.svg';
+// import { UsuallyContext } from './../../../../../container/main/main-context';
+import { ButtonID } from './../../../../../ts/store';
 
 interface NameButton {
   items: NameButtonItem[];
@@ -25,20 +27,25 @@ const nameButton: NameButton = {
   ],
 };
 
-export const Players = (): JSX.Element => {
+export const Players = ({ handleButtonClick }: ButtonID): JSX.Element => {
+  // const { handleCountPlayersClick }: UsuallyProps = useContext(UsuallyContext);
   return (
     <Container>
       <Row>
         {nameButton.items.map((item: NameButtonItem) => (
           <Col xs={12} key={item.id} className="d-flex justify-content-center">
-            <Button key={item.id} className={classes.btn}>
+            <Button
+              key={item.id}
+              className={classes.btn}
+              onClick={() => handleButtonClick(item.id, item.name)}
+            >
               {[...Array(item.id)].reduce(
                 (prev: string[], current: number, indexReduce: number) => [
                   ...prev,
                   <img
                     alt="player"
                     src={nameButton.items[indexReduce].url}
-                    key={item.id}
+                    key={item.id + indexReduce}
                     className={classes.btn__img}
                   />,
                 ],

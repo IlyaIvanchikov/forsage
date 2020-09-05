@@ -2,6 +2,7 @@
 //         "info": tomato,
 //         "danger": teal
 // );
+@import './variable.scss';
 
 @import '~bootstrap/scss/bootstrap';
 @import './variable.scss';
@@ -10,13 +11,14 @@
   margin: 0;
 }
 
+.progress-bar {
+  background-color: $clrBackground;
+  margin: 0;
+}
+
 .modal-content {
   border: #9DBD2C 4px solid;
   border-radius: 15px;
-}
-
-.progress-bar {
-  background-color: $clrBackground;
 }
 
 .progress {
