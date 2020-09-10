@@ -8,10 +8,11 @@ export const makeIn10Orders = (
   terms: number,
   digits: number = 1
 ) => {
-  let arrOfTerms, isThereCross = false;
-  orders.forEach(order => {
-    if (order.length > 2) isThereCross = true
-  })
+  let arrOfTerms,
+    isThereCross = false;
+  orders.forEach((order) => {
+    if (order.length > 12) isThereCross = true;
+  });
   if (isThereCross) {
     // двойной переход на10 и на 5
     arrOfTerms = doubleCrossExercises(orders, terms, digits);
