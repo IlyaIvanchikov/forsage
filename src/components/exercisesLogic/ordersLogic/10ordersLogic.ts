@@ -1,34 +1,44 @@
 import makeNextTerm from '../makeTerms/nextTerms';
 import { ordersArray } from '../dataBaseExercises/orders';
 import getRandomIntInclusive from '../extraFunctions/getRandomIntInclusive';
+import { doubleCrossExercises } from './doubleCross10n5';
 
 export const makeIn10Orders = (
   orders: string[],
   terms: number,
   digits: number = 1
 ) => {
-  orders = orders.map((el: string) => el.slice(0, 2));
-  const order = randomFromArray(orders);
-  const orders10 = ordersArray.ten;
-  let firstTerm = randomFromArray(orders10[order]);
-  if (order[0] === '-') firstTerm += 10;
-  let arrOfTerms = [firstTerm, Number(order)];
-  let sum = arrOfTerms[0] + arrOfTerms[1];
-  if (terms > 2) {
-    // если больше двух слагаемых
-    if (firstTerm < 10 && firstTerm > 1) {
-      if (getRandomIntInclusive(0, 1)) {
-        const term1 = getRandomIntInclusive(1, firstTerm - 1);
-        arrOfTerms = [term1, firstTerm - term1, Number(order)];
-        sum = arrOfTerms.reduce((a, b) => a + b, 0);
+  let arrOfTerms, isThereCross = false;
+  orders.forEach(order => {
+    if (order.length > 2) isThereCross = true
+  })
+  if (isThereCross) {
+    // двойной переход на10 и на 5
+    arrOfTerms = doubleCrossExercises(orders, terms, digits);
+  } else {
+    orders = orders.map((el: string) => el.slice(0, 2));
+    const order = randomFromArray(orders);
+    const orders10 = ordersArray.ten;
+    let firstTerm = randomFromArray(orders10[order]);
+    if (order[0] === '-') firstTerm += 10;
+    arrOfTerms = [firstTerm, Number(order)];
+    let sum = arrOfTerms[0] + arrOfTerms[1];
+    if (terms > 2) {
+      // если больше двух слагаемых
+      if (firstTerm < 10 && firstTerm > 1) {
+        if (getRandomIntInclusive(0, 1)) {
+          const term1 = getRandomIntInclusive(1, firstTerm - 1);
+          arrOfTerms = [term1, firstTerm - term1, Number(order)];
+          sum = arrOfTerms.reduce((a, b) => a + b, 0);
+        }
+        otherItems(sum, terms - arrOfTerms.length, arrOfTerms);
+      } else {
+        otherItems(sum, terms - arrOfTerms.length, arrOfTerms);
       }
-      otherItems(sum, terms - arrOfTerms.length, arrOfTerms);
-    } else {
-      otherItems(sum, terms - arrOfTerms.length, arrOfTerms);
     }
-  }
-  if (digits > 1) {
-    arrOfTerms = moreDigits10OrderedExercises(arrOfTerms, digits, orders);
+    if (digits > 1) {
+      arrOfTerms = moreDigits10OrderedExercises(arrOfTerms, digits, orders);
+    }
   }
   return arrOfTerms;
 };
