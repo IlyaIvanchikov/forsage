@@ -8,28 +8,33 @@ export const makeIn10Orders = (
   terms: number,
   digits: number = 1
 ) => {
+  // const ordersBack = orders;
   let arrOfTerms,
     isThereCross = false;
   orders.forEach((order) => {
     if (order.length > 12) isThereCross = true;
   });
-  if (isThereCross) {
+  if (isThereCross) isThereCross = true;
+  if (false) {
     // двойной переход на10 и на 5
     arrOfTerms = doubleCrossExercises(orders, terms, digits);
   } else {
-    orders = orders.map((el: string) => el.slice(0, 2));
+    orders = orders.map((el: string) =>
+      el.length > 12 ? el.slice(0, 2) + 'd' : el.slice(0, 2)
+    );
     const order = randomFromArray(orders);
+    console.log(order, 'order');
     const orders10 = ordersArray.ten;
     let firstTerm = randomFromArray(orders10[order]);
     if (order[0] === '-') firstTerm += 10;
-    arrOfTerms = [firstTerm, Number(order)];
+    arrOfTerms = [firstTerm, Number(order.slice(0, 2))];
     let sum = arrOfTerms[0] + arrOfTerms[1];
     if (terms > 2) {
       // если больше двух слагаемых
       if (firstTerm < 10 && firstTerm > 1) {
         if (getRandomIntInclusive(0, 1)) {
           const term1 = getRandomIntInclusive(1, firstTerm - 1);
-          arrOfTerms = [term1, firstTerm - term1, Number(order)];
+          arrOfTerms = [term1, firstTerm - term1, Number(order.slice(0, 2))];
           sum = arrOfTerms.reduce((a, b) => a + b, 0);
         }
         otherItems(sum, terms - arrOfTerms.length, arrOfTerms);
@@ -41,6 +46,13 @@ export const makeIn10Orders = (
       arrOfTerms = moreDigits10OrderedExercises(arrOfTerms, digits, orders);
     }
   }
+  arrOfTerms.forEach((el, idx) => {
+    if (el === 0) {
+      arrOfTerms[idx] = 10;
+      // console.dir(arrOfTerms);
+      // makeIn10Orders(ordersBack, terms, digits);
+    }
+  });
   return arrOfTerms;
 };
 
