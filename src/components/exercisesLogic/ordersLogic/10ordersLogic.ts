@@ -26,7 +26,7 @@ export const makeIn10Orders = (
     console.log(order, 'order');
     const orders10 = ordersArray.ten;
     let firstTerm = randomFromArray(orders10[order]);
-    if (order[0] === '-') firstTerm += 10;
+    if (order[0] === '-') firstTerm += getRandomIntInclusive(1, 7) * 10;
     arrOfTerms = [firstTerm, Number(order.slice(0, 2))];
     let sum = arrOfTerms[0] + arrOfTerms[1];
     if (terms > 2) {
@@ -34,6 +34,7 @@ export const makeIn10Orders = (
       if (firstTerm < 10 && firstTerm > 1) {
         if (getRandomIntInclusive(0, 1)) {
           const term1 = getRandomIntInclusive(1, firstTerm - 1);
+          console.log(term1);
           arrOfTerms = [term1, firstTerm - term1, Number(order.slice(0, 2))];
           sum = arrOfTerms.reduce((a, b) => a + b, 0);
         }
@@ -47,7 +48,7 @@ export const makeIn10Orders = (
     }
   }
   arrOfTerms.forEach((el, idx) => {
-    if (el === 0) {
+    if (el === 0 && digits === 2) {
       arrOfTerms[idx] = 10;
       // console.dir(arrOfTerms);
       // makeIn10Orders(ordersBack, terms, digits);
@@ -61,7 +62,7 @@ const randomFromArray = (arr: any[]) =>
 
 const otherItems = (sum: number, numOfT: number, arrOfTerms: number[]) => {
   for (let i = 0; i < numOfT; i++) {
-    const sum1 = sum > 9 ? sum - 10 : sum;
+    const sum1 = sum > 9 ? sum % 10 : sum;
     const term = makeNextTerm(sum1, 1, { ten: [], five: ['Любой'] });
 
     sum += term;
