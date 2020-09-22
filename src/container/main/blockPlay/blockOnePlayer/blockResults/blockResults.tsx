@@ -34,7 +34,7 @@ const BlockResults = ({
           <h5>Результаты</h5>
         </Col>
         <Col className={classes.right}>
-          <a href="https://pifagoriyatsk.ru/forsage/">
+          <a href="http://naretreat.ru/build/">
             <button>
               <img
                 className={classes.resultsIcon}

@@ -13,7 +13,7 @@
   "bugs": {
     "url": "https://github.com/IlyaIvanchikov/forsage/issues"
   },
-  "homepage": "https://pifagoriyatsk.ru/forsage/",
+  "homepage": "http://naretreat.ru/build/",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
