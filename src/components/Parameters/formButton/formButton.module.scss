@@ -1,0 +1,26 @@
+@import '../../../styleGuide/variable.scss';
+
+.formButton {
+  background-color: $textColor;
+  border: $borderModal;
+  border-radius: 5px;
+  color: $orangeColor;
+  width: 100%;
+
+  &:hover {
+    background-color: $clrBackground;
+    border: 3px solid rgb(67, 241, 14);
+  }
+
+  &:focus {
+    background-color: $textColor;
+    border: $borderModal;
+    color: $orangeColor;
+    box-shadow: none;
+  }
+
+  &:active {
+    background-color: $clrBackground !important;
+    border: 3px solid rgb(67, 241, 14) !important;
+  }
+}

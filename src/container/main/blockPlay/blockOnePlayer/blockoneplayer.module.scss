@@ -1,0 +1,17 @@
+@import '../../../../styleGuide/variable.scss';
+
+.onePlayerField {
+  border: $blockBorderSize solid $clrBackground;
+  margin: 10px;
+  border-radius: 10px;
+  min-width: 40vw;
+  min-height: 300px;
+  max-width: 600px;
+  padding: 0;
+}
+
+@media (max-width: 960px) {
+  .onePlayerField {
+    min-width: 85vw;
+  }
+}

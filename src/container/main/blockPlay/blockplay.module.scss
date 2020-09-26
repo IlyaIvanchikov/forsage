@@ -1,0 +1,7 @@
+@import '../../../styleGuide/variable.scss';
+
+.gameField {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}

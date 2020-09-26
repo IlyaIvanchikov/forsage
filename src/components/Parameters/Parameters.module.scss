@@ -1,0 +1,37 @@
+@import '../../styleGuide/variable.scss';
+
+.form {
+  margin-top: 2%;
+  margin-bottom: 2%;
+  border: 3px solid $clrBackground;
+  min-width: 310px;
+  padding: 2%;
+  @include adaptive-font(30, 16);
+  position: relative;
+  z-index: 1;
+  background-color: $orangeColor;
+  border-radius: 25px;
+  color: white;
+
+  h2 {
+    @include adaptive-font(38, 20);
+  }
+
+  .formControlButton {
+    background-color: $textColor;
+    border: 3px solid $clrBackground;
+    border-radius: 5px;
+    color: $orangeColor;
+
+    &:active {
+      background-color: $clrBackground !important;
+      border: 3px solid rgb(67, 241, 14) !important;
+    }
+
+    &:hover {
+      background-color: $clrBackground;
+      border: 3px solid rgb(67, 241, 14);
+      color: white;
+    }
+  }
+}

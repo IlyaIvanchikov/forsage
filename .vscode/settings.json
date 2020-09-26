@@ -1,0 +1,10 @@
+{
+"terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
+"workbench.colorTheme": "One Dark Theme",
+"workbench.iconTheme": "vscode-icons",
+"editor.formatOnSave": true,
+"files.autoSave": "afterDelay",
+"gitlens.advanced.messages": {
+
+},
+}

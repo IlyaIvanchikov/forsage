@@ -1,0 +1,73 @@
+@font-face {
+  font-family: 'CyrillicHover';
+  font-style: normal;
+  font-weight: 400;
+  src: local('CyrillicHover'), local('CyrillicHover'),
+    url('../resources/fonts/cyrillichover.ttf') format('truetype');
+}
+
+$clrBackground: #9dbd2c;
+
+$paddingMain: 3%;
+
+$textColor: #fff;
+
+$orangeColor: #e7a343;
+
+$fontCyrillicHover: 'CyrillicHover', arial;
+
+$blockBorderSize: 4px;
+
+$borderRadius: 15px;
+
+$maxWidth: 1920;
+
+$borderModal: solid 3px $clrBackground;
+
+@mixin adaptive-font($pcSize, $mobSize) {
+  $addSize: $pcSize - $mobSize;
+  $addMobSize: $addSize + $mobSize * 0.7;
+
+  @media (max-width: 767px) {
+    font-size: calc(
+      #{$mobSize + px} + #{$addMobSize} * ((100vw - 320px) / #{$maxWidth})
+    );
+  }
+
+  @media (min-width: 767px) {
+    font-size: calc(#{$mobSize + px} + #{$addSize} * (100vw / #{$maxWidth}));
+  }
+}
+
+@mixin btn__modal {
+  background-color: #9dbd2c;
+  border-radius: $borderRadius;
+  border: none;
+}
+
+@mixin btn__InModal {
+  background-color: $textColor;
+  border-radius: $borderRadius;
+  width: 60%;
+  border-radius: 5px;
+  color: $orangeColor;
+  border: 3px solid $orangeColor;
+  margin-bottom: 5%;
+  min-width: 250px;
+
+  &:hover {
+    background-color: $clrBackground;
+    border: 3px solid $orangeColor;
+  }
+
+  &:focus {
+    background-color: $clrBackground;
+    border: 3px solid $orangeColor;
+    box-shadow: none;
+  }
+
+  &:active {
+    background-color: $clrBackground !important;
+    border: 3px solid $orangeColor !important;
+  }
+}
