@@ -2,9 +2,9 @@ import React, { useState, useContext } from 'react';
 import classes from './blockplayerheader.module.scss';
 import ResultsIcon from '../../../../../../resources/images/Results.png';
 import { Row, Col } from 'react-bootstrap';
-import ModalComponent from '../../../../../../components/Parameters/modal/modal';
+import ModalComponent from '../../../../../../components/parameters/modal/modal';
 import { generateNumber } from '../../../../../../components/exercisesLogic/generateNumber';
-import Parameters from '../../../../../../components/Parameters/Parameters';
+import Parameters from '../../../../../../components/parameters/parameters';
 import Hint from '../../../../../../components/hint/hint';
 import {
   ParametersContext,

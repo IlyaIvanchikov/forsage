@@ -47,7 +47,7 @@ export type ActionType =
 export const initialState: StateType = {
   playerParameters: [
     {
-      speed: 2,
+      speed: 1,
       rounds: 10,
       digits: 2,
       signs: 1,
