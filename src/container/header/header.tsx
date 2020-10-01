@@ -20,7 +20,7 @@ const Header: React.FC = () => (
         <h1>Форсаж</h1>
       </Col>
       <Col className="d-flex flex-row justify-content-sm-end align-items-center justify-content-center">
-        <a href="https://pifagoriyatsk.ru/forsage/">
+        <a href="https://pifagoriyatsk.ru/866-2/trenajor/">
           <img className={classes.dumbbells} src={dumbbells} alt="brain" />
           К&nbsp;тренажерам
         </a>

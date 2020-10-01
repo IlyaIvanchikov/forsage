@@ -23,7 +23,6 @@ export const makeIn10Orders = (
       el.length > 12 ? el.slice(0, 2) + 'd' : el.slice(0, 2)
     );
     const order = randomFromArray(orders);
-    console.log(order, 'order');
     const orders10 = ordersArray.ten;
     let firstTerm = randomFromArray(orders10[order]);
     if (order[0] === '-') firstTerm += getRandomIntInclusive(1, 7) * 10;
@@ -34,7 +33,6 @@ export const makeIn10Orders = (
       if (firstTerm < 10 && firstTerm > 1) {
         if (getRandomIntInclusive(0, 1)) {
           const term1 = getRandomIntInclusive(1, firstTerm - 1);
-          console.log(term1);
           arrOfTerms = [term1, firstTerm - term1, Number(order.slice(0, 2))];
           sum = arrOfTerms.reduce((a, b) => a + b, 0);
         }
