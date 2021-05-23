@@ -6,6 +6,7 @@ interface EventHandlerProps {
   showModal: boolean;
   handleCloseModalClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
   handleChooseModalClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  nameButton?: string;
   title: string;
   children: React.ReactNode;
   modalParams: boolean;
@@ -19,6 +20,7 @@ const ModalComponent = ({
   title,
   children,
   modalParams,
+  nameButton,
   size,
 }: EventHandlerProps) => {
   return (
@@ -45,16 +47,8 @@ const ModalComponent = ({
               className={classes.footer__btn}
               onClick={handleChooseModalClick}
             >
-              Выбрать
+              {nameButton ? nameButton : 'Выбрать'}
             </Button>
-            {title === 'Законы' ? null : (
-              <Button
-                className={classes.footer__btn}
-                onClick={handleCloseModalClick}
-              >
-                Отмена
-              </Button>
-            )}
           </Modal.Footer>
         )}
       </Modal>

@@ -5,7 +5,7 @@ import smile from '../../../../../resources/images/modal/smile.svg';
 import girl from '../../../../../resources/images/modal/girl.svg';
 import cute from '../../../../../resources/images/modal/cute.svg';
 import freckles from '../../../../../resources/images/modal/freckles.svg';
-import { ButtonID } from './../../../../../ts/store';
+import { ButtonID } from '../../../../../ts/store';
 
 interface NameButton {
   items: NameButtonItem[];

@@ -4,4 +4,14 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+
+  .loader {
+    background-color: $textColor;
+    color: $textColor;
+    flex: 1 0 auto;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    position: relative;
+  }
 }

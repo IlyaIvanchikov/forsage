@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Col, Form, Button } from 'react-bootstrap';
 import classes from './formButton.module.scss';
-import { TitleParameters } from './../../../ts/store';
+import { TitleParameters } from '../../../ts/store';
 
 const FormButton = ({
   title,
