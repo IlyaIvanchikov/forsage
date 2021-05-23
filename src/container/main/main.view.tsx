@@ -13,7 +13,7 @@ const MainView = ({ show, loading }: showBlockPlay) => {
   return (
     <main className={classes.main}>
       {show && <BlockParameters />}
-      {!show && loading && <Loader />}
+      {!show && loading && <Loader state="play" />}
       {!show && !loading && <BlockPlay />}
     </main>
   );

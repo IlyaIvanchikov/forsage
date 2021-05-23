@@ -1,0 +1,86 @@
+@import '../../styleGuide/variable.scss';
+
+.wrapper {
+  background-color: $textColor;
+  color: $textColor;
+  flex: 1 0 auto;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  display: flex;
+  position: relative;
+
+  .wrong {
+    height: 5vh;
+    width: 60vw;
+    background-color: rgb(163, 59, 59);
+    color: black;
+    border-radius: $borderRadius;
+    border: black 2px solid;
+  }
+
+  .form {
+    margin-top: 2%;
+    margin-bottom: 2%;
+    border: 3px solid $clrBackground;
+    min-width: 310px;
+    padding: 2%;
+    @include adaptive-font(30, 16);
+    position: relative;
+    z-index: 1;
+    background-color: $orangeColor;
+    border-radius: 25px;
+    color: white;
+
+    .label {
+      color: $orangeColor;
+    }
+
+    input::-moz-placeholder {
+      color: $orangeColor;
+    }
+    input::-webkit-input-placeholder {
+      color: $orangeColor;
+    }
+    input:-ms-input-placeholder {
+      color: $orangeColor;
+    }
+    input::-ms-input-placeholder {
+      color: $orangeColor;
+    }
+    input::placeholder {
+      color: $orangeColor;
+    }
+
+    .formControlButton {
+      background-color: $textColor;
+      border: 3px solid $clrBackground;
+      border-radius: 5px;
+      color: $orangeColor;
+
+      &:active {
+        background-color: $clrBackground !important;
+        border: 3px solid rgb(67, 241, 14) !important;
+      }
+
+      &:hover {
+        background-color: $clrBackground;
+        border: 3px solid rgb(67, 241, 14);
+        color: white;
+      }
+    }
+  }
+  .img {
+    position: relative;
+    width: 100%;
+    top: 45%;
+  }
+  a {
+    @include adaptive-font(20, 10);
+    color: black;
+
+    &:hover {
+      color: white;
+    }
+  }
+}

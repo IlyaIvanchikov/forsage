@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { useTransition, animated } from 'react-spring';
 import classes from './dropdown.module.scss';
-import { UsuallyContext } from './../../../container/main/main-context';
+import { UsuallyContext } from '../../../container/main/main-context';
 import { AdditionalParametersProps } from '../../../ts/store';
 
 const menuItems: string[] = [

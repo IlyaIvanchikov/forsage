@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './footer.module.scss';
 import { Row, Col } from 'react-bootstrap';
+import dumbbells from '../../resources/images/header/dumbbells.svg';
 
 const socialLinks: string[][] = [
   ['instagram', 'https://www.instagram.com/pifagoriya_tomsk/'],
@@ -54,6 +55,12 @@ const Footer: React.FC = () => (
             C194.659,54.261,212.306,53.253,228.439,56.691z"
             />
           </svg>
+        </a>
+        <a
+          title="Все наши тренажеры"
+          href="https://pifagoriyatsk.ru/866-2/trenajor/"
+        >
+          <img className={classes.footer__icon} src={dumbbells} alt="brain" />
         </a>
       </Col>
       <Col className={classes.footer__copyrights}>&copy; Пифагория, 2020</Col>

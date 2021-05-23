@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Col, Form } from 'react-bootstrap';
 import classes from './formRange.module.scss';
-import { RangeParameters } from './../../../ts/store';
+import { RangeParameters } from '../../../ts/store';
 
 const FormRange = ({
   title,
